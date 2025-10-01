@@ -1,0 +1,1 @@
+window.commonConfig = viewerModel.commonConfig

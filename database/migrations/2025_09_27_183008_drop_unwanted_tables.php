@@ -1,0 +1,36 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+return new class extends Migration
+{
+    /**
+     * Run the migrations.
+     */
+    public function up(): void
+    {
+        // drop unwanted tables
+        $tables = [
+            'hero_content',
+            'events',
+            'galleries',
+            'donations',
+            'volunteers',
+            'posts',
+        ];
+
+        foreach ($tables as $table) {
+            Schema::dropIfExists($table);
+        }
+    }
+
+    /**
+     * Reverse the migrations.
+     */
+    public function down(): void
+    {
+        // No need to recreate tables on rollback
+    }
+};
