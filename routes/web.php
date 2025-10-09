@@ -16,21 +16,29 @@ use App\Http\Controllers\Admin\MaintenanceController;
 
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
-Route::get('/scholarships', [HomeController::class, 'scholarships'])->name('scholarships');
 Route::get('/about', [HomeController::class, 'about'])->name('about');
-Route::get('/programs/cpl', [HomeController::class, 'cpl'])->name('programs.cpl');
+Route::get('/courses', [HomeController::class, 'courses'])->name('courses');
+Route::get('/course-details', [HomeController::class, 'courseDetails'])->name('course.details');
+Route::get('/blog', [HomeController::class, 'blog'])->name('blog');
+Route::get('/blog/show', [HomeController::class, 'blogShow'])->name('blog.show');
+Route::get('/contact', [HomeController::class, 'contact'])->name('contact');
+Route::get('/elements', [HomeController::class, 'elements'])->name('elements');
 
-Route::prefix('blog')->group(function () {
-    Route::get('/', [BlogController::class, 'listBlogs'])->name('blog.index');
-    Route::get('/{slug}', [BlogController::class, 'showBlogDetail'])->name('blog.showBlogDetail');
-});
+// Route::get('/scholarships', [HomeController::class, 'scholarships'])->name('scholarships');
+// Route::get('/about', [HomeController::class, 'about'])->name('about');
+// Route::get('/programs/cpl', [HomeController::class, 'cpl'])->name('programs.cpl');
+
+// Route::prefix('blog')->group(function () {
+//     Route::get('/', [BlogController::class, 'listBlogs'])->name('blog.index');
+//     Route::get('/{slug}', [BlogController::class, 'showBlogDetail'])->name('blog.showBlogDetail');
+// });
 
 // About routes
 // Route::get('/about', [AboutController::class, 'index'])->name('about');
 
 // Contact routes
-Route::get('/contact', [ContactController::class, 'index'])->name('contact.index');
-Route::post('/contact', [ContactController::class, 'store'])->name('contact.store');
+// Route::get('/contact', [ContactController::class, 'index'])->name('contact.index');
+// Route::post('/contact', [ContactController::class, 'store'])->name('contact.store');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

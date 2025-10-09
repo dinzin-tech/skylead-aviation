@@ -1,1 +1,0 @@
-window.viewerModel = JSON.parse(document.getElementById('wix-essential-viewer-model').textContent)

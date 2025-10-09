@@ -1,1 +1,0 @@
-window.usedPlatformApis = JSON.parse(document.getElementById('used-platform-apis-data').textContent)

@@ -1,1 +1,0 @@
-window.fedops = JSON.parse(document.getElementById('wix-fedops').textContent)
