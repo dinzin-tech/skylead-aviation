@@ -5,10 +5,12 @@
                 <div class="col-lg-12">
                     <div class="banner_content text-center">
                         <p class="text-uppercase">
-                            Best online education service In the world
+                            {{-- Best online education service In the world --}}
+                            {{ $hero_text ?? 'Best online education service In the world' }}
                         </p>
                         <h2 class="text-uppercase mt-4 mb-5">
-                            One Step Ahead This Season
+                            {{-- One Step Ahead This Season --}}
+                            {{ $hero_subtext ?? 'One Step Ahead This Season' }}
                         </h2>
                         <div>
                             <a href="#" class="primary-btn2 mb-3 mb-sm-0">learn more</a>

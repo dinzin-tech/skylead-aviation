@@ -9,7 +9,9 @@ class HomeController extends Controller
 {
     public function index()
     {
-        return view('home');
+        $hero_text = "“ALL OUR DREAMS CAN COME TRUE,";
+        $hero_subtext = "If we have the courage to pursue them.”";
+        return view('home', compact('hero_text', 'hero_subtext'));
     }
 
     public function about()
@@ -34,19 +36,4 @@ class HomeController extends Controller
         // return view('blog.show', compact('blog'));
         echo "Displaying blog post with slug: ";
     }
-    
-    // public function scholarships()
-    // {
-    //     return view('scholarships');
-    // }
-    
-    // public function about()
-    // {
-    //     return view('about');
-    // }
-    
-    // public function cpl()
-    // {
-    //     return view('programs.cpl');
-    // }
 }

@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Home - Edustage Education')
+@section('title', 'Home - Skylead Aviation')
 
 @section('content')
     <!--================ Start Home Banner Area =================-->
