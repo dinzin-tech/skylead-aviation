@@ -23,6 +23,8 @@ Route::get('/blog', [HomeController::class, 'blog'])->name('blog');
 Route::get('/blog/show', [HomeController::class, 'blogShow'])->name('blog.show');
 Route::get('/contact', [HomeController::class, 'contact'])->name('contact');
 Route::get('/elements', [HomeController::class, 'elements'])->name('elements');
+Route::get('/program/{id}', [HomeController::class, 'programDetails'])->name('program.details');
+Route::get('/programs', [HomeController::class, 'programs'])->name('programs');
 
 
 

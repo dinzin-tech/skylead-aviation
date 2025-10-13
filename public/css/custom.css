@@ -1,0 +1,1053 @@
+.mv_icon {
+    width: 103px;
+    height: auto;
+    margin: 1px auto;
+}
+
+/* Programs Section Styles */
+.programs_area {
+    background: #fff;
+    padding: 100px 0;
+}
+
+.single_course {
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    /* margin-bottom: 30px; */
+    overflow: hidden;
+    /* height: 100%; */
+}
+
+.single_course:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+}
+
+.course_head {
+    position: relative;
+    overflow: hidden;
+}
+
+.course_head img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.single_course:hover .course_head img {
+    transform: scale(1.1);
+}
+
+.program_level {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: #fff;
+}
+
+.beginner-level {
+    background: linear(45deg, #28a745, #20c997);
+}
+
+.intermediate-level {
+    background: linear(45deg, #ffc107, #fd7e14);
+}
+
+.advanced-level {
+    background: linear(45deg, #dc3545, #e83e8c);
+}
+
+.professional-level {
+    background: linear(45deg, #6f42c1, #e83e8c);
+}
+
+.program_category {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    /* background: rgba(132, 144, 255, 0.9); */
+    background: #002347;
+    color: #fff;
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.course_content {
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    height: calc(100% - 300px);
+}
+
+.course_content .price {
+    font-size: 24px;
+    font-weight: 700;
+    /* color: #8490ff; */
+    color: #002347;
+    display: block;
+    margin-bottom: 10px;
+}
+
+.course_content h4 a {
+    color: #222;
+    font-weight: 600;
+    text-decoration: none;
+    transition: color 0.3s ease;
+    display: block;
+    margin-bottom: 10px;
+}
+
+.course_content h4 a:hover {
+    /* color: #8490ff; */
+    color: #002347;
+}
+
+.course_content p {
+    color: #777;
+    line-height: 1.6;
+    margin-bottom: 15px;
+    flex-grow: 1;
+}
+
+.program_features {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 15px;
+}
+
+.feature_badge {
+    background: #f8f9ff;
+    color: #002347;
+    padding: 4px 10px;
+    border-radius: 15px;
+    font-size: 11px;
+    font-weight: 600;
+    border: 1px solid #e6e9ff;
+}
+
+.program_meta {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+    margin-bottom: 15px;
+}
+
+.meta_item {
+    display: flex;
+    align-items: center;
+    color: #555;
+    font-size: 13px;
+    font-weight: 500;
+}
+
+.meta_item i {
+    color: #002347;
+    font-size: 14px;
+}
+
+.course_meta {
+    border-top: 1px solid #eee;
+    padding-top: 20px;
+    margin-top: auto;
+}
+
+.authr_meta {
+    display: flex;
+    align-items: center;
+}
+
+.authr_meta img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.authr_meta span {
+    color: #555;
+    font-weight: 500;
+    font-size: 14px;
+}
+
+.primary-btn.small-btn {
+    padding: 8px 20px;
+    font-size: 14px;
+    text-decoration: none;
+}
+
+/* Owl Carousel Customization */
+.active_course .owl-stage {
+    padding: 20px 0;
+}
+
+.active_course .owl-nav {
+    margin-top: 10px;
+    text-align: center;
+    margin-top: 30px;
+}
+
+.active_course .owl-nav button {
+    background: #002347 !important;
+    color: #fff !important;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin: 0 10px;
+    transition: all 0.3s ease;
+}
+
+.active_course .owl-nav button:hover {
+    background: #6a75e0 !important;
+    transform: scale(1.1);
+}
+
+/* Responsive Design */
+@media (max-width: 991px) {
+    .programs_area {
+        padding: 80px 0;
+    }
+    
+    .course_content {
+        padding: 20px;
+    }
+    
+    .program_meta {
+        gap: 12px;
+    }
+}
+
+@media (max-width: 767px) {
+    .programs_area {
+        padding: 60px 0;
+    }
+    
+    .course_head img {
+        height: 200px;
+    }
+    
+    .course_content {
+        padding: 15px;
+    }
+    
+    .program_meta {
+        flex-direction: column;
+        gap: 8px;
+    }
+    
+    .program_features {
+        gap: 6px;
+    }
+    
+    .feature_badge {
+        font-size: 10px;
+        padding: 3px 8px;
+    }
+}
+
+/* Training Destinations Section Styles */
+.training_destinations_area {
+    background: #f9f9ff;
+    padding: 100px 0;
+}
+
+.destination_card {
+    background: #fff;
+    padding: 30px 20px;
+    border-radius: 10px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    height: 100%;
+    border: 1px solid #e6e9ff;
+}
+
+.destination_card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+    border-color: #002347;
+}
+
+.destination_icon {
+    width: 70px;
+    height: 70px;
+    background: linear-gradient(45deg, #002347, #6a75e0);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 20px;
+}
+
+.destination_icon i {
+    font-size: 30px;
+    color: #fff;
+}
+
+.destination_card h5 {
+    color: #222;
+    font-weight: 600;
+    margin-bottom: 15px;
+    font-size: 18px;
+}
+
+.destination_card p {
+    color: #777;
+    line-height: 1.6;
+    font-size: 14px;
+    margin-bottom: 0;
+}
+
+/* Eligibility Section Styles */
+.eligibility_section {
+    background: #fff;
+    padding: 50px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.eligibility_content h3 {
+    color: #222;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+.eligibility_content h5 {
+    color: #002347;
+    font-weight: 600;
+    margin-bottom: 30px;
+}
+
+.single_requirement {
+    padding: 20px;
+    background: #f8f9ff;
+    border-radius: 10px;
+    border-left: 4px solid #002347;
+    transition: all 0.3s ease;
+}
+
+.single_requirement:hover {
+    background: #fff;
+    box-shadow: 0 5px 15px rgba(132, 144, 255, 0.2);
+}
+
+.requirement_icon {
+    width: 50px;
+    height: 50px;
+    background: #002347;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.requirement_icon i {
+    font-size: 20px;
+    color: #fff;
+}
+
+.requirement_content h5 {
+    color: #222;
+    font-weight: 600;
+    margin-bottom: 10px;
+    font-size: 16px;
+}
+
+.requirement_content p {
+    color: #666;
+    line-height: 1.6;
+    margin-bottom: 0;
+    font-size: 14px;
+}
+
+.additional_info {
+    border-left: 4px solid #ffc107;
+}
+
+.eligibility_image img {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+    border: 5px solid #fff;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.image_caption p {
+    font-style: italic;
+    color: #666;
+}
+
+/* Call to Action Styles */
+.cta_section {
+    background: linear-gradient(135deg, #002347 0%, #6a75e0 100%) !important;
+}
+
+.cta_section h3 {
+    color: #fff;
+    font-weight: 600;
+}
+
+.cta_section p {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 16px;
+}
+
+.primary-btn.light-btn {
+    background: #fff;
+    color: #002347;
+    border: 2px solid #fff;
+}
+
+.primary-btn.light-btn:hover {
+    background: transparent;
+    color: #fff;
+    border-color: #fff;
+}
+
+/* Responsive Design */
+@media (max-width: 991px) {
+    .training_destinations_area {
+        padding: 80px 0;
+    }
+    
+    .eligibility_section {
+        padding: 40px 30px;
+    }
+    
+    .destination_card {
+        padding: 25px 15px;
+    }
+    
+    .cta_section {
+        padding: 40px 30px !important;
+    }
+}
+
+@media (max-width: 767px) {
+    .training_destinations_area {
+        padding: 60px 0;
+    }
+    
+    .eligibility_section {
+        padding: 30px 20px;
+    }
+    
+    .destination_card {
+        padding: 20px 15px;
+        margin-bottom: 20px;
+    }
+    
+    .single_requirement {
+        padding: 15px;
+    }
+    
+    .requirement_icon {
+        width: 40px;
+        height: 40px;
+        margin-right: 15px;
+    }
+    
+    .requirement_icon i {
+        font-size: 16px;
+    }
+    
+    .eligibility_image img {
+        height: 300px;
+        margin-top: 30px;
+    }
+    
+    .cta_section {
+        padding: 30px 20px !important;
+    }
+}
+
+@media (max-width: 575px) {
+    .destination_card {
+        margin-bottom: 15px;
+    }
+    
+    .destination_icon {
+        width: 60px;
+        height: 60px;
+    }
+    
+    .destination_icon i {
+        font-size: 24px;
+    }
+}
+
+
+/* steps to become pilot */
+/* Pilot Steps Section Styles */
+.pilot_steps_area {
+    background: #fff;
+    padding: 100px 0;
+}
+
+/* Timeline for Desktop */
+.steps_timeline {
+    position: relative;
+    padding: 50px 0;
+}
+
+.steps_timeline::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 0;
+    bottom: 0;
+    width: 3px;
+    background: linear-gradient(to bottom, #002347, #6a75e0);
+    transform: translateX(-50%);
+}
+
+.timeline_row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 60px;
+    position: relative;
+}
+
+.timeline_item {
+    width: 45%;
+    position: relative;
+}
+
+.left_item {
+    text-align: right;
+}
+
+.right_item {
+    text-align: left;
+}
+
+.step_card {
+    background: #fff;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    border: 2px solid #f8f9ff;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.step_card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(132, 144, 255, 0.2);
+    border-color: #002347;
+}
+
+.step_header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.left_item .step_header {
+    justify-content: flex-end;
+    flex-direction: row-reverse;
+}
+
+.right_item .step_header {
+    justify-content: flex-start;
+}
+
+.step_number {
+    font-size: 24px;
+    font-weight: 700;
+    margin: 0 15px;
+}
+
+.step_icon {
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(45deg, #002347, #6a75e0);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.step_icon i {
+    font-size: 24px;
+    color: #fff;
+}
+
+.step_content h5 {
+    color: #222;
+    font-weight: 600;
+    margin-bottom: 15px;
+    font-size: 18px;
+}
+
+.step_content p {
+    color: #666;
+    line-height: 1.6;
+    margin-bottom: 15px;
+}
+
+.step_duration {
+    display: inline-flex;
+    align-items: center;
+    background: #f8f9ff;
+    padding: 5px 15px;
+    border-radius: 20px;
+    color: #002347;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+/* Mobile Steps */
+.steps_mobile {
+    padding: 20px 0;
+}
+
+.mobile_step_item {
+    margin-bottom: 30px;
+    position: relative;
+}
+
+.step_connector {
+    text-align: center;
+    margin: 10px 0;
+}
+
+.step_connector i {
+    color: #002347;
+    font-size: 20px;
+    background: #fff;
+    padding: 10px;
+    border-radius: 50%;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Mobile step card adjustments */
+.mobile_step_item .step_card {
+    text-align: center;
+}
+
+.mobile_step_item .step_header {
+    justify-content: center;
+}
+
+.mobile_step_item .step_number {
+    margin: 0 15px;
+}
+
+/* Timeline Note */
+.timeline_note {
+    border-left: 4px solid #ffc107;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.timeline_note i {
+    color: #ffc107;
+}
+
+/* Call to Action */
+.steps_cta {
+    background: linear-gradient(135deg, #f8f9ff 0%, #e6e9ff 100%);
+    padding: 50px;
+    border-radius: 15px;
+    border: 2px solid #002347;
+}
+
+.steps_cta h4 {
+    color: #222;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+/* Responsive Design */
+@media (max-width: 1199px) {
+    .step_card {
+        padding: 25px;
+    }
+    
+    .step_content h5 {
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 991px) {
+    .pilot_steps_area {
+        padding: 80px 0;
+    }
+    
+    .steps_timeline::before {
+        left: 30px;
+    }
+    
+    .timeline_row {
+        flex-direction: column;
+        margin-bottom: 0;
+    }
+    
+    .timeline_item {
+        width: 100%;
+        text-align: left !important;
+        margin-bottom: 40px;
+        padding-left: 60px;
+    }
+    
+    .left_item .step_header,
+    .right_item .step_header {
+        justify-content: flex-start;
+        flex-direction: row;
+    }
+    
+    .step_card {
+        padding: 20px;
+    }
+    
+    .steps_cta {
+        padding: 40px 30px;
+    }
+}
+
+@media (max-width: 767px) {
+    .pilot_steps_area {
+        padding: 60px 0;
+    }
+    
+    .timeline_item {
+        padding-left: 50px;
+    }
+    
+    .step_card {
+        padding: 20px 15px;
+    }
+    
+    .step_header {
+        margin-bottom: 15px;
+    }
+    
+    .step_icon {
+        width: 50px;
+        height: 50px;
+    }
+    
+    .step_icon i {
+        font-size: 20px;
+    }
+    
+    .step_number {
+        font-size: 20px;
+    }
+    
+    .step_content h5 {
+        font-size: 16px;
+    }
+    
+    .steps_cta {
+        padding: 30px 20px;
+    }
+}
+
+@media (max-width: 575px) {
+    .timeline_item {
+        padding-left: 40px;
+    }
+    
+    .step_icon {
+        width: 45px;
+        height: 45px;
+    }
+    
+    .step_icon i {
+        font-size: 18px;
+    }
+    
+    .step_number {
+        font-size: 18px;
+        margin: 0 10px;
+    }
+    
+    .step_content h5 {
+        font-size: 15px;
+    }
+    
+    .step_content p {
+        font-size: 14px;
+    }
+}
+
+/* faq */
+
+/* FAQ Section Styles */
+.faq_area {
+    background: #f9f9ff;
+    padding: 100px 0;
+}
+
+/* Categories Filter */
+.categories_filter {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 30px;
+}
+
+.category_btn {
+    background: #fff;
+    border: 2px solid #e6e9ff;
+    color: #666;
+    padding: 10px 20px;
+    border-radius: 25px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.category_btn:hover,
+.category_btn.active {
+    background: #002347;
+    color: #fff;
+    border-color: #002347;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(132, 144, 255, 0.3);
+}
+
+/* FAQ Items */
+.faq_content {
+    background: #fff;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+.faq_item {
+    border-bottom: 1px solid #e6e9ff;
+    transition: all 0.3s ease;
+}
+
+.faq_item:last-child {
+    border-bottom: none;
+}
+
+.faq_item:hover {
+    background: #f8f9ff;
+}
+
+.faq_question {
+    position: relative;
+    padding: 0;
+}
+
+.faq_btn {
+    width: 100%;
+    text-align: left;
+    background: none;
+    border: none;
+    padding: 25px 70px 25px 30px;
+    font-weight: 600;
+    color: #222;
+    font-size: 16px;
+    transition: all 0.3s ease;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.faq_btn:hover {
+    color: #002347;
+    text-decoration: none;
+}
+
+.faq_btn:focus {
+    outline: none;
+    box-shadow: none;
+}
+
+.faq_btn.collapsed .faq_icon .ti-minus {
+    display: none;
+}
+
+.faq_btn.collapsed .faq_icon .ti-plus {
+    display: block;
+}
+
+.faq_btn:not(.collapsed) .faq_icon .ti-plus {
+    display: none;
+}
+
+.faq_btn:not(.collapsed) .faq_icon .ti-minus {
+    display: block;
+}
+
+.question_text {
+    flex: 1;
+    padding-right: 20px;
+}
+
+.faq_icon {
+    position: absolute;
+    right: 30px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 30px;
+    height: 30px;
+    background: #002347;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-size: 14px;
+    transition: all 0.3s ease;
+}
+
+.faq_btn:hover .faq_icon {
+    /* background: #6a75e0; */
+    background: #fdc632;
+    transform: translateY(-50%) scale(1.1);
+}
+
+.faq_category_badge {
+    position: absolute;
+    top: 25px;
+    right: 80px;
+    background: #f8f9ff;
+    color: #002347;
+    padding: 4px 12px;
+    border-radius: 15px;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.faq_answer {
+    padding: 0 30px 25px;
+}
+
+.faq_answer p {
+    color: #666;
+    line-height: 1.7;
+    font-size: 15px;
+    margin-bottom: 0;
+}
+
+/* FAQ CTA */
+.faq_cta {
+    background: linear-gradient(135deg, #002347 0%, #6a75e0 100%) !important;
+    border: 2px solid #fff;
+    box-shadow: 0 15px 40px rgba(132, 144, 255, 0.3);
+}
+
+.faq_cta h4 {
+    color: #fff;
+    font-weight: 600;
+}
+
+.faq_cta p {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 16px;
+}
+
+/* Animation for FAQ items */
+.collapsing {
+    transition: height 0.3s ease;
+}
+
+/* JavaScript-based filtering styles */
+.faq_item.hidden {
+    display: none;
+}
+
+/* Responsive Design */
+@media (max-width: 991px) {
+    .faq_area {
+        padding: 80px 0;
+    }
+    
+    .categories_filter {
+        gap: 8px;
+    }
+    
+    .category_btn {
+        padding: 8px 16px;
+        font-size: 14px;
+    }
+    
+    .faq_btn {
+        padding: 20px 60px 20px 20px;
+        font-size: 15px;
+    }
+    
+    .faq_icon {
+        right: 20px;
+    }
+    
+    .faq_category_badge {
+        right: 60px;
+        top: 20px;
+    }
+    
+    .faq_answer {
+        padding: 0 20px 20px;
+    }
+}
+
+@media (max-width: 767px) {
+    .faq_area {
+        padding: 60px 0;
+    }
+    
+    .categories_filter {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .category_btn {
+        width: 200px;
+        margin-bottom: 5px;
+    }
+    
+    .faq_btn {
+        padding: 15px 50px 15px 15px;
+        font-size: 14px;
+    }
+    
+    .faq_icon {
+        right: 15px;
+        width: 25px;
+        height: 25px;
+        font-size: 12px;
+    }
+    
+    .faq_category_badge {
+        display: none;
+    }
+    
+    .faq_answer {
+        padding: 0 15px 15px;
+    }
+    
+    .faq_cta {
+        padding: 30px 20px !important;
+    }
+}
+
+@media (max-width: 575px) {
+    .faq_btn {
+        padding: 15px 45px 15px 15px;
+    }
+    
+    .question_text {
+        padding-right: 10px;
+    }
+}
