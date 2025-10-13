@@ -20,19 +20,25 @@ class HomeController extends Controller
                     // 'icon' => 'flaticon-pilot',
                     'icon' => 'ti-medall-alt',
                     'title' => 'Expert Certified Instructors',
-                    'description' => 'Learn from industry veterans with decades of flying experience and certified training credentials.'
+                    'description' => 'Learn from industry veterans with decades of flying experience and certified training credentials.',
+                    'title2' => 'Expert Certified Instructors',
+                    'description2' => 'Learn from industry veterans with decades of flying experience and certified training credentials.'
                 ],
                 [
                     // 'icon' => 'flaticon-airplane',
                     'icon' => 'ti-star',
                     'title' => 'Modern Fleet & Equipment',
-                    'description' => 'Train with state-of-the-art aircraft and advanced flight simulators maintained to highest safety standards.'
+                    'description' => 'Train with state-of-the-art aircraft and advanced flight simulators maintained to highest safety standards.',
+                    'title2' => 'Expert Certified Instructors',
+                    'description2' => 'Learn from industry veterans with decades of flying experience and certified training credentials.'
                 ],
                 [
                     // 'icon' => 'flaticon-graduation-cap',
                     'icon' => 'ti-infinite',
                     'title' => 'Global Career Opportunities',
-                    'description' => 'Worldwide recognized certification with partnerships with major airlines and excellent placement rates.'
+                    'description' => 'Worldwide recognized certification with partnerships with major airlines and excellent placement rates.',
+                    'title2' => 'Expert Certified Instructors',
+                    'description2' => 'Learn from industry veterans with decades of flying experience and certified training credentials.'
                 ]
             ],
             'mission_vision_values' => [

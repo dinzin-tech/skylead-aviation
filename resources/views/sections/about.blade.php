@@ -128,6 +128,10 @@
                                 <p>
                                     {{ $point['description'] }}
                                 </p>
+                                <h4 class="mt-3 mb-2">{{ $point['title2'] }}</h4>
+                                <p>
+                                    {{ $point['description2'] }}
+                                </p>
                             </div>
                         </div>
                     </div>
