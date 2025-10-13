@@ -17,17 +17,20 @@ class HomeController extends Controller
             'description' => 'In an ever-changing market, finding the right trade and a fitting training program might seem like an impossible task. Enter Skylead Aviation Academy, founded by industry professionals.',
             'main_points' => [
                 [
-                    'icon' => 'flaticon-pilot',
+                    // 'icon' => 'flaticon-pilot',
+                    'icon' => 'ti-medall-alt',
                     'title' => 'Expert Certified Instructors',
                     'description' => 'Learn from industry veterans with decades of flying experience and certified training credentials.'
                 ],
                 [
-                    'icon' => 'flaticon-airplane',
+                    // 'icon' => 'flaticon-airplane',
+                    'icon' => 'ti-star',
                     'title' => 'Modern Fleet & Equipment',
                     'description' => 'Train with state-of-the-art aircraft and advanced flight simulators maintained to highest safety standards.'
                 ],
                 [
-                    'icon' => 'flaticon-graduation-cap',
+                    // 'icon' => 'flaticon-graduation-cap',
+                    'icon' => 'ti-infinite',
                     'title' => 'Global Career Opportunities',
                     'description' => 'Worldwide recognized certification with partnerships with major airlines and excellent placement rates.'
                 ]
@@ -156,7 +159,8 @@ class HomeController extends Controller
                     'description' => 'FAA approved programs with advanced training facilities'
                 ],
                 'SOUTH AFRICA' => [
-                    'icon' => 'ti-location-pin',
+                    // 'icon' => 'ti-location-pin',
+                    'icon' => 'img/flags/south-africa.png',
                     'description' => 'Excellent weather conditions year-round for optimal training'
                 ],
                 'NEW ZEALAND' => [

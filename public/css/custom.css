@@ -1051,3 +1051,23 @@
         padding-right: 10px;
     }
 }
+
+
+/* Add a dark overlay with opacity */
+.home_banner_area::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.2); /* adjust 0.5 for desired darkness */
+    z-index: 0;
+}
+
+/* Ensure content stays above the overlay */
+.banner_inner,
+.banner_content {
+    position: relative;
+    z-index: 2;
+}

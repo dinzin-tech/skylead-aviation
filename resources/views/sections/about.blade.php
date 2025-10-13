@@ -115,7 +115,7 @@
         </div>
         
         <!-- Three Main Points -->
-        {{-- <div class="row mb-5">
+        <div class="row mb-5">
             @if(isset($aboutData['main_points']) && count($aboutData['main_points']) > 0)
                 @foreach($aboutData['main_points'] as $point)
                     <div class="col-lg-4 col-md-6">
@@ -133,10 +133,10 @@
                     </div>
                 @endforeach
             @endif
-        </div> --}}
+        </div>
 
         <!-- Mission, Vision & Values -->
-        <div class="row mt-5 pt-5">
+        {{-- <div class="row mt-5 pt-5">
             <div class="col-lg-12">
                 <div class="row">
                     @if(isset($aboutData['mission_vision_values']))
@@ -178,7 +178,7 @@
                     @endif
                 </div>
             </div>
-        </div>
+        </div> --}}
 
         <!-- Additional About Content (for home page) -->
         @if(isset($aboutData['full_description']))
