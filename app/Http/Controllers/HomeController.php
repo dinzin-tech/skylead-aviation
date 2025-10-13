@@ -19,26 +19,26 @@ class HomeController extends Controller
                 [
                     // 'icon' => 'flaticon-pilot',
                     'icon' => 'ti-medall-alt',
-                    'title' => 'Expert Certified Instructors',
-                    'description' => 'Learn from industry veterans with decades of flying experience and certified training credentials.',
-                    'title2' => 'Expert Certified Instructors',
-                    'description2' => 'Learn from industry veterans with decades of flying experience and certified training credentials.'
+                    'title' => 'Learn from the Industry',
+                    'description' => 'EXPERTS/PROFESSIONALS...',
+                    'title2' => 'Enables to understand',
+                    'description2' => 'IN-DEPTH & TECHNICAL KNOWLEDGE...'
                 ],
                 [
                     // 'icon' => 'flaticon-airplane',
                     'icon' => 'ti-star',
-                    'title' => 'Modern Fleet & Equipment',
-                    'description' => 'Train with state-of-the-art aircraft and advanced flight simulators maintained to highest safety standards.',
-                    'title2' => 'Expert Certified Instructors',
-                    'description2' => 'Learn from industry veterans with decades of flying experience and certified training credentials.'
+                    'title' => 'Updated Curriculum by Aviation',
+                    'description' => 'INDUSTRY EXPERTS...',
+                    'title2' => 'Provides Airport familiarisation  ',
+                    'description2' => '& ON BOARD TRAINING....'
                 ],
                 [
                     // 'icon' => 'flaticon-graduation-cap',
                     'icon' => 'ti-infinite',
-                    'title' => 'Global Career Opportunities',
-                    'description' => 'Worldwide recognized certification with partnerships with major airlines and excellent placement rates.',
-                    'title2' => 'Expert Certified Instructors',
-                    'description2' => 'Learn from industry veterans with decades of flying experience and certified training credentials.'
+                    'title' => '98% Placement Record',
+                    'description' => 'SINCE 2017...',
+                    'title2' => 'Fastest Growing Institute',
+                    'description2' => 'IN KARNATAKA...'
                 ]
             ],
             'mission_vision_values' => [
@@ -170,15 +170,15 @@ class HomeController extends Controller
                     'description' => 'Excellent weather conditions year-round for optimal training'
                 ],
                 'NEW ZEALAND' => [
-                    'icon' => 'ti-location-pin',
+                    'icon' => 'img/flags/new-zealand.png',
                     'description' => 'CAA NZ approved training in scenic training environments'
                 ],
                 'AUSTRALIA' => [
-                    'icon' => 'ti-location-pin',
+                    'icon' => 'img/flags/australia.png',
                     'description' => 'CASA approved programs with international recognition'
                 ],
                 'CANADA' => [
-                    'icon' => 'ti-location-pin',
+                    'icon' => 'img/flags/canada.png',
                     'description' => 'Transport Canada approved training in diverse conditions'
                 ]
             ],
