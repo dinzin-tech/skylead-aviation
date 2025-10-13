@@ -121,7 +121,7 @@
                     <div class="col-lg-4 col-md-6">
                         <div class="single_about">
                             <div class="icon">
-                                <span class="{{ $point['icon'] }}"></span>
+                                {{-- <span class="{{ $point['icon'] }}"></span> --}}
                             </div>
                             <div class="desc">
                                 <h4 class="mt-3 mb-2">{{ $point['title'] }}</h4>

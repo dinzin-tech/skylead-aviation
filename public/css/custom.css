@@ -1071,3 +1071,7 @@
     position: relative;
     z-index: 2;
 }
+
+.home_banner_area .banner_inner .banner_content {
+    color: #fff !important;
+}
