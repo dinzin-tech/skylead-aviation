@@ -6,12 +6,10 @@
 
 /* Programs Section Styles */
 .programs_area {
-    background: #fff;
     padding: 100px 0;
 }
 
 .single_course {
-    background: #fff;
     border-radius: 10px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
     transition: all 0.3s ease;
@@ -74,7 +72,8 @@
     top: 15px;
     left: 15px;
     /* background: rgba(132, 144, 255, 0.9); */
-    background: #002347;
+    /* background: var(--secondary-color); */
+    background: var(--secondary-color);
     color: #fff;
     padding: 5px 12px;
     border-radius: 20px;
@@ -94,7 +93,8 @@
     font-size: 24px;
     font-weight: 700;
     /* color: #8490ff; */
-    color: #002347;
+    /* color: var(--secondary-color); */
+    color: var(--secondary-color);
     display: block;
     margin-bottom: 10px;
 }
@@ -110,7 +110,7 @@
 
 .course_content h4 a:hover {
     /* color: #8490ff; */
-    color: #002347;
+    color: var(--secondary-color);
 }
 
 .course_content p {
@@ -129,7 +129,7 @@
 
 .feature_badge {
     background: #f8f9ff;
-    color: #002347;
+    color: var(--secondary-color);
     padding: 4px 10px;
     border-radius: 15px;
     font-size: 11px;
@@ -153,7 +153,7 @@
 }
 
 .meta_item i {
-    color: #002347;
+    color: var(--secondary-color);
     font-size: 14px;
 }
 
@@ -199,7 +199,7 @@
 }
 
 .active_course .owl-nav button {
-    background: #002347 !important;
+    background: var(--secondary-color) !important;
     color: #fff !important;
     width: 40px;
     height: 40px;
@@ -209,7 +209,7 @@
 }
 
 .active_course .owl-nav button:hover {
-    background: #6a75e0 !important;
+    background: var(--tertiary-color) !important;
     transform: scale(1.1);
 }
 
@@ -275,13 +275,13 @@
 .destination_card:hover {
     transform: translateY(-5px);
     box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
-    border-color: #002347;
+    border-color: var(--secondary-color);
 }
 
 .destination_icon {
     width: 70px;
     height: 70px;
-    background: linear-gradient(45deg, #002347, #6a75e0);
+    background: linear-gradient(45deg, var(--secondary-color), var(--tertiary-color));
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -323,7 +323,7 @@
 }
 
 .eligibility_content h5 {
-    color: #002347;
+    color: var(--secondary-color);
     font-weight: 600;
     margin-bottom: 30px;
 }
@@ -332,7 +332,7 @@
     padding: 20px;
     background: #f8f9ff;
     border-radius: 10px;
-    border-left: 4px solid #002347;
+    border-left: 4px solid var(--secondary-color);
     transition: all 0.3s ease;
 }
 
@@ -344,7 +344,7 @@
 .requirement_icon {
     width: 50px;
     height: 50px;
-    background: #002347;
+    background: var(--secondary-color);
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -390,7 +390,7 @@
 
 /* Call to Action Styles */
 .cta_section {
-    background: linear-gradient(135deg, #002347 0%, #6a75e0 100%) !important;
+    background: linear-gradient(135deg, var(--secondary-color) 0%, var(--tertiary-color) 100%) !important;
 }
 
 .cta_section h3 {
@@ -405,7 +405,7 @@
 
 .primary-btn.light-btn {
     background: #fff;
-    color: #002347;
+    color: var(--secondary-color);
     border: 2px solid #fff;
 }
 
@@ -508,7 +508,7 @@
     top: 0;
     bottom: 0;
     width: 3px;
-    background: linear-gradient(to bottom, #002347, #6a75e0);
+    background: linear-gradient(to bottom, var(--secondary-color), var(--tertiary-color));
     transform: translateX(-50%);
 }
 
@@ -545,7 +545,7 @@
 .step_card:hover {
     transform: translateY(-5px);
     box-shadow: 0 15px 40px rgba(132, 144, 255, 0.2);
-    border-color: #002347;
+    border-color: var(--secondary-color);
 }
 
 .step_header {
@@ -572,7 +572,7 @@
 .step_icon {
     width: 60px;
     height: 60px;
-    background: linear-gradient(45deg, #002347, #6a75e0);
+    background: linear-gradient(45deg, var(--secondary-color), var(--tertiary-color));
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -603,7 +603,7 @@
     background: #f8f9ff;
     padding: 5px 15px;
     border-radius: 20px;
-    color: #002347;
+    color: var(--secondary-color);
     font-weight: 600;
     font-size: 14px;
 }
@@ -624,7 +624,7 @@
 }
 
 .step_connector i {
-    color: #002347;
+    color: var(--secondary-color);
     font-size: 20px;
     background: #fff;
     padding: 10px;
@@ -647,7 +647,7 @@
 
 /* Timeline Note */
 .timeline_note {
-    border-left: 4px solid #ffc107;
+    border-left: 4px solid var(--primary-color);
     max-width: 600px;
     margin: 0 auto;
 }
@@ -661,7 +661,7 @@
     background: linear-gradient(135deg, #f8f9ff 0%, #e6e9ff 100%);
     padding: 50px;
     border-radius: 15px;
-    border: 2px solid #002347;
+    border: 2px solid var(--secondary-color);
 }
 
 .steps_cta h4 {
@@ -814,9 +814,9 @@
 
 .category_btn:hover,
 .category_btn.active {
-    background: #002347;
+    background: var(--secondary-color);
     color: #fff;
-    border-color: #002347;
+    border-color: var(--secondary-color);
     transform: translateY(-2px);
     box-shadow: 0 5px 15px rgba(132, 144, 255, 0.3);
 }
@@ -864,7 +864,7 @@
 }
 
 .faq_btn:hover {
-    color: #002347;
+    color: var(--secondary-color);
     text-decoration: none;
 }
 
@@ -901,7 +901,7 @@
     transform: translateY(-50%);
     width: 30px;
     height: 30px;
-    background: #002347;
+    background: var(--secondary-color);
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -912,8 +912,8 @@
 }
 
 .faq_btn:hover .faq_icon {
-    /* background: #6a75e0; */
-    background: #fdc632;
+    /* background: var(--tertiary-color); */
+    background:var(--primary-color);
     transform: translateY(-50%) scale(1.1);
 }
 
@@ -922,7 +922,7 @@
     top: 25px;
     right: 80px;
     background: #f8f9ff;
-    color: #002347;
+    color: var(--secondary-color);
     padding: 4px 12px;
     border-radius: 15px;
     font-size: 12px;
@@ -943,7 +943,7 @@
 
 /* FAQ CTA */
 .faq_cta {
-    background: linear-gradient(135deg, #002347 0%, #6a75e0 100%) !important;
+    background: linear-gradient(135deg, var(--secondary-color) 0%, var(--tertiary-color) 100%) !important;
     border: 2px solid #fff;
     box-shadow: 0 15px 40px rgba(132, 144, 255, 0.3);
 }
@@ -1072,11 +1072,6 @@
     z-index: 2;
 }
 
-<<<<<<< Updated upstream
-.home_banner_area .banner_inner .banner_content {
-    color: #fff !important;
-}
-=======
 /* local destination map graphics part */
 
 body {
@@ -1134,4 +1129,3 @@ section {
 .leaflet-marker-shadow{
     display: none !important;
 }
->>>>>>> Stashed changes
