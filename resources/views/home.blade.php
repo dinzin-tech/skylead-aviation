@@ -1,4 +1,3 @@
-
 @extends('layouts.app')
 
 @section('title',  'Home - Skylead Aviation')
@@ -11,9 +10,9 @@
     @include('sections.banner')
     <!--================ End Home Banner Area =================-->
 
-    {{-- about us secion start --}}
+    {{-- about us section start --}}
     @include('sections.about')
-    {{-- about us secion end --}}
+    {{-- about us section end --}}
 
     <!--================ Start Feature Area =================-->
     {{-- @include('sections.features') --}}
@@ -55,38 +54,29 @@
     <script>
         // FAQ Filtering and Interaction
         document.addEventListener('DOMContentLoaded', function() {
-            // Category Filtering
             const categoryButtons = document.querySelectorAll('.category_btn');
             const faqItems = document.querySelectorAll('.faq_item');
             
             categoryButtons.forEach(button => {
                 button.addEventListener('click', function() {
-                    // Remove active class from all buttons
                     categoryButtons.forEach(btn => btn.classList.remove('active'));
-                    // Add active class to clicked button
                     this.classList.add('active');
                     
                     const selectedCategory = this.getAttribute('data-category');
                     
-                    // Filter FAQ items
                     faqItems.forEach(item => {
                         const itemCategory = item.getAttribute('data-category');
-                        
                         if (selectedCategory === 'All' || itemCategory === selectedCategory) {
                             item.style.display = 'block';
-                            // Add slight animation
                             item.style.opacity = '0';
-                            setTimeout(() => {
-                                item.style.opacity = '1';
-                            }, 50);
+                            setTimeout(() => item.style.opacity = '1', 50);
                         } else {
                             item.style.display = 'none';
                         }
                     });
                 });
             });
-            
-            // Smooth scroll to FAQ item when opening
+
             const faqButtons = document.querySelectorAll('.faq_btn');
             faqButtons.forEach(button => {
                 button.addEventListener('click', function() {
@@ -98,12 +88,6 @@
                     }
                 });
             });
-            
-            // Auto-open first FAQ item
-            // const firstFaqButton = document.querySelector('.faq_btn');
-            // if (firstFaqButton) {
-            //     firstFaqButton.click();
-            // }
         });
     </script>
 
@@ -148,20 +132,23 @@
         L.geoJson(data, { style: style }).addTo(map);
       });
 
-    // Add Pins
+    // Add Pins (Direct Redirect on Click)
     const pinnedCountries = [
-      { name: "India", lat: 20.5937, lng: 78.9629 },
-      { name: "USA", lat: 37.0902, lng: -95.7129 },
-      { name: "Australia", lat: -25.2744, lng: 133.7751 },
-      { name: "South Africa", lat: -30.5595, lng: 22.9375 },
-      { name: "Canada", lat: 56.1304, lng: -106.3468 },
-      { name: "New Zealand", lat: -40.9006, lng: 174.886 }
+      { name: "India", lat: 20.5937, lng: 78.9629, url: "/destination/india" },
+      { name: "USA", lat: 37.0902, lng: -95.7129, url: "/destination/usa" },
+      { name: "Australia", lat: -25.2744, lng: 133.7751, url: "/destination/australia" },
+      { name: "South Africa", lat: -30.5595, lng: 22.9375, url: "/destination/south-africa" },
+      { name: "Canada", lat: 56.1304, lng: -106.3468, url: "/destination/canada" },
+      { name: "New Zealand", lat: -40.9006, lng: 174.886, url: "/destination/new-zealand" }
     ];
 
     pinnedCountries.forEach(country => {
-      L.marker([country.lat, country.lng])
-        .bindPopup(`<b>${country.name}</b>`)
-        .addTo(map);
+      const marker = L.marker([country.lat, country.lng]).addTo(map);
+
+      // Directly redirect to country page on click
+      marker.on('click', function() {
+        window.location.href = country.url;
+      });
     });
   </script>
 @endpush
