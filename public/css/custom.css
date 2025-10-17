@@ -1072,11 +1072,9 @@
     z-index: 2;
 }
 
-<<<<<<< Updated upstream
 .home_banner_area .banner_inner .banner_content {
     color: #fff !important;
 }
-=======
 /* local destination map graphics part */
 
 body {
@@ -1134,4 +1132,3 @@ section {
 .leaflet-marker-shadow{
     display: none !important;
 }
->>>>>>> Stashed changes
