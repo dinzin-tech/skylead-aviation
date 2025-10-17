@@ -1075,3 +1075,1110 @@
 .home_banner_area .banner_inner .banner_content {
     color: #fff !important;
 }
+.leaflet-marker-shadow{
+    display: none !important;
+}
+
+
+
+/*destination files and pages css part*/
+
+/* ===== Custom Styles for Skylead Aviation ===== */
+
+/* Hero Banner Styles */
+.banner_area {
+    position: relative;
+    background: linear-gradient(135deg, #1a2b6d 0%, #2c3e50 100%) !important;
+}
+
+.banner_area .banner_inner {
+    background: url('../img/banner-bg.jpg') no-repeat center center;
+    background-size: cover;
+    position: relative;
+    min-height: 500px;
+}
+
+.banner_area .overlay {
+    background: linear-gradient(135deg, rgba(26, 43, 109, 0.9) 0%, rgba(44, 62, 80, 0.9) 100%);
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+}
+
+.banner_content h2 {
+    font-size: 48px;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.banner_content p {
+    font-size: 18px;
+    color: #fff;
+    margin-bottom: 30px;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Main Title Styles */
+.main_title h2 {
+    font-size: 36px;
+    font-weight: 700;
+    color: #2c3e50;
+    margin-bottom: 15px;
+    position: relative;
+    text-transform: uppercase;
+}
+
+.main_title h2:after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 3px;
+    background: #e74c3c;
+}
+
+.main_title p {
+    font-size: 16px;
+    color: #7f8c8d;
+    margin-bottom: 0;
+}
+
+/* Feature Cards */
+.single_feature {
+    background: #fff;
+    padding: 40px 30px;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    border: 1px solid #e8e8e8;
+    margin-bottom: 30px;
+    height: 100%;
+}
+
+.single_feature:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+}
+
+.feature_head i {
+    font-size: 50px;
+    color: #e74c3c;
+    margin-bottom: 20px;
+    display: block;
+}
+
+.feature_head h4 {
+    font-size: 22px;
+    font-weight: 600;
+    color: #2c3e50;
+    margin-bottom: 15px;
+}
+
+.feature_content p {
+    color: #7f8c8d;
+    line-height: 1.8;
+    margin-bottom: 0;
+}
+
+/* Quick Facts Box */
+.quick-facts {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: #fff;
+    padding: 40px 30px;
+    border-radius: 15px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+}
+
+.quick-facts h4 {
+    color: #fff;
+    font-weight: 600;
+    margin-bottom: 25px;
+    font-size: 24px;
+}
+
+.quick-facts .unordered-list li {
+    color: #fff;
+    margin-bottom: 12px;
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+.quick-facts .unordered-list li strong {
+    color: #fff;
+    font-weight: 600;
+}
+
+/* Course Details */
+.course_details_area {
+    background: #f8f9fa;
+}
+
+.course_details_inner {
+    background: #fff;
+    padding: 50px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    margin-bottom: 40px;
+}
+
+.content_wrapper .title {
+    font-size: 28px;
+    font-weight: 700;
+    color: #2c3e50;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #e74c3c;
+    padding-bottom: 10px;
+}
+
+.single_details h6 {
+    font-size: 16px;
+    font-weight: 600;
+    color: #2c3e50;
+    margin-bottom: 8px;
+}
+
+.single_details p {
+    color: #7f8c8d;
+    margin-bottom: 0;
+    font-size: 15px;
+}
+
+/* Right Sidebar */
+.right-contents {
+    position: sticky;
+    top: 100px;
+}
+
+.sidebar_top {
+    background: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    border: 1px solid #e8e8e8;
+}
+
+.sidebar_top .title {
+    font-size: 22px;
+    font-weight: 600;
+    color: #2c3e50;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.sidebar_top ul li {
+    margin-bottom: 15px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #eee;
+}
+
+.sidebar_top ul li:last-child {
+    margin-bottom: 0;
+    padding-bottom: 0;
+    border-bottom: none;
+}
+
+.sidebar_top ul li a {
+    color: #7f8c8d;
+    font-size: 15px;
+}
+
+.sidebar_top ul li span.color {
+    color: #e74c3c;
+    font-weight: 600;
+}
+
+/* Buttons */
+.genric-btn {
+    display: inline-block;
+    padding: 12px 30px;
+    border-radius: 50px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+    text-align: center;
+    font-size: 14px;
+}
+
+.genric-btn.primary {
+    background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
+    color: #fff;
+    box-shadow: 0 5px 15px rgba(231, 76, 60, 0.3);
+}
+
+.genric-btn.primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(231, 76, 60, 0.4);
+}
+
+.genric-btn.primary-border {
+    background: transparent;
+    border: 2px solid #e74c3c;
+    color: #e74c3c;
+}
+
+.genric-btn.primary-border:hover {
+    background: #e74c3c;
+    color: #fff;
+}
+
+.genric-btn.circle {
+    border-radius: 50px;
+}
+
+.genric-btn.arrow {
+    position: relative;
+    padding-right: 50px;
+}
+
+.genric-btn.arrow span {
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    transition: all 0.3s ease;
+}
+
+.genric-btn.arrow:hover span {
+    right: 15px;
+}
+
+/* Gallery Styles */
+.gallery-item {
+    margin: -15px;
+}
+
+.single-gallery-image {
+    margin: 15px;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.single-gallery-image:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+}
+
+.single-gallery-image img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    transition: all 0.3s ease;
+}
+
+.single-gallery-image:hover img {
+    transform: scale(1.05);
+}
+
+/* Section Spacing */
+.section_gap {
+    padding: 100px 0;
+}
+
+.section_gap_top {
+    padding-top: 100px;
+}
+
+.sample-text-area {
+    padding: 100px 0;
+}
+
+/* Country Overview Section */
+.country-overview {
+    background: #fff;
+}
+
+/* Advantages List */
+.d-flex.align-items-center {
+    padding: 15px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.d-flex.align-items-center:last-child {
+    border-bottom: none;
+}
+
+.d-flex.align-items-center i {
+    font-size: 20px;
+    min-width: 30px;
+}
+
+.d-flex.align-items-center .h5 {
+    color: #2c3e50;
+    font-weight: 500;
+    margin-bottom: 0;
+}
+
+/* Header Styles */
+.header_area .navbar-light .navbar-nav .nav-item .nav-link {
+    color: #2c3e50;
+    font-weight: 500;
+    text-transform: uppercase;
+    font-size: 14px;
+    letter-spacing: 1px;
+    padding: 15px 20px;
+    transition: all 0.3s ease;
+}
+
+.header_area .navbar-light .navbar-nav .nav-item .nav-link:hover {
+    color: #e74c3c;
+}
+
+/* Footer Styles */
+.footer-area {
+    background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+    color: #fff;
+}
+
+.footer-area .single-footer-widget h4 {
+    color: #fff;
+    margin-bottom: 25px;
+    font-weight: 600;
+    font-size: 20px;
+}
+
+.footer-area .single-footer-widget ul li a {
+    color: #bdc3c7;
+    transition: all 0.3s ease;
+}
+
+.footer-area .single-footer-widget ul li a:hover {
+    color: #e74c3c;
+    padding-left: 5px;
+}
+
+/* Responsive Design */
+@media (max-width: 1199px) {
+    .banner_content h2 {
+        font-size: 42px;
+    }
+}
+
+@media (max-width: 991px) {
+    .banner_content h2 {
+        font-size: 36px;
+    }
+    
+    .main_title h2 {
+        font-size: 30px;
+    }
+    
+    .section_gap,
+    .section_gap_top,
+    .sample-text-area {
+        padding: 70px 0;
+    }
+    
+    .right-contents {
+        margin-top: 50px;
+    }
+}
+
+@media (max-width: 767px) {
+    .banner_content h2 {
+        font-size: 28px;
+    }
+    
+    .banner_content p {
+        font-size: 16px;
+    }
+    
+    .main_title h2 {
+        font-size: 26px;
+    }
+    
+    .course_details_inner {
+        padding: 30px 20px;
+    }
+    
+    .single_feature {
+        padding: 30px 20px;
+    }
+    
+    .section_gap,
+    .section_gap_top,
+    .sample-text-area {
+        padding: 50px 0;
+    }
+}
+
+@media (max-width: 575px) {
+    .banner_content h2 {
+        font-size: 24px;
+    }
+    
+    .main_title h2 {
+        font-size: 22px;
+    }
+    
+    .feature_head h4 {
+        font-size: 20px;
+    }
+    
+    .genric-btn {
+        padding: 10px 25px;
+        font-size: 13px;
+    }
+}
+
+/* Animation Classes */
+.fade-in {
+    animation: fadeIn 0.8s ease-in;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.slide-in-left {
+    animation: slideInLeft 0.8s ease-out;
+}
+
+@keyframes slideInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.slide-in-right {
+    animation: slideInRight 0.8s ease-out;
+}
+
+@keyframes slideInRight {
+    from {
+        opacity: 0;
+        transform: translateX(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Utility Classes */
+.text-gradient {
+    background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.bg-gradient-primary {
+    background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%) !important;
+}
+
+.bg-gradient-blue {
+    background: linear-gradient(135deg, #3498db 0%, #2980b9 100%) !important;
+}
+
+.bg-gradient-dark {
+    background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%) !important;
+}
+
+/* Card Hover Effects */
+.hover-lift {
+    transition: all 0.3s ease;
+}
+
+.hover-lift:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+}
+
+/* Badge Styles */
+.badge-primary {
+    background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
+    color: #fff;
+    padding: 8px 15px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Progress Bars */
+.progress-bar-custom {
+    background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
+    border-radius: 10px;
+}
+
+/* Testimonial Styles */
+.testimonial-card {
+    background: #fff;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    border-left: 4px solid #e74c3c;
+}
+
+.testimonial-text {
+    font-style: italic;
+    color: #7f8c8d;
+    line-height: 1.8;
+    margin-bottom: 20px;
+}
+
+.testimonial-author {
+    font-weight: 600;
+    color: #2c3e50;
+    margin-bottom: 5px;
+}
+
+.testimonial-designation {
+    color: #e74c3c;
+    font-size: 14px;
+    margin-bottom: 0;
+}
+
+
+/* ===== Custom Styles for Skylead Aviation ===== */
+
+/* School Tabs Styles */
+.school-tabs-nav {
+    background: #fff;
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    margin-bottom: 30px;
+}
+
+.school-tabs-nav .nav-tabs {
+    border: none;
+    justify-content: center;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    padding: 10px 0;
+}
+
+.school-tabs-nav .nav-tabs .nav-item {
+    margin: 0 5px;
+    flex-shrink: 0;
+}
+
+.school-tabs-nav .nav-tabs .nav-link {
+    border: none;
+    border-radius: 10px;
+    padding: 20px 15px;
+    text-align: center;
+    background: #f8f9fa;
+    color: #7f8c8d;
+    transition: all 0.3s ease;
+    min-width: 140px;
+    border: 2px solid transparent;
+    font-weight: 500;
+}
+
+.school-tabs-nav .nav-tabs .nav-link:hover {
+    background: #fff;
+    color: #2c3e50;
+    border-color: #e74c3c;
+    transform: translateY(-2px);
+}
+
+.school-tabs-nav .nav-tabs .nav-link.active {
+    background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
+    color: #fff;
+    border-color: #e74c3c;
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(231, 76, 60, 0.3);
+}
+
+.tab-school-logo {
+    width: 50px;
+    height: 50px;
+    margin: 0 auto 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #fff;
+    border-radius: 10px;
+    padding: 8px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.tab-school-logo img {
+    max-width: 100%;
+    max-height: 100%;
+    border-radius: 5px;
+}
+
+.tab-school-logo i {
+    font-size: 24px;
+    color: #e74c3c;
+}
+
+.school-tabs-nav .nav-link.active .tab-school-logo {
+    background: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 5px 15px rgba(255, 255, 255, 0.2);
+}
+
+.school-tabs-nav .nav-link.active .tab-school-logo i {
+    color: #fff;
+}
+
+.school-tab-name {
+    display: block;
+    font-size: 14px;
+    font-weight: 600;
+    margin-top: 5px;
+}
+
+/* School Header */
+.school-header {
+    border-bottom: 2px solid #f1f1f1;
+    padding-bottom: 20px;
+    margin-bottom: 30px;
+}
+
+.school-rating {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.stars {
+    display: flex;
+    gap: 2px;
+}
+
+.stars i {
+    color: #ddd;
+    font-size: 16px;
+}
+
+.stars i.filled {
+    color: #f39c12;
+}
+
+.rating-text {
+    color: #7f8c8d;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+/* Statistics Box */
+.stat-box {
+    padding: 25px 15px;
+    background: #fff;
+    border-radius: 15px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    transition: all 0.3s ease;
+    border: 1px solid #e8e8e8;
+}
+
+.stat-box:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+}
+
+.stat-icon {
+    width: 70px;
+    height: 70px;
+    background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 15px;
+    box-shadow: 0 8px 20px rgba(52, 152, 219, 0.3);
+}
+
+.stat-icon i {
+    color: #fff;
+    font-size: 28px;
+}
+
+.stat-number {
+    font-size: 32px;
+    font-weight: 700;
+    color: #2c3e50;
+    margin-bottom: 5px;
+    line-height: 1;
+}
+
+.stat-label {
+    color: #7f8c8d;
+    font-size: 14px;
+    font-weight: 500;
+    margin-bottom: 0;
+}
+
+/* Course Items */
+.course-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+    padding: 20px;
+    background: #fff;
+    border-radius: 12px;
+    transition: all 0.3s ease;
+    border: 1px solid #e8e8e8;
+    margin-bottom: 15px;
+}
+
+.course-item:hover {
+    background: #f8f9fa;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+    transform: translateY(-3px);
+    border-color: #e74c3c;
+}
+
+.course-icon {
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    box-shadow: 0 5px 15px rgba(231, 76, 60, 0.3);
+}
+
+.course-icon i {
+    color: #fff;
+    font-size: 20px;
+}
+
+.course-content h6 {
+    color: #2c3e50;
+    margin-bottom: 8px;
+    font-weight: 600;
+    font-size: 16px;
+}
+
+.course-content p {
+    color: #7f8c8d;
+    font-size: 14px;
+    line-height: 1.6;
+    margin-bottom: 0;
+}
+
+/* Section Subtitles */
+.section-subtitle {
+    font-size: 20px;
+    font-weight: 600;
+    color: #2c3e50;
+    position: relative;
+    padding-bottom: 15px;
+    margin-bottom: 25px;
+}
+
+.section-subtitle:after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 50px;
+    height: 3px;
+    background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
+    border-radius: 2px;
+}
+
+/* Facility Items */
+.facility-item {
+    padding: 25px 20px;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
+    height: 100%;
+    border: 1px solid #f1f1f1;
+    text-align: center;
+}
+
+.facility-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+    border-color: #e74c3c;
+}
+
+.facility-icon {
+    width: 70px;
+    height: 70px;
+    background: linear-gradient(135deg, #9b59b6 0%, #8e44ad 100%);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 20px;
+    box-shadow: 0 8px 20px rgba(155, 89, 182, 0.3);
+}
+
+.facility-icon i {
+    color: #fff;
+    font-size: 28px;
+}
+
+.facility-item h6 {
+    color: #2c3e50;
+    font-weight: 600;
+    margin-bottom: 10px;
+    font-size: 16px;
+}
+
+.facility-item p {
+    color: #7f8c8d;
+    font-size: 14px;
+    line-height: 1.6;
+    margin-bottom: 0;
+}
+
+/* Contact List */
+.contact-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.contact-list li {
+    display: flex;
+    align-items: center;
+    padding: 12px 0;
+    border-bottom: 1px solid #eee;
+    transition: all 0.3s ease;
+}
+
+.contact-list li:hover {
+    background: #f8f9fa;
+    padding-left: 10px;
+    border-radius: 5px;
+}
+
+.contact-list li:last-child {
+    border-bottom: none;
+}
+
+.contact-list li i {
+    color: #e74c3c;
+    width: 20px;
+    font-size: 16px;
+}
+
+.contact-list li span {
+    color: #7f8c8d;
+    font-size: 14px;
+}
+
+/* Fleet Info */
+.fleet-info {
+    background: #f8f9fa;
+    padding: 20px;
+    border-radius: 10px;
+    border-left: 4px solid #3498db;
+}
+
+.fleet-info h6 {
+    color: #2c3e50;
+    font-weight: 600;
+    margin-bottom: 8px;
+    font-size: 16px;
+}
+
+.fleet-info p {
+    color: #7f8c8d;
+    margin-bottom: 0;
+    font-size: 14px;
+}
+
+/* School Overview */
+.school-overview {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: #fff;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.school-overview .lead {
+    color: #fff;
+    font-size: 18px;
+    line-height: 1.7;
+    margin-bottom: 0;
+}
+
+/* Quick Facts */
+.quick-facts {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: #fff;
+    padding: 40px 30px;
+    border-radius: 15px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+}
+
+.quick-facts h4 {
+    color: #fff;
+    font-weight: 600;
+    margin-bottom: 25px;
+    font-size: 24px;
+    text-align: center;
+}
+
+.quick-facts .unordered-list li {
+    color: #fff;
+    margin-bottom: 12px;
+    font-size: 16px;
+    line-height: 1.6;
+    padding-left: 10px;
+}
+
+.quick-facts .unordered-list li strong {
+    color: #fff;
+    font-weight: 600;
+}
+
+/* Gallery Styles */
+.gallery-item {
+    margin: -10px;
+}
+
+.single-gallery-image {
+    margin: 10px;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.single-gallery-image:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+}
+
+.single-gallery-image img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    transition: all 0.3s ease;
+}
+
+.single-gallery-image:hover img {
+    transform: scale(1.05);
+}
+
+/* Responsive Tabs */
+@media (max-width: 768px) {
+    .school-tabs-nav .nav-tabs {
+        flex-wrap: wrap;
+        justify-content: flex-start;
+    }
+    
+    .school-tabs-nav .nav-tabs .nav-item {
+        margin: 5px;
+        flex: 1 0 calc(50% - 10px);
+        min-width: 120px;
+    }
+    
+    .school-tabs-nav .nav-tabs .nav-link {
+        min-width: auto;
+        padding: 15px 10px;
+    }
+    
+    .tab-school-logo {
+        width: 40px;
+        height: 40px;
+    }
+    
+    .tab-school-logo i {
+        font-size: 18px;
+    }
+    
+    .school-tab-name {
+        font-size: 12px;
+    }
+    
+    .stat-box {
+        padding: 20px 10px;
+    }
+    
+    .stat-number {
+        font-size: 24px;
+    }
+    
+    .stat-icon {
+        width: 50px;
+        height: 50px;
+    }
+    
+    .stat-icon i {
+        font-size: 22px;
+    }
+}
+
+@media (max-width: 576px) {
+    .school-tabs-nav .nav-tabs .nav-item {
+        flex: 1 0 100%;
+    }
+    
+    .course-item {
+        padding: 15px;
+    }
+    
+    .facility-item {
+        padding: 20px 15px;
+    }
+}
+
+/* Ensure tab panes are properly hidden/shown */
+.tab-pane {
+    display: none;
+}
+
+.tab-pane.show {
+    display: block;
+}
+
+.tab-pane.active {
+    display: block;
+}
+
+/* School Tabs Active State */
+.school-tabs-nav .nav-tabs .nav-link.active {
+    background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%) !important;
+    color: #fff !important;
+    border-color: #e74c3c !important;
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(231, 76, 60, 0.3);
+}
+
+/* Tab content animation */
+.tab-pane.fade {
+    transition: opacity 0.15s linear;
+}
+
+.tab-pane.fade.show {
+    opacity: 1;
+}
+
+.tab-pane.fade:not(.show) {
+    opacity: 0;
+}
