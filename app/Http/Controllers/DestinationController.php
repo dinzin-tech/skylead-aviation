@@ -265,7 +265,7 @@ class DestinationController extends Controller
             ]
         ];
 
-        return view('destination.destination-country', compact('countryData'));
+        return view('destination.index', compact('countryData'));
     }
 
     /**
