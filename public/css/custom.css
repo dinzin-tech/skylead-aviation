@@ -2182,3 +2182,14 @@
 .tab-pane.fade:not(.show) {
     opacity: 0;
 }
+
+/*destination-folder-css-code*/
+
+ .country-overview {
+        padding: 80px 0;
+    }
+    .quick-facts {
+        background: #f9f9ff;
+        padding: 30px;
+        border-radius: 5px;
+    }
