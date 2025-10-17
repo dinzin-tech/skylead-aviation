@@ -230,4 +230,3 @@
         </div>
     </section>
     @endif
-@endsection

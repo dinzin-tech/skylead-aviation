@@ -10,7 +10,7 @@
     @include('destination.sections.gallery')
     @include('destination.sections.flying-schools-tabs')
 
-
+@endsection
 @push('scripts')
     <script>
     // Initialize Bootstrap tabs properly
