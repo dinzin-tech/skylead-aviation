@@ -14,7 +14,7 @@
         </div>
 
         <div class="row">
-            @if(isset($trainingDestinationsData['destinations']))
+            <!-- @if(isset($trainingDestinationsData['destinations']))
                 @foreach($trainingDestinationsData['destinations'] as $country => $destination)
                     <div class="col-lg-2 col-md-4 col-sm-6 mb-4">
                         <div class="destination_card text-center">
@@ -29,7 +29,12 @@
                         </div>
                     </div>
                 @endforeach
-            @endif
+            @endif -->
+            <div class="col-lg-12 col-md-12 col-sm-12 mb-4">
+                <div id="map">
+
+                </div>
+            </div>
         </div>
 
         <!-- Eligibility Section -->
