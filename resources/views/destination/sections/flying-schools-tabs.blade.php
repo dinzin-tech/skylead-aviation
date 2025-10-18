@@ -6,6 +6,17 @@
         </div>
         
         <div class="ss-layout">
+            <!-- Mobile School Selector -->
+            <div class="ss-mobile-selector">
+                <select class="ss-school-dropdown">
+                    @foreach($countryData['flying_schools'] as $index => $school)
+                    <option value="{{ $index }}" {{ $index === 0 ? 'selected' : '' }}>
+                        {{ $school['school_name'] }}
+                    </option>
+                    @endforeach
+                </select>
+            </div>
+
             <!-- Left Sidebar - School List -->
             <div class="ss-sidebar">
                 <div class="ss-schools-list">
@@ -59,8 +70,15 @@
                             @if(isset($school['aircrafts']))
                                 @foreach($school['aircrafts'] as $aircraft)
                                 <div class="ss-fleet-item">
-                                    <h4 class="ss-aircraft-name">{{ $aircraft['name'] ?? 'Cessna 152' }}</h4>
-                                    <p class="ss-aircraft-desc">{{ $aircraft['description'] ?? 'The Cessna 152 is an American two-seat, fixed-tricycle-gear, general aviation airplane, used primarily for flight training and personal use.' }}</p>
+                                    <span>
+                                        @if(isset($aircraft['img']))
+                                            <img src="{{ $aircraft['img'] }}" alt="{{ $aircraft['name'] ?? 'Aircraft' }}" class="ss-aircraft-img" />
+                                        @endif
+                                    </span>
+                                    <span class="ss-aircraft-details">
+                                        <h4 class="ss-aircraft-name">{{ $aircraft['name'] ?? 'Cessna 152' }}</h4>
+                                        <p class="ss-aircraft-desc">{{ $aircraft['description'] ?? 'The Cessna 152 is an American two-seat, fixed-tricycle-gear, general aviation airplane, used primarily for flight training and personal use.' }}</p>
+                                    </span>
                                 </div>
                                 @endforeach
                             @else
@@ -99,19 +117,63 @@
 document.addEventListener('DOMContentLoaded', function() {
     const schoolItems = document.querySelectorAll('.ss-school-item');
     const schoolContents = document.querySelectorAll('.ss-school-content');
+    const schoolDropdown = document.querySelector('.ss-school-dropdown');
     
+    // Desktop click functionality
     schoolItems.forEach(item => {
         item.addEventListener('click', function() {
             const schoolIndex = this.getAttribute('data-school');
-            
-            // Remove active class from all items and contents
-            schoolItems.forEach(school => school.classList.remove('ss-active'));
-            schoolContents.forEach(content => content.classList.remove('ss-active'));
-            
-            // Add active class to clicked item and corresponding content
-            this.classList.add('ss-active');
-            document.getElementById(`school-${schoolIndex}`).classList.add('ss-active');
+            switchSchool(schoolIndex);
         });
+    });
+    
+    // Mobile dropdown functionality
+    if (schoolDropdown) {
+        schoolDropdown.addEventListener('change', function() {
+            const schoolIndex = this.value;
+            switchSchool(schoolIndex);
+        });
+    }
+    
+    function switchSchool(schoolIndex) {
+        // Remove active class from all items and contents
+        schoolItems.forEach(school => school.classList.remove('ss-active'));
+        schoolContents.forEach(content => content.classList.remove('ss-active'));
+        
+        // Add active class to selected item and corresponding content
+        const selectedItem = document.querySelector(`.ss-school-item[data-school="${schoolIndex}"]`);
+        if (selectedItem) {
+            selectedItem.classList.add('ss-active');
+        }
+        
+        const selectedContent = document.getElementById(`school-${schoolIndex}`);
+        if (selectedContent) {
+            selectedContent.classList.add('ss-active');
+        }
+        
+        // Update dropdown on mobile if it exists
+        if (schoolDropdown) {
+            schoolDropdown.value = schoolIndex;
+        }
+        
+        // Scroll to top of content on mobile
+        if (window.innerWidth <= 768) {
+            const contentElement = document.querySelector('.ss-main-content');
+            if (contentElement) {
+                contentElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        }
+    }
+    
+    // Handle window resize to maintain proper state
+    window.addEventListener('resize', function() {
+        const activeContent = document.querySelector('.ss-school-content.ss-active');
+        if (activeContent) {
+            const schoolIndex = activeContent.id.split('-')[1];
+            if (schoolDropdown) {
+                schoolDropdown.value = schoolIndex;
+            }
+        }
     });
 });
 </script>

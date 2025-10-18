@@ -47,219 +47,158 @@ class DestinationController extends Controller
 
             'flying_schools' => [
                 [
-                    'school_name' => 'Epic Flight Academy',
-                    'logo' => 'img/schools/epic-logo.png',
-                    'location' => 'New Smyrna Beach, Florida',
-                    'rating' => 5,
-                    'reviews' => 250,
-                    'overview' => 'One of the premier flight training academies in the USA with over 20 years of experience training international students for successful aviation careers.',
-                    'fleet_type' => 'Cessna 172, Piper Seminole, Diamond DA40',
-                    'fleet_size' => 35,
-                    'students_trained' => 5000,
-                    'years_established' => 20,
-                    'success_rate' => 95,
-                    'simulators' => 'FRASCA 142, Redbird MCX, ALSIM AL42',
-                    'contact_email' => 'admissions@epicflight.com',
-                    'contact_phone' => '+1 (386) 409-5583',
-                    'website' => 'www.epicflight.com',
-                    'courses_offered' => [
-                        ['icon' => 'ti-user', 'title' => 'PPL', 'description' => 'Private Pilot License training for beginners.'],
-                        ['icon' => 'ti-cloud-up', 'title' => 'IR', 'description' => 'Instrument Rating training for advanced navigation.'],
-                        ['icon' => 'ti-plane', 'title' => 'CPL-MEIR', 'description' => 'Commercial Pilot License with Multi-Engine Instrument Rating.'],
-                        ['icon' => 'ti-cup', 'title' => 'CFI', 'description' => 'Certified Flight Instructor course to build hours.']
-                    ],
-                    'facilities' => [
-                        'title' => 'Training Facilities',
-                        'description' => 'Fully equipped classrooms, modern fleet, student accommodation, and simulator centers.',
-                        'facility_features' => [
-                            ['icon' => 'ti-blackboard', 'title' => 'Modern Classrooms', 'description' => 'Smart classrooms with live ATC audio.'],
-                            ['icon' => 'ti-signal', 'title' => 'Simulator Training', 'description' => 'FAA-approved simulators for realistic flight experience.'],
-                            ['icon' => 'ti-home', 'title' => 'Accommodation', 'description' => 'Comfortable and safe student housing nearby.']
+                    'school_name' => 'Fuelin Aviation Academy',
+                    'course_duration' => '10 to 12 Months',
+                    'fleet_size' => '25',
+                    'fleet_types' => 'Cessna 152, Cessna 172, Tecnam 2008 & 2009',
+                    'flying_hours' => '250',
+                    'aircrafts' => [
+                        [
+                            'name' => 'Cessna 152',
+                            'description' => 'The Cessna 152 is an American two-seat, fixed-tricycle-gear, general aviation airplane, used primarily for flight training and personal use.',
+                            'img' => 'https://thepilot.in/wp-content/uploads/2023/10/fsf-1.png.webp'
+                        ],
+                        [
+                            'name' => 'Cessna 172', 
+                            'description' => 'The Cessna 172 Skyhawk is an American four-seat, single-engine, high wing, fixed-wing aircraft made by the Cessna Aircraft Company.'
+                        ],
+                        [
+                            'name' => 'Tecnam P2006',
+                            'description' => 'The Tecnam P2006 is a single-engine, high-wing two-seat aircraft built in Italy but aimed at the US market.'
+                        ],
+                        [
+                            'name' => 'Tecnam P2008',
+                            'description' => 'The Tecnam P2008 is a light sport aircraft featuring advanced composite materials and excellent fuel efficiency.'
+                        ],
+                        [
+                            'name' => 'Piper PA-28',
+                            'description' => 'The Piper PA-28 Cherokee is a family of light aircraft designed for flight training and personal use.'
                         ]
-                    ],
-                    'course_fees' => [
-                        'title' => 'Course Fees Overview',
-                        'description' => 'Complete CPL with IR and CFI training starting from $55,000 - $70,000 depending on flight hours and aircraft type.'
                     ]
                 ],
                 [
-                    'school_name' => 'Phoenix East Aviation',
-                    'logo' => 'img/schools/phoenix-logo.png',
-                    'location' => 'Daytona Beach, Florida',
-                    'rating' => 5,
-                    'reviews' => 180,
-                    'overview' => 'Located in the aviation hub of Daytona Beach, PEA offers comprehensive flight training programs with excellent weather conditions year-round.',
-                    'fleet_type' => 'Cessna 172, Piper Archer, Piper Seneca',
-                    'fleet_size' => 42,
-                    'students_trained' => 6500,
-                    'years_established' => 25,
-                    'success_rate' => 94,
-                    'simulators' => 'FRASCA 141, Redbird TD, ALSIM ALX',
-                    'contact_email' => 'info@pea.com',
-                    'contact_phone' => '+1 (386) 258-0703',
-                    'website' => 'www.phoenixeastaviation.com',
-                    'courses_offered' => [
-                        ['icon' => 'ti-user', 'title' => 'PPL', 'description' => 'Private Pilot License training program.'],
-                        ['icon' => 'ti-cloud-up', 'title' => 'IR', 'description' => 'Instrument Rating certification course.'],
-                        ['icon' => 'ti-plane', 'title' => 'CPL', 'description' => 'Commercial Pilot License training.'],
-                        ['icon' => 'ti-cup', 'title' => 'MEIR', 'description' => 'Multi-Engine Instrument Rating program.']
-                    ],
-                    'facilities' => [
-                        'title' => 'Campus Facilities',
-                        'description' => 'State-of-the-art training facilities with modern aircraft and experienced instructors.',
-                        'facility_features' => [
-                            ['icon' => 'ti-book', 'title' => 'Ground School', 'description' => 'Comprehensive ground training programs.'],
-                            ['icon' => 'ti-shield', 'title' => 'Safety Training', 'description' => 'Advanced safety and emergency procedures.'],
-                            ['icon' => 'ti-world', 'title' => 'International Support', 'description' => 'Dedicated international student support.']
+                    'school_name' => 'Skyward Flight Training',
+                    'course_duration' => '8 to 10 Months',
+                    'fleet_size' => '18',
+                    'fleet_types' => 'Diamond DA20, Diamond DA40, Piper Archer',
+                    'flying_hours' => '200',
+                    'aircrafts' => [
+                        [
+                            'name' => 'Diamond DA20',
+                            'description' => 'The Diamond DA20 is a two-seat, composite material training aircraft known for its excellent safety record and fuel efficiency.'
+                        ],
+                        [
+                            'name' => 'Diamond DA40',
+                            'description' => 'The Diamond DA40 is a four-seat, composite aircraft with a glass cockpit and exceptional visibility.'
+                        ],
+                        [
+                            'name' => 'Piper PA-28 Archer',
+                            'description' => 'The Piper Archer is a reliable training aircraft with traditional instrumentation and proven performance.'
+                        ],
+                        [
+                            'name' => 'Cessna 182 Skylane',
+                            'description' => 'The Cessna 182 is a four-seat, single-engine aircraft perfect for advanced training and cross-country flights.'
                         ]
-                    ],
-                    'course_fees' => [
-                        'title' => 'Training Costs',
-                        'description' => 'Professional pilot program packages starting from $58,000 with financing options available.'
                     ]
                 ],
                 [
-                    'school_name' => 'Aviator College',
-                    'logo' => 'img/schools/aviator-logo.png',
-                    'location' => 'Fort Pierce, Florida',
-                    'rating' => 4,
-                    'reviews' => 120,
-                    'overview' => 'Aviator College offers degree programs combined with flight training, providing both education and practical flying experience.',
-                    'fleet_type' => 'Cessna 152, Cessna 172, Piper Aztec',
-                    'fleet_size' => 28,
-                    'students_trained' => 3200,
-                    'years_established' => 18,
-                    'success_rate' => 92,
-                    'simulators' => 'FRASCA 142, Redbird FMX',
-                    'contact_email' => 'admissions@aviator.edu',
-                    'contact_phone' => '+1 (772) 466-4822',
-                    'website' => 'www.aviator.edu',
-                    'courses_offered' => [
-                        ['icon' => 'ti-user', 'title' => 'PPL', 'description' => 'Private Pilot License course.'],
-                        ['icon' => 'ti-cloud-up', 'title' => 'IR', 'description' => 'Instrument Rating training.'],
-                        ['icon' => 'ti-plane', 'title' => 'CPL', 'description' => 'Commercial Pilot License program.'],
-                        ['icon' => 'ti-graduate', 'title' => 'Degree Program', 'description' => 'Aviation degree with flight training.']
-                    ],
-                    'facilities' => [
-                        'title' => 'College Facilities',
-                        'description' => 'Combined college campus and flight training center with academic and practical facilities.',
-                        'facility_features' => [
-                            ['icon' => 'ti-book', 'title' => 'College Campus', 'description' => 'Full college campus facilities.'],
-                            ['icon' => 'ti-library', 'title' => 'Aviation Library', 'description' => 'Extensive aviation resource library.'],
-                            ['icon' => 'ti-home', 'title' => 'Student Housing', 'description' => 'On-campus accommodation options.']
+                    'school_name' => 'AeroPro Flight Academy',
+                    'course_duration' => '12 to 14 Months',
+                    'fleet_size' => '32',
+                    'fleet_types' => 'Cirrus SR20, Beechcraft Bonanza, Cessna 206',
+                    'flying_hours' => '280',
+                    'aircrafts' => [
+                        [
+                            'name' => 'Cirrus SR20',
+                            'description' => 'The Cirrus SR20 features a composite airframe, advanced avionics, and a whole-airframe parachute system.'
+                        ],
+                        [
+                            'name' => 'Beechcraft G36 Bonanza',
+                            'description' => 'The Bonanza is a high-performance single-engine aircraft known for its distinctive V-tail and excellent cruise performance.'
+                        ],
+                        [
+                            'name' => 'Cessna 206 Stationair',
+                            'description' => 'The Cessna 206 is a rugged utility aircraft capable of operating from rough fields and carrying heavy loads.'
+                        ],
+                        [
+                            'name' => 'Piper Seminole',
+                            'description' => 'The Piper PA-44 Seminole is a twin-engine aircraft used for multi-engine training with counter-rotating propellers.'
                         ]
-                    ],
-                    'course_fees' => [
-                        'title' => 'Program Fees',
-                        'description' => 'Degree programs with flight training from $65,000 - $85,000 depending on program selection.'
                     ]
                 ],
                 [
-                    'school_name' => 'FlightSafety Academy',
-                    'logo' => 'img/schools/flightsafety-logo.png',
-                    'location' => 'Vero Beach, Florida',
-                    'rating' => 5,
-                    'reviews' => 210,
-                    'overview' => 'Part of the world-renowned FlightSafety International, offering professional pilot training with exceptional standards.',
-                    'fleet_type' => 'Cessna 172, Diamond DA42, King Air C90',
-                    'fleet_size' => 55,
-                    'students_trained' => 8000,
-                    'years_established' => 30,
-                    'success_rate' => 96,
-                    'simulators' => 'FRASCA, Redbird, ALSIM, FTD Level 5/6',
-                    'contact_email' => 'academy@flightsafety.com',
-                    'contact_phone' => '+1 (772) 564-7650',
-                    'website' => 'www.flightsafetyacademy.com',
-                    'courses_offered' => [
-                        ['icon' => 'ti-user', 'title' => 'PPL', 'description' => 'Private Pilot License training.'],
-                        ['icon' => 'ti-cloud-up', 'title' => 'IR', 'description' => 'Instrument Rating certification.'],
-                        ['icon' => 'ti-plane', 'title' => 'CPL-MEIR', 'description' => 'Commercial with Multi-Engine IR.'],
-                        ['icon' => 'ti-cup', 'title' => 'ATP', 'description' => 'Airline Transport Pilot program.']
-                    ],
-                    'facilities' => [
-                        'title' => 'World-Class Facilities',
-                        'description' => 'Industry-leading training facilities with advanced simulators and professional environment.',
-                        'facility_features' => [
-                            ['icon' => 'ti-cup', 'title' => 'Professional Standards', 'description' => 'Airline-level training standards.'],
-                            ['icon' => 'ti-signal', 'title' => 'Advanced Simulators', 'description' => 'State-of-the-art simulation technology.'],
-                            ['icon' => 'ti-briefcase', 'title' => 'Career Placement', 'description' => 'Industry connections and job placement.']
+                    'school_name' => 'Pacific Wings Institute',
+                    'course_duration' => '9 to 11 Months',
+                    'fleet_size' => '22',
+                    'fleet_types' => 'Robinson R44, Schweizer 300, Bell 206',
+                    'flying_hours' => '150',
+                    'aircrafts' => [
+                        [
+                            'name' => 'Robinson R44',
+                            'description' => 'The Robinson R44 is a four-seat, piston-powered helicopter widely used for training and commercial operations.'
+                        ],
+                        [
+                            'name' => 'Schweizer 300',
+                            'description' => 'The Schweizer 300 is a light utility helicopter known for its stability and excellent training characteristics.'
+                        ],
+                        [
+                            'name' => 'Bell 206 JetRanger',
+                            'description' => 'The Bell 206 is a popular five-seat helicopter used worldwide for training, tourism, and utility work.'
+                        ],
+                        [
+                            'name' => 'Robinson R22',
+                            'description' => 'The Robinson R22 is a two-seat, piston-powered helicopter that revolutionized helicopter training with its low operating costs.'
                         ]
-                    ],
-                    'course_fees' => [
-                        'title' => 'Training Investment',
-                        'description' => 'Professional pilot programs starting from $75,000 with comprehensive career preparation.'
                     ]
                 ],
                 [
-                    'school_name' => 'L3Harris Airline Academy',
-                    'logo' => 'img/schools/l3harris-logo.png',
-                    'location' => 'Sanford, Florida',
-                    'rating' => 5,
-                    'reviews' => 190,
-                    'overview' => 'Global airline training academy with direct pathways to airline careers and advanced training methodologies.',
-                    'fleet_type' => 'Cessna 172, Piper Seminole, Airbus A320',
-                    'fleet_size' => 65,
-                    'students_trained' => 12000,
-                    'years_established' => 35,
-                    'success_rate' => 97,
-                    'simulators' => 'Full Flight Simulators, FTDs, CPTs',
-                    'contact_email' => 'admissions@l3harris.com',
-                    'contact_phone' => '+1 (407) 330-7020',
-                    'website' => 'www.l3harrisairlineacademy.com',
-                    'courses_offered' => [
-                        ['icon' => 'ti-user', 'title' => 'PPL', 'description' => 'Private Pilot License course.'],
-                        ['icon' => 'ti-cloud-up', 'title' => 'IR', 'description' => 'Instrument Rating program.'],
-                        ['icon' => 'ti-plane', 'title' => 'CPL-MEIR', 'description' => 'Commercial Pilot License.'],
-                        ['icon' => 'ti-briefcase', 'title' => 'Airline Program', 'description' => 'Direct airline career pathway.']
-                    ],
-                    'facilities' => [
-                        'title' => 'Airline Training Center',
-                        'description' => 'World-class airline training facility with full-motion simulators and airline partnerships.',
-                        'facility_features' => [
-                            ['icon' => 'ti-plane', 'title' => 'Airline Partners', 'description' => 'Direct connections with major airlines.'],
-                            ['icon' => 'ti-signal', 'title' => 'Full Motion Sims', 'description' => 'Airline-level full motion simulators.'],
-                            ['icon' => 'ti-briefcase', 'title' => 'Job Guarantee', 'description' => 'Career placement guarantee programs.']
+                    'school_name' => 'Global Flight Center',
+                    'course_duration' => '11 to 13 Months',
+                    'fleet_size' => '28',
+                    'fleet_types' => 'Cessna 172, Piper Seneca, Diamond Star',
+                    'flying_hours' => '260',
+                    'aircrafts' => [
+                        [
+                            'name' => 'Cessna 172S Skyhawk SP',
+                            'description' => 'The modern Cessna 172S features a glass cockpit, increased useful load, and improved performance.'
+                        ],
+                        [
+                            'name' => 'Piper PA-34 Seneca',
+                            'description' => 'The Piper Seneca is a popular twin-engine aircraft used for multi-engine and instrument training.'
+                        ],
+                        [
+                            'name' => 'Diamond DA42',
+                            'description' => 'The Diamond DA42 is a twin-engine aircraft with diesel engines, offering excellent fuel efficiency and modern avionics.'
+                        ],
+                        [
+                            'name' => 'Cessna 182T Turbo',
+                            'description' => 'The turbocharged Cessna 182 offers improved high-altitude performance and better climb rates.'
                         ]
-                    ],
-                    'course_fees' => [
-                        'title' => 'Program Costs',
-                        'description' => 'Integrated airline pilot programs from $85,000 with financing and career guarantees.'
                     ]
                 ],
                 [
-                    'school_name' => 'ATP Flight School',
-                    'logo' => 'img/schools/atp-logo.png',
-                    'location' => 'Jacksonville, Florida',
-                    'rating' => 4,
-                    'reviews' => 300,
-                    'overview' => 'Nationwide flight school network offering accelerated training programs with fixed pricing and airline partnerships.',
-                    'fleet_type' => 'Cessna 172, Piper Seminole, Diamond DA42',
-                    'fleet_size' => 200,
-                    'students_trained' => 25000,
-                    'years_established' => 28,
-                    'success_rate' => 93,
-                    'simulators' => 'Redbird MCX, FMX, ALSIM',
-                    'contact_email' => 'info@atpflightschool.com',
-                    'contact_phone' => '+1 (904) 595-7950',
-                    'website' => 'www.atpflightschool.com',
-                    'courses_offered' => [
-                        ['icon' => 'ti-user', 'title' => 'PPL', 'description' => 'Private Pilot License training.'],
-                        ['icon' => 'ti-cloud-up', 'title' => 'IR', 'description' => 'Instrument Rating course.'],
-                        ['icon' => 'ti-plane', 'title' => 'CPL-MEIR', 'description' => 'Commercial Pilot License.'],
-                        ['icon' => 'ti-bolt', 'title' => 'Accelerated', 'description' => 'Fast-track training programs.']
-                    ],
-                    'facilities' => [
-                        'title' => 'National Network',
-                        'description' => 'Multiple training locations nationwide with consistent training standards and quality.',
-                        'facility_features' => [
-                            ['icon' => 'ti-map', 'title' => 'Multiple Locations', 'description' => 'Training centers across the USA.'],
-                            ['icon' => 'ti-timer', 'title' => 'Accelerated', 'description' => 'Fast-track training programs.'],
-                            ['icon' => 'ti-money', 'title' => 'Fixed Pricing', 'description' => 'No hidden costs or surprises.']
+                    'school_name' => 'Elite Aviation College',
+                    'course_duration' => '7 to 9 Months',
+                    'fleet_size' => '20',
+                    'fleet_types' => 'Cirrus SR22, Mooney M20, Beechcraft Baron',
+                    'flying_hours' => '220',
+                    'aircrafts' => [
+                        [
+                            'name' => 'Cirrus SR22',
+                            'description' => 'The Cirrus SR22 is a high-performance composite aircraft with a parachute system and advanced avionics.'
+                        ],
+                        [
+                            'name' => 'Mooney M20',
+                            'description' => 'The Mooney M20 series is known for its efficient design, high cruise speeds, and retractable landing gear.'
+                        ],
+                        [
+                            'name' => 'Beechcraft Baron',
+                            'description' => 'The Beechcraft Baron is a high-performance twin-engine aircraft with excellent speed and payload capabilities.'
+                        ],
+                        [
+                            'name' => 'Piper Malibu Mirage',
+                            'description' => 'The Piper Malibu is a pressurized single-engine aircraft capable of high-altitude flight with cabin comfort.'
                         ]
-                    ],
-                    'course_fees' => [
-                        'title' => 'Fixed Price Training',
-                        'description' => 'Professional pilot program at $89,995 all-inclusive with financing options available.'
                     ]
                 ]
             ]
