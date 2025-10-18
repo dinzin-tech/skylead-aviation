@@ -221,6 +221,7 @@ class DestinationController extends Controller
                             ['icon' => 'ti-briefcase', 'title' => 'Job Guarantee', 'description' => 'Career placement guarantee programs.']
                         ]
                     ],
+                   
                     'course_fees' => [
                         'title' => 'Program Costs',
                         'description' => 'Integrated airline pilot programs from $85,000 with financing and career guarantees.'
@@ -262,7 +263,39 @@ class DestinationController extends Controller
                         'description' => 'Professional pilot program at $89,995 all-inclusive with financing options available.'
                     ]
                 ]
-            ]
+                    ],
+                    'courses_offered' => [
+                        [
+                            'title' => 'Private Pilot',
+                            'subtitle' => 'Private Pilot License (PPL)',
+                            'description' => 'This license is ideal for aviation enthusiasts or hobby flyers.',
+                            'logo' => 'img/courses-offered/PPL.webp',
+                            'icon' => 'fas fa-plane'
+                        ],
+                        [
+                            'title' => 'Commercial Pilot License with Multi Engine Instrument Rating (CPL-MEIR)',
+                            'subtitle' => '',
+                            'description' => 'This provides students with a complete theoretical and practical flight training and makes them eligible for Airline Pilot vacancies.',
+                            'logo' => 'img/courses-offered/CPL.webp',
+                            'icon' => 'fas fa-plane-departure'
+                        ],
+                        [
+                            'title' => 'Instrument Rating (IR)',
+                            'subtitle' => '',
+                            'description' => 'This refers to the qualifications that a student can undertake to fly under IFR (Instrument Flight Rules) and can be applicable to CPL and PPL.',
+                            'logo' => 'img/courses-offered/IR.webp',
+                            'icon' => 'fas fa-compass'
+                        ],
+                        [
+                            'title' => 'Instructor Rating (CFI)',
+                            'subtitle' => '',
+                            'description' => 'Become a certified flight instructor and build flight hours while training the next generation of pilots. Gain valuable teaching experience and enhance your aviation career.',
+                            'logo' => 'img/courses-offered/CFI.webp',
+                            'icon' => 'fas fa-chalkboard-teacher'
+                        ]
+                    ],
+
+            
         ];
 
         return view('destination.index', compact('countryData'));

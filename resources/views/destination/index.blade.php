@@ -36,7 +36,7 @@
     @include('destination.sections.gallery')
     @include('destination.sections.advantages')
     @include('destination.sections.flying-schools-tabs')
-    @include('destination.sections.courses-offered')
+    @include('destination.sections.courses-offered', ['countryData' => $countryData])
 
 
 @endsection
