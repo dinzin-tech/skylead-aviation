@@ -34,8 +34,11 @@ theme.
   --tertiary-color: #919caa;
   --text-color: #7b838a;
   --light-bg: #f9f9f9;
-  --white-bg: #ffffff; 
-  }
+  --white-bg: #ffffff;
+  --primary-color-rgb: 252, 158, 14;
+  --secondary-color-rgb: 25, 23, 26;
+  --tertiary-color-rgb: 145, 156, 170;
+}
 
 
 

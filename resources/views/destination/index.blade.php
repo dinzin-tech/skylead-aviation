@@ -5,7 +5,7 @@
 @section('content')
    <!-- Hero Section -->
 @include('destination.sections.hero', [
-        'countryName' => $countryData['country_name'] ?? 'USA',
+        'countryName' => $countryData['country_name'] ?? 'The United States',
         'countryFlag' => $countryData['flag'] ?? 'img/flags/usa.png',
         'title' => $countryData['country_title'] ?? 'Fly High in the Skies',
         'description' => $countryData['country_description'] ?? 'World-class flight training programs',
@@ -20,7 +20,7 @@
             [
                 'icon' => 'ti-location-pin',
                 'number' => $countryData['location'] ?? 'USA',
-                'label' => 'Location'
+                'label' => 'Course Location'
             ]
         ],
         'images' => [

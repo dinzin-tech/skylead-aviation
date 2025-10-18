@@ -5,7 +5,7 @@
 /* Hero Banner Styles */
 .banner_area {
     position: relative;
-    background: linear-gradient(135deg, #1a2b6d 0%, #2c3e50 100%) !important;
+    background: linear-gradient(135deg, var(--secondary-color) 0%, var(--tertiary-color) 100%) !important;
 }
 
 .banner_area .banner_inner {
@@ -301,13 +301,13 @@
 }
 
 /* Section Spacing */
-.section_gap {
+/* .section_gap {
     padding: 10px 0;
 }
 
 .section_gap_top {
     padding-top: 100px;
-}
+} */
 
 .sample-text-area {
     padding: 100px 0;
@@ -340,7 +340,7 @@
 }
 
 /* Header Styles */
-.header_area .navbar-light .navbar-nav .nav-item .nav-link {
+/* .header_area .navbar-light .navbar-nav .nav-item .nav-link {
     color: #2c3e50;
     font-weight: 500;
     text-transform: uppercase;
@@ -352,10 +352,10 @@
 
 .header_area .navbar-light .navbar-nav .nav-item .nav-link:hover {
     color: #e74c3c;
-}
+} */
 
 /* Footer Styles */
-.footer-area {
+/* .footer-area {
     background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
     color: #fff;
 }
@@ -375,7 +375,7 @@
 .footer-area .single-footer-widget ul li a:hover {
     color: #e74c3c;
     padding-left: 5px;
-}
+} */
 
 /* Responsive Design */
 @media (max-width: 1199px) {
@@ -393,11 +393,11 @@
         font-size: 30px;
     }
     
-    .section_gap,
+    /* .section_gap,
     .section_gap_top,
     .sample-text-area {
         padding: 70px 0;
-    }
+    } */
     
     .right-contents {
         margin-top: 50px;
@@ -425,11 +425,11 @@
         padding: 30px 20px;
     }
     
-    .section_gap,
+    /* .section_gap,
     .section_gap_top,
     .sample-text-area {
         padding: 50px 0;
-    }
+    } */
 }
 
 @media (max-width: 575px) {
@@ -1093,7 +1093,7 @@
     overflow: hidden;
 }
 
-.hero-section::before {
+/* .hero-section::before {
     content: '';
     position: absolute;
     top: -50%;
@@ -1104,7 +1104,7 @@
     border-radius: 50%;
     opacity: 0.1;
     z-index: 0;
-}
+} */
 
 .hero-content {
     position: relative;
@@ -1115,17 +1115,26 @@
 .country-header {
     display: flex;
     align-items: center;
-    gap: 15px;
+    gap: 5px;
     margin-bottom: 30px;
+    border-radius: 30px;
+    box-shadow: 0 5px 15px rgba(25, 23, 26, 0.1);
+    /* max-width: 400px; */
+    /* width: auto; */
+    width: max-content;
+    min-width: 100px;
+    /* background: var(--tertiary-color); */
+    background: rgba(var(--secondary-color-rgb), 0.1);
+    margin-top: -20px;
 }
 
 .country-flag {
-    width: 60px;
-    height: 60px;
+    width: 30px;
+    /* height: 60px; */
     border-radius: 50%;
     overflow: hidden;
-    border: 3px solid var(--primary-color);
-    box-shadow: 0 8px 25px rgba(252, 158, 14, 0.2);
+    /* border: 3px solid var(--primary-color); */
+    /* box-shadow: 0 8px 25px rgba(252, 158, 14, 0.2); */
 }
 
 .flag-img {
@@ -1136,14 +1145,12 @@
 
 .country-name {
     font-size: 18px;
-    font-weight: 600;
+    /* font-weight: 600; */
     color: var(--secondary-color);
-    background: var(--white-bg);
-    padding: 10px 20px;
-    border-radius: 30px;
-    box-shadow: 0 5px 15px rgba(25, 23, 26, 0.1);
-    text-transform: uppercase;
-    letter-spacing: 1px;
+    /* background: var(--white-bg); */
+    padding: 10px 10px;
+    /* text-transform: uppercase;
+    letter-spacing: 1px; */
 }
 
 /* Hero Title */
