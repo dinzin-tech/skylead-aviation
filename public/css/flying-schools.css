@@ -1,559 +1,279 @@
-/* Modern Flying Schools Section */
-.fs-schools-section {
-    padding: 80px 0;
-    background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+/* Simple Schools Section */
+.simple-schools-section {
+    padding: 40px 20px;
+    background: #f8f9fa;
+    min-height: 100vh;
 }
 
-.fs-container {
-    max-width: 1400px;
-    margin: 0 auto;
-    padding: 0 20px;
-}
-
-.fs-header {
-    margin-bottom: 60px;
-}
-
-.fs-main-title {
-    font-size: 3rem;
-    font-weight: 800;
-    color: #0f172a;
-    margin-bottom: 16px;
-    background: linear-gradient(135deg, #0f172a 0%, #334155 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-}
-
-.fs-subtitle {
-    font-size: 1.25rem;
-    color: #64748b;
-    max-width: 600px;
+.ss-container {
+    max-width: 1200px;
     margin: 0 auto;
 }
 
-/* Tabs Wrapper */
-.fs-tabs-wrapper {
-    display: grid;
-    grid-template-columns: 400px 1fr;
-    gap: 40px;
-    background: white;
-    border-radius: 24px;
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08);
-    overflow: hidden;
-}
-
-/* Vertical Tabs Navigation */
-.fs-tabs-nav {
-    background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
-    padding: 40px 0;
-    position: relative;
-}
-
-.fs-nav-header {
-    padding: 0 30px 30px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    margin-bottom: 20px;
-}
-
-.fs-nav-header h4 {
-    color: white;
-    font-size: 1.5rem;
-    font-weight: 700;
-    margin-bottom: 8px;
-}
-
-.fs-nav-header p {
-    color: #94a3b8;
-    font-size: 0.95rem;
-}
-
-.fs-nav-items {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    padding: 0 20px;
-}
-
-.fs-nav-item {
-    display: flex;
-    align-items: center;
-    gap: 16px;
-    padding: 20px;
-    background: transparent;
-    border: none;
-    border-radius: 16px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    text-align: left;
-    width: 100%;
-    position: relative;
-}
-
-.fs-nav-item:hover {
-    background: rgba(255, 255, 255, 0.05);
-}
-
-.fs-nav-item.fs-active {
-    background: rgba(255, 255, 255, 0.1);
-    border-left: 4px solid #f59e0b;
-}
-
-.fs-nav-icon {
-    width: 50px;
-    height: 50px;
-    border-radius: 12px;
-    background: rgba(255, 255, 255, 0.1);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
-}
-
-.fs-school-logo {
-    width: 30px;
-    height: 30px;
-    object-fit: contain;
-}
-
-.fs-default-icon {
-    color: #f59e0b;
-    font-size: 20px;
-}
-
-.fs-nav-content {
-    flex: 1;
-}
-
-.fs-school-name {
-    color: white;
-    font-size: 1.1rem;
-    font-weight: 600;
-    margin-bottom: 6px;
-}
-
-.fs-school-meta {
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-}
-
-.fs-location {
-    color: #94a3b8;
-    font-size: 0.85rem;
-    display: flex;
-    align-items: center;
-    gap: 6px;
-}
-
-/* Tabs Content */
-.fs-tabs-content {
-    padding: 40px;
-    max-height: 800px;
-    overflow-y: auto;
-}
-
-.fs-tab-pane {
-    display: none;
-}
-
-.fs-tab-pane.fs-active {
-    display: block;
-    animation: fadeInUp 0.5s ease;
-}
-
-@keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-/* School Card */
-.fs-school-card {
-    display: flex;
-    flex-direction: column;
-    gap: 30px;
-}
-
-/* School Header */
-.fs-school-header {
+.ss-header {
     text-align: center;
-    padding-bottom: 20px;
-    border-bottom: 2px solid #f1f5f9;
+    margin-bottom: 40px;
 }
 
-.fs-school-badge {
-    display: inline-block;
-    background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
-    color: white;
-    padding: 8px 20px;
-    border-radius: 50px;
-    font-size: 0.9rem;
-    font-weight: 600;
-    margin-bottom: 16px;
-}
-
-.fs-school-title {
+.ss-main-title {
     font-size: 2.5rem;
     font-weight: 700;
-    color: #0f172a;
-    margin-bottom: 12px;
-}
-
-.fs-school-location {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    color: #64748b;
-    font-weight: 500;
-    font-size: 1.1rem;
-}
-
-/* Content Grid */
-.fs-content-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 40px;
-    align-items: start;
-}
-
-/* Flight Image Section */
-.fs-image-section {
-    position: relative;
-}
-
-.fs-flight-image {
-    position: relative;
-    border-radius: 20px;
-    overflow: hidden;
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
-    aspect-ratio: 4/5;
-}
-
-.fs-main-image {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 0.3s ease;
-}
-
-.fs-flight-image:hover .fs-main-image {
-    transform: scale(1.05);
-}
-
-.fs-image-overlay {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
-    color: white;
-    padding: 30px 20px 20px;
-    text-align: center;
-}
-
-.fs-image-overlay span {
-    font-weight: 600;
-    font-size: 1.1rem;
-}
-
-/* Details Section */
-.fs-details-section {
-    display: flex;
-    flex-direction: column;
-    gap: 30px;
-}
-
-.fs-about-course {
-    background: white;
-    padding: 0;
-}
-
-.fs-section-title {
-    font-size: 1.75rem;
-    font-weight: 700;
-    color: #0f172a;
-    margin-bottom: 24px;
-    padding-bottom: 12px;
-    border-bottom: 3px solid #f59e0b;
-}
-
-/* Course Stats */
-.fs-course-stats {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    margin-bottom: 30px;
-}
-
-.fs-stat-row {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 20px;
-}
-
-.fs-stat-item {
-    display: flex;
-    align-items: center;
-    gap: 16px;
-    padding: 20px;
-    background: #f8fafc;
-    border-radius: 16px;
-    border-left: 4px solid #3b82f6;
-    transition: all 0.3s ease;
-}
-
-.fs-stat-item:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
-    background: white;
-}
-
-.fs-stat-icon {
-    width: 50px;
-    height: 50px;
-    background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
-    border-radius: 12px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
-}
-
-.fs-stat-icon i {
-    color: white;
-    font-size: 20px;
-}
-
-.fs-stat-content {
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-}
-
-.fs-stat-label {
-    color: #64748b;
-    font-size: 0.9rem;
-    font-weight: 500;
-}
-
-.fs-stat-value {
-    color: #0f172a;
-    font-size: 1.25rem;
-    font-weight: 700;
-}
-
-/* Fleet Types */
-.fs-fleet-types {
-    margin-bottom: 30px;
-}
-
-.fs-section-subtitle {
-    font-size: 1.5rem;
-    font-weight: 600;
-    color: #0f172a;
-    margin-bottom: 20px;
-    padding-bottom: 8px;
-    border-bottom: 2px solid #e2e8f0;
-}
-
-.fs-fleet-list {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-}
-
-.fs-fleet-item {
-    background: white;
-    padding: 24px;
-    border-radius: 16px;
-    border: 2px solid #f1f5f9;
-    transition: all 0.3s ease;
-}
-
-.fs-fleet-item:hover {
-    border-color: #3b82f6;
-    transform: translateX(5px);
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
-}
-
-.fs-fleet-header {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    margin-bottom: 12px;
-}
-
-.fs-fleet-category {
-    background: linear-gradient(135deg, #10b981 0%, #059669 100%);
-    color: white;
-    padding: 6px 12px;
-    border-radius: 20px;
-    font-size: 0.8rem;
-    font-weight: 600;
-}
-
-.fs-fleet-name {
-    color: #0f172a;
-    font-size: 1.2rem;
-    font-weight: 700;
+    color: #2c3e50;
     margin: 0;
 }
 
-.fs-fleet-description {
-    color: #64748b;
+/* Layout */
+.ss-layout {
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    gap: 30px;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    overflow: hidden;
+}
+
+/* Sidebar */
+.ss-sidebar {
+    background: #2c3e50;
+    padding: 30px 0;
+}
+
+.ss-sidebar-title {
+    color: white;
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin: 0 25px 20px 25px;
+    padding-bottom: 15px;
+    border-bottom: 2px solid #34495e;
+}
+
+.ss-schools-list {
+    display: flex;
+    flex-direction: column;
+}
+
+.ss-school-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 25px;
+    color: #bdc3c7;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border-left: 4px solid transparent;
+}
+
+.ss-school-item:hover {
+    background: #34495e;
+    color: white;
+}
+
+.ss-school-item.ss-active {
+    background: #34495e;
+    color: white;
+    border-left-color: #e74c3c;
+}
+
+.ss-school-name {
+    font-weight: 500;
+    font-size: 1rem;
+}
+
+.ss-school-number {
+    background: #34495e;
+    color: #bdc3c7;
+    padding: 4px 10px;
+    border-radius: 12px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    min-width: 24px;
+    text-align: center;
+}
+
+.ss-school-item.ss-active .ss-school-number {
+    background: #e74c3c;
+    color: white;
+}
+
+/* Main Content */
+.ss-main-content {
+    padding: 40px;
+}
+
+.ss-school-content {
+    display: none;
+}
+
+.ss-school-content.ss-active {
+    display: block;
+    animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.ss-content-header {
+    margin-bottom: 30px;
+    padding-bottom: 15px;
+    border-bottom: 2px solid #ecf0f1;
+}
+
+.ss-school-title {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #2c3e50;
+    margin: 0;
+}
+
+/* Course Section */
+.ss-course-section {
+    margin-bottom: 40px;
+    padding: 25px;
+    background: #f8f9fa;
+    border-radius: 8px;
+    border-left: 4px solid #e74c3c;
+}
+
+.ss-section-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #2c3e50;
+    margin: 0 0 20px 0;
+}
+
+.ss-course-details {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.ss-detail-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 0;
+    border-bottom: 1px solid #e9ecef;
+}
+
+.ss-detail-row:last-child {
+    border-bottom: none;
+}
+
+.ss-detail-label {
+    font-weight: 600;
+    color: #2c3e50;
+    font-size: 1rem;
+}
+
+.ss-detail-value {
+    color: #7f8c8d;
+    font-weight: 500;
+    font-size: 1rem;
+}
+
+/* Fleet Section */
+.ss-fleet-section {
+    margin-bottom: 30px;
+}
+
+.ss-fleet-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.ss-fleet-item {
+    padding: 20px;
+    background: white;
+    border: 1px solid #e9ecef;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.ss-fleet-item:hover {
+    border-color: #3498db;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.ss-aircraft-name {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #2c3e50;
+    margin: 0 0 10px 0;
+}
+
+.ss-aircraft-desc {
+    color: #7f8c8d;
     line-height: 1.6;
     margin: 0;
     font-size: 0.95rem;
 }
 
-/* Contact Section */
-.fs-contact-section {
-    background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
-    padding: 30px;
-    border-radius: 20px;
-    text-align: center;
-}
-
-.fs-enquire-btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 12px;
-    background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
-    color: white;
-    border: none;
-    padding: 16px 32px;
-    border-radius: 12px;
-    font-size: 1.1rem;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    margin-bottom: 20px;
-}
-
-.fs-enquire-btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 25px rgba(245, 158, 11, 0.4);
-}
-
-.fs-contact-info {
-    display: flex;
-    justify-content: center;
-    gap: 30px;
-    flex-wrap: wrap;
-}
-
-.fs-contact-item {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    color: #94a3b8;
-    font-weight: 500;
-}
-
-.fs-contact-item i {
-    color: #f59e0b;
-}
-
-/* Icons */
-.fs-icon-plane:before { content: "✈"; }
-.fs-icon-pin:before { content: "📍"; }
-.fs-icon-calendar:before { content: "📅"; }
-.fs-icon-fleet:before { content: "🛩"; }
-.fs-icon-time:before { content: "⏱"; }
-.fs-icon-phone:before { content: "📞"; }
-.fs-icon-email:before { content: "✉"; }
-.fs-icon-arrow:before { content: "→"; }
-
 /* Responsive Design */
-@media (max-width: 1024px) {
-    .fs-tabs-wrapper {
-        grid-template-columns: 350px 1fr;
-        gap: 30px;
-    }
-    
-    .fs-content-grid {
-        gap: 30px;
-    }
-}
-
 @media (max-width: 768px) {
-    .fs-tabs-wrapper {
+    .ss-layout {
         grid-template-columns: 1fr;
-        gap: 0;
     }
     
-    .fs-tabs-nav {
+    .ss-sidebar {
         padding: 20px;
     }
     
-    .fs-nav-items {
+    .ss-schools-list {
         flex-direction: row;
         overflow-x: auto;
-        padding: 10px 0;
-        gap: 12px;
+        gap: 10px;
     }
     
-    .fs-nav-item {
-        min-width: 280px;
-        flex-shrink: 0;
-    }
-    
-    .fs-tabs-content {
-        padding: 30px 20px;
-    }
-    
-    .fs-content-grid {
-        grid-template-columns: 1fr;
-        gap: 30px;
-    }
-    
-    .fs-school-title {
-        font-size: 2rem;
-    }
-    
-    .fs-stat-row {
-        grid-template-columns: 1fr;
-    }
-    
-    .fs-contact-info {
+    .ss-school-item {
         flex-direction: column;
-        gap: 15px;
+        min-width: 120px;
+        text-align: center;
+        border-left: none;
+        border-bottom: 4px solid transparent;
+    }
+    
+    .ss-school-item.ss-active {
+        border-left-color: transparent;
+        border-bottom-color: #e74c3c;
+    }
+    
+    .ss-main-content {
+        padding: 25px;
+    }
+    
+    .ss-school-title {
+        font-size: 1.75rem;
+    }
+    
+    .ss-detail-row {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 5px;
     }
 }
 
 @media (max-width: 480px) {
-    .fs-container {
-        padding: 0 16px;
+    .simple-schools-section {
+        padding: 20px 15px;
     }
     
-    .fs-main-title {
-        font-size: 2.5rem;
+    .ss-main-title {
+        font-size: 2rem;
     }
     
-    .fs-school-title {
-        font-size: 1.75rem;
+    .ss-main-content {
+        padding: 20px;
     }
     
-    .fs-section-title {
-        font-size: 1.5rem;
+    .ss-course-section {
+        padding: 20px;
     }
     
-    .fs-stat-item {
-        flex-direction: column;
-        text-align: center;
-        gap: 12px;
-    }
-    
-    .fs-fleet-header {
-        flex-direction: column;
-        gap: 8px;
-        text-align: center;
+    .ss-section-title {
+        font-size: 1.25rem;
     }
 }
