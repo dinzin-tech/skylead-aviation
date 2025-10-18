@@ -5,37 +5,36 @@
 @section('content')
    <!-- Hero Section -->
 @include('destination.sections.hero', [
-    'countryName' => $countryData['country_name'] ?? 'USA',
-    'countryFlag' => $countryData['flag'] ?? 'img/flags/usa.png',
-    'title' => $countryData['country_title'] ?? 'Fly High in the Skies',
-    'description' => $countryData['country_description'] ?? 'World-class flight training programs',
-    'ctaText' => 'Start Your Journey',
-    'ctaLink' => '#enroll',
-    'stats' => [
-        [
-            'icon' => 'ti-home', 
-            'number' => $countryData['no_of_schools'] ?? '12',
-            'label' => 'Flying Schools'
+        'countryName' => $countryData['country_name'] ?? 'USA',
+        'countryFlag' => $countryData['flag'] ?? 'img/flags/usa.png',
+        'title' => $countryData['country_title'] ?? 'Fly High in the Skies',
+        'description' => $countryData['country_description'] ?? 'World-class flight training programs',
+        'ctaText' => 'Start Your Journey',
+        'ctaLink' => '#enroll',
+        'stats' => [
+            [
+                'icon' => 'ti-home', 
+                'number' => $countryData['no_of_schools'] ?? '12',
+                'label' => 'Flying Schools'
+            ],
+            [
+                'icon' => 'ti-location-pin',
+                'number' => $countryData['location'] ?? 'USA',
+                'label' => 'Location'
+            ]
         ],
-        [
-            'icon' => 'ti-location-pin',
-            'number' => $countryData['location'] ?? 'USA',
-            'label' => 'Location'
+        'images' => [
+            'img/elements/a.jpg',
+            'img/elements/a2.jpg', 
+            'img/elements/d.jpg',
+            'img/elements/f1.jpg'
         ]
-    ],
-    'images' => [
-        'img/elements/a.jpg',
-        'img/elements/a2.jpg', 
-        'img/elements/d.jpg',
-        'img/elements/f1.jpg'
-    ]
-])
+    ])
     @include('destination.sections.destination_hero')
     @include('destination.sections.infostats')
     @include('destination.sections.country_overview')
-   
-    @include('destination.sections.advantages')
     @include('destination.sections.gallery')
+    @include('destination.sections.advantages')
     @include('destination.sections.flying-schools-tabs')
 
 
