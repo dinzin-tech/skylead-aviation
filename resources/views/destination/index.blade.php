@@ -31,8 +31,9 @@
     ]
 ])
     @include('destination.sections.destination_hero')
+    @include('destination.sections.infostats')
     @include('destination.sections.country_overview')
-    @include('destination.sections.training_guide')   
+   
     @include('destination.sections.advantages')
     @include('destination.sections.gallery')
     @include('destination.sections.flying-schools-tabs')

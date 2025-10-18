@@ -1,5 +1,5 @@
   <!-- Country Overview -->
-    <section class="country-overview">
+    <!-- <section class="country-overview">
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-lg-8">
@@ -45,4 +45,4 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> -->

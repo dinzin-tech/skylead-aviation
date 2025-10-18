@@ -1140,3 +1140,102 @@ section {
 
 
 
+/* infostats Section */
+/* Training Guide Section - Title Left, Description Right */
+.training-guide-section {
+    background: var(--white-bg);
+    padding: 80px 0;
+}
+
+.guide-item {
+    margin: 4px 0;
+    padding: 40px 0;
+    position: relative;
+}
+
+.guide-item:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: #e8e8e8;
+}
+
+.guide-title {
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--secondary-color);
+    margin-bottom: 0;
+    line-height: 1.4;
+    padding-right: 30px;
+}
+
+.guide-description {
+    color: var(--text-color);
+    line-height: 1.7;
+    margin-bottom: 0;
+    font-size: 15px;
+    text-align: left;
+}
+
+/* Responsive Design */
+@media (max-width: 991px) {
+    .training-guide-section {
+        padding: 60px 0;
+    }
+    
+    .guide-item {
+        margin: 30px 0;
+        padding: 30px 0;
+    }
+    
+    .guide-title {
+        font-size: 18px;
+        padding-right: 20px;
+        margin-bottom: 15px;
+    }
+}
+
+@media (max-width: 768px) {
+    .training-guide-section {
+        padding: 50px 0;
+    }
+    
+    .guide-item {
+        margin: 25px 0;
+        padding: 25px 0;
+    }
+    
+    .guide-title {
+        font-size: 17px;
+        padding-right: 15px;
+    }
+    
+    .guide-description {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 576px) {
+    .training-guide-section {
+        padding: 40px 0;
+    }
+    
+    .guide-item {
+        margin: 20px 0;
+        padding: 20px 0;
+    }
+    
+    .guide-title {
+        font-size: 16px;
+        padding-right: 10px;
+        margin-bottom: 10px;
+    }
+    
+    .guide-description {
+        font-size: 13px;
+        line-height: 1.6;
+    }
+}

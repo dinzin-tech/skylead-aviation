@@ -12,11 +12,11 @@ class DestinationController extends Controller
     public function destinationCountry($country = 'USA')
     {
         $countryData = [
-            'country_name' => 'United States of America (USA)',
-            'country_title' => 'Fly High in the Skies of the USA',
-            'country_description' => 'The United States is one of the best destinations for pilot training, offering world-class flight schools, consistent weather, and FAA-approved programs recognized globally.',
-            'no_of_schools' => 12,
-            'location' => 'Florida, Texas, California, Arizona',
+            // 'country_name' => 'United States of America (USA)',
+            // 'country_title' => 'Fly High in the Skies of the USA',
+            // 'country_description' => 'The United States is one of the best destinations for pilot training, offering world-class flight schools, consistent weather, and FAA-approved programs recognized globally.',
+            // 'no_of_schools' => 12,
+            // 'location' => 'Florida, Texas, California, Arizona',
 
             'images' => [
                 'img/destinations/usa1.jpg',
