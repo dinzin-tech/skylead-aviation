@@ -35,6 +35,7 @@
     @include('destination.sections.country_overview')
     @include('destination.sections.gallery')
     @include('destination.sections.advantages')
+    @include('destination.sections.courses-offered')
     @include('destination.sections.flying-schools-tabs')
 
 
