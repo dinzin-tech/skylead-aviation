@@ -1739,15 +1739,11 @@ body.lightbox-open {
 .courses-container {
     max-width: 1200px;
     width: 90%;
-    background: white;
-    border-radius: 12px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
     overflow: hidden;
     margin: 40px auto;
 }
 
 .courses-header {
-    background: #1a3a5f;
     color: white;
     padding: 30px 40px;
     text-align: center;
