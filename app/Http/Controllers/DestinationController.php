@@ -266,7 +266,7 @@ class DestinationController extends Controller
                     ],
                     'courses_offered' => [
                         [
-                            'title' => 'Private Pilot',
+                            'title' => 'Private Pilot License (PPL)',
                             'subtitle' => 'Private Pilot License (PPL)',
                             'description' => 'This license is ideal for aviation enthusiasts or hobby flyers.',
                             'logo' => 'img/courses-offered/PPL.webp',

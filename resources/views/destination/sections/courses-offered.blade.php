@@ -26,7 +26,7 @@
                 <div class="course-content">
                     <h3 class="course-title">{{ $course['title'] }}</h3>
                     @if(isset($course['subtitle']) && $course['subtitle'])
-                    <div class="course-subtitle">{{ $course['subtitle'] }}</div>
+                    <!-- <div class="course-subtitle">{{ $course['subtitle'] }}</div> -->
                     @endif
                     <p class="course-description">
                         {{ $course['description'] }}
