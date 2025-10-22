@@ -14,6 +14,28 @@ use App\Http\Controllers\Admin\HeroContentController;
 use App\Http\Controllers\Admin\EventController;
 use App\Http\Controllers\Admin\MaintenanceController;
 
+
+use App\Http\Controllers\CourseController;
+use App\Http\Controllers\DestinationController;
+
+Route::get('/destinations/{country?}', [DestinationController::class, 'destinationCountry'])
+    ->name('destinations.country');
+
+Route::get('/flight-training/{type?}', [DestinationController::class, 'flightType'])
+    ->name('flight.type');
+
+// Optional: Add a default route
+Route::get('/', function () {
+    return view('welcome');
+});
+
+// For regular courses
+Route::get('/course/{name}', [CourseController::class, 'show'])->name('course.details');
+
+// Specific route for Air Asia Cadet Program (optional)
+Route::get('/air-asia-cadet-pilot-program', [CourseController::class, 'show'])->name('cadet.airasia');
+
+
 // public routes
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/about', [HomeController::class, 'about'])->name('about');

@@ -1133,3 +1133,300 @@ section {
 .leaflet-marker-shadow{
     display: none !important;
 }
+
+.leaflet-marker-shadow{
+    display: none !important;
+}
+
+
+
+/* infostats Section */
+/* Training Guide Section - Title Left, Description Right */
+.training-guide-section {
+    background: var(--white-bg);
+    padding: 80px 0;
+}
+
+.guide-item {
+    margin: 4px 0;
+    padding: 40px 0;
+    position: relative;
+}
+
+.guide-item:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: #e8e8e8;
+}
+
+.guide-title {
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--secondary-color);
+    margin-bottom: 0;
+    line-height: 1.4;
+    padding-right: 30px;
+}
+
+.guide-description {
+    color: var(--text-color);
+    line-height: 1.7;
+    margin-bottom: 0;
+    font-size: 15px;
+    text-align: left;
+}
+
+/* Responsive Design */
+@media (max-width: 991px) {
+    .training-guide-section {
+        padding: 60px 0;
+    }
+    
+    .guide-item {
+        margin: 30px 0;
+        padding: 30px 0;
+    }
+    
+    .guide-title {
+        font-size: 18px;
+        padding-right: 20px;
+        margin-bottom: 15px;
+    }
+}
+
+@media (max-width: 768px) {
+    .training-guide-section {
+        padding: 50px 0;
+    }
+    
+    .guide-item {
+        margin: 25px 0;
+        padding: 25px 0;
+    }
+    
+    .guide-title {
+        font-size: 17px;
+        padding-right: 15px;
+    }
+    
+    .guide-description {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 576px) {
+    .training-guide-section {
+        padding: 40px 0;
+    }
+    
+    .guide-item {
+        margin: 20px 0;
+        padding: 20px 0;
+    }
+    
+    .guide-title {
+        font-size: 16px;
+        padding-right: 10px;
+        margin-bottom: 10px;
+    }
+    
+    .guide-description {
+        font-size: 13px;
+        line-height: 1.6;
+    }
+}
+
+
+
+
+
+
+
+
+/* Start Courses Details Area css
+============================================================================================ */
+.course_details_area .title {
+  font-size: 21px;
+  border: none;
+  cursor: pointer;
+  margin-top: 40px;
+  border-bottom: 1px solid #eeeeee;
+  position: relative;
+  padding-bottom: 10px;
+  margin-bottom: 22px; 
+}
+.course_details_area .title:after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -1px;
+  height: 1px;
+  width: 74px;
+  background: var(--primary-color);
+}
+
+.course_details_left .course_list {
+  margin-bottom: 0; 
+}
+@media (max-width: 575px) {
+  .course_details_left .course_list {
+    padding-left: 0; 
+  } 
+}
+.course_details_left .course_list li {
+  list-style: none;
+  margin-bottom: 20px; 
+}
+.course_details_left .course_list li .primary-btn {
+  background: #f9f9f9;
+  color: #7b838a;
+  box-shadow: none;
+  font-size: 12px;
+  border-radius: 0px; 
+}
+.course_details_left .course_list li .primary-btn:hover {
+  background: var(--primary-color);
+  color: #ffffff; 
+}
+@media (max-width: 575px) {
+  .course_details_left .course_list li .primary-btn {
+    min-width: 100px;
+    font-size: 10px;
+    padding: 0 10px; 
+  } 
+}
+.course_details_left .course_list li:last-child {
+  margin-bottom: 0; 
+}
+
+@media (max-width: 991px) {
+  .right-contents {
+    margin-top: 50px; 
+  } 
+}
+.right-contents ul {
+  padding-left: 0; 
+}
+.right-contents ul li {
+  list-style: none;
+  background: #f9f9f9;
+  padding: 10px 22px;
+  margin-bottom: 10px; 
+}
+.right-contents ul li a {
+  color: #7b838a;
+  text-align: left; 
+}
+.right-contents ul li a p {
+  margin-bottom: 0px; 
+}
+.right-contents ul li .or {
+  color: var(--secondary-color);
+  font-weight: 500; 
+}
+.right-contents .enroll {
+  margin-top: 10px;
+  width: 100%; 
+  background: var(--primary-color);
+  border: none;
+  padding: 12px 0;
+  transition: all 0.3s ease;
+}
+.right-contents .enroll:hover {
+  background: #e58e08;
+  transform: translateY(-2px);
+}
+.right-contents .reviews span,
+.right-contents .reviews .star {
+  width: 31%;
+  margin-bottom: 10px; 
+}
+.right-contents .avg-review {
+  background: var(--secondary-color);
+  text-align: center;
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 600;
+  padding: 20px 0px; 
+}
+.right-contents .avg-review span {
+  font-size: 18px;
+  color: var(--primary-color); 
+}
+@media (max-width: 991px) {
+  .right-contents .avg-review {
+    margin-bottom: 20px; 
+  } 
+}
+@media (max-width: 1024px) {
+  .right-contents .single-reviews .thumb {
+    margin-right: 10px; 
+  } 
+}
+.right-contents .single-reviews h5 {
+  display: inline-flex; 
+}
+@media (max-width: 1024px) {
+  .right-contents .single-reviews h5 {
+    display: block; 
+  } 
+}
+.right-contents .single-reviews h5 .star {
+  margin-left: 10px; 
+}
+@media (max-width: 1024px) {
+  .right-contents .single-reviews h5 .star {
+    margin: 10px 0; 
+  } 
+}
+.right-contents .feedeback {
+  margin-top: 30px; 
+}
+.right-contents .feedeback textarea {
+  resize: none;
+  height: 130px;
+  background: #f9f9ff;
+  border: 1px solid #e8e8e8;
+  border-radius: 5px;
+  padding: 15px;
+}
+.right-contents .feedeback textarea:focus {
+  box-shadow: none;
+  border-color: var(--primary-color);
+}
+.right-contents .star .checked {
+  color: var(--primary-color);
+}
+.right-contents .comments-area {
+  padding: 0;
+  border: 0;
+  background: transparent; 
+}
+.right-contents .comments-area .star {
+  margin-left: 20px; 
+}
+
+/* Course Details Responsive */
+@media (max-width: 768px) {
+  .course_details_area .title {
+    font-size: 18px;
+    margin-top: 30px;
+  }
+  
+  .right-contents ul li {
+    padding: 8px 15px;
+  }
+  
+  .right-contents .reviews span,
+  .right-contents .reviews .star {
+    width: 100%;
+    margin-bottom: 8px;
+  }
+}
+
+/* End Courses Details Area css
+============================================================================================ */

@@ -34,8 +34,11 @@ theme.
   --tertiary-color: #919caa;
   --text-color: #7b838a;
   --light-bg: #f9f9f9;
-  --white-bg: #ffffff; 
-  }
+  --white-bg: #ffffff;
+  --primary-color-rgb: 252, 158, 14;
+  --secondary-color-rgb: 25, 23, 26;
+  --tertiary-color-rgb: 145, 156, 170;
+}
 
 
 
@@ -3378,3 +3381,37 @@ h6 {
 /*---------------------------------------------------- */
 
 /*# sourceMappingURL=style.css.map */
+
+
+
+/*trainng-stages */
+.training-timeline {
+    position: relative;
+}
+
+.training-timeline::before {
+    content: '';
+    position: absolute;
+    left: 105px;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: var(--primary-color);
+    opacity: 0.3;
+}
+
+.stage-circle {
+    width: 60px;
+    height: 60px;
+    background: var(--secondary-color);
+    color: white;
+    border-radius: 50%;
+    font-weight: bold;
+    font-size: 18px;
+    position: relative;
+    z-index: 2;
+}
+
+.timeline-item {
+    position: relative;
+}
