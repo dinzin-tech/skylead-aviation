@@ -31,10 +31,16 @@ class DestinationController extends Controller
             ],
 
             'gallery' => [
-                'img/gallery/usa1.jpg',
-                'img/gallery/usa2.jpg',
-                'img/gallery/usa3.jpg',
-                'img/gallery/usa4.jpg'
+                'https://static.wixstatic.com/media/cf4588_79003f1aaabe44038d563ff6c9163eb0~mv2.jpg/v1/crop/x_0,y_0,w_1213,h_960/fill/w_634,h_502,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/cf4588_79003f1aaabe44038d563ff6c9163eb0~mv2.jpg',
+                'https://static.wixstatic.com/media/cf4588_f692ea2dc6c44395acf03cf63fc61b0f~mv2.jpg/v1/crop/x_59,y_0,w_1102,h_847/fill/w_654,h_502,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/cf4588_f692ea2dc6c44395acf03cf63fc61b0f~mv2.jpg',
+                'https://static.wixstatic.com/media/70acfd_74a5c80ab3cc4a73acee4d894e251183~mv2.jpg/v1/fill/w_892,h_502,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/IMG_20210215_081824.jpg',
+                'https://static.wixstatic.com/media/cf4588_ec56d07b3e534e52a200175f61fa7232~mv2.jpg/v1/crop/x_0,y_259,w_960,h_1021/fill/w_634,h_674,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/cf4588_ec56d07b3e534e52a200175f61fa7232~mv2.jpg',
+                'https://static.wixstatic.com/media/70acfd_90e4ffc706034ea0a7fca9ed1989b99e~mv2.jpg/v1/crop/x_493,y_0,w_3498,h_2592/fill/w_894,h_662,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/70acfd_90e4ffc706034ea0a7fca9ed1989b99e~mv2.jpg',
+                'https://static.wixstatic.com/media/70acfd_90ac9dd322394cfe817d18fd1ab3f4fa~mv2.jpg/v1/crop/x_8,y_582,w_2584,h_2634/fill/w_658,h_670,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/70acfd_90ac9dd322394cfe817d18fd1ab3f4fa~mv2.jpg,'
+                    // 'img/gallery/about.jpg',
+                // 'img/gallery/usa2.jpg',
+                // 'img/gallery/usa3.jpg',
+                // 'img/gallery/usa4.jpg'
             ],
 
             'advantages' => [
@@ -201,7 +207,39 @@ class DestinationController extends Controller
                         ]
                     ]
                 ]
-            ]
+                    ],
+                    'courses_offered' => [
+                        [
+                            'title' => 'Private Pilot License (PPL)',
+                            'subtitle' => 'Private Pilot License (PPL)',
+                            'description' => 'This license is ideal for aviation enthusiasts or hobby flyers.',
+                            'logo' => 'img/courses-offered/PPL.webp',
+                            'icon' => 'fas fa-plane'
+                        ],
+                        [
+                            'title' => 'Commercial Pilot License with Multi Engine Instrument Rating (CPL-MEIR)',
+                            'subtitle' => '',
+                            'description' => 'This provides students with a complete theoretical and practical flight training and makes them eligible for Airline Pilot vacancies.',
+                            'logo' => 'img/courses-offered/CPL.webp',
+                            'icon' => 'fas fa-plane-departure'
+                        ],
+                        [
+                            'title' => 'Instrument Rating (IR)',
+                            'subtitle' => '',
+                            'description' => 'This refers to the qualifications that a student can undertake to fly under IFR (Instrument Flight Rules) and can be applicable to CPL and PPL.',
+                            'logo' => 'img/courses-offered/IR.webp',
+                            'icon' => 'fas fa-compass'
+                        ],
+                        [
+                            'title' => 'Instructor Rating (CFI)',
+                            'subtitle' => '',
+                            'description' => 'Become a certified flight instructor and build flight hours while training the next generation of pilots. Gain valuable teaching experience and enhance your aviation career.',
+                            'logo' => 'img/courses-offered/CFI.webp',
+                            'icon' => 'fas fa-chalkboard-teacher'
+                        ]
+                    ],
+
+            
         ];
 
         return view('destination.index', compact('countryData'));

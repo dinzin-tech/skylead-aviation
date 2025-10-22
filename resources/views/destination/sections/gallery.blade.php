@@ -1,9 +1,9 @@
 <!-- Justified Gallery -->
 @if(isset($countryData['gallery']))
 <section class="justified-gallery-section section_gap">
-    <div class="container-fluid px-0">
+    <div class="container">
         <div class="row justify-content-center">
-            <div class="col-lg-8 text-center">
+            <div class="col-lg-12 text-center">
                 <div class="main_title">
                     <h2>Training Facilities Gallery</h2>
                     <p>Explore our world-class training facilities</p>
@@ -11,41 +11,21 @@
             </div>
         </div>
         
-        <div class="justified-grid-equal-height">
+        <div class="masonry-gallery">
             @foreach($countryData['gallery'] as $index => $image)
-            <div class="justified-item-equal" data-image="{{ asset($image) }}" data-index="{{ $index }}">
-                <div class="justified-image-wrapper">
+            <div class="masonry-item" data-image="{{ asset($image) }}" data-index="{{ $index }}">
+                <div class="masonry-image-wrapper">
                     <img src="{{ asset($image) }}" alt="Gallery Image {{ $loop->iteration }}" class="img-fluid">
-                    <div class="justified-overlay">
+                    <div class="masonry-overlay">
                         <div class="overlay-content">
                             <i class="ti-zoom-in"></i>
-                            <span>View Image {{ $loop->iteration }}</span>
+                            <span>View Image</span>
                         </div>
                     </div>
                 </div>
             </div>
             @endforeach
         </div>
-        
-        <!-- Add more images if needed -->
-        @if(count($countryData['gallery']) < 15)
-        <div class="justified-grid-equal-height">
-            <!-- Additional sample images -->
-            @for($i = count($countryData['gallery']) + 1; $i <= 15; $i++)
-            <div class="justified-item-equal" data-image="{{ asset('img/banner/banner-2.jpg') }}" data-index="{{ $i }}">
-                <div class="justified-image-wrapper">
-                    <img src="{{ asset('img/banner/banner-2.jpg') }}" alt="Sample Image {{ $i }}" class="img-fluid">
-                    <div class="justified-overlay">
-                        <div class="overlay-content">
-                            <i class="ti-zoom-in"></i>
-                            <span>Sample Facility {{ $i }}</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            @endfor
-        </div>
-        @endif
     </div>
 
     <!-- Lightbox HTML -->
@@ -57,6 +37,102 @@
     </div>
 </section>
 @endif
+
+@push('styles')
+<style>
+/* True Masonry Layout with CSS Columns */
+.masonry-gallery {
+    column-count: 3;
+    column-gap: 15px;
+}
+
+.masonry-item {
+    position: relative;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    cursor: pointer;
+    margin-bottom: 15px;
+    break-inside: avoid;
+}
+
+.masonry-image-wrapper {
+    width: 100%;
+    position: relative;
+}
+
+.masonry-item img {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: all 0.3s ease;
+}
+
+.masonry-item:hover img {
+    transform: scale(1.05);
+}
+
+.masonry-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: all 0.3s ease;
+}
+
+.masonry-item:hover .masonry-overlay {
+    opacity: 1;
+}
+
+.overlay-content {
+    text-align: center;
+    color: white;
+}
+
+.overlay-content i {
+    font-size: 2rem;
+    margin-bottom: 10px;
+    display: block;
+}
+
+.overlay-content span {
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+/* Responsive for column layout */
+@media (max-width: 992px) {
+    .masonry-gallery {
+        column-count: 2;
+    }
+}
+
+@media (max-width: 768px) {
+    .masonry-gallery {
+        column-count: 2;
+        column-gap: 10px;
+    }
+    
+    .masonry-item {
+        margin-bottom: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .masonry-gallery {
+        column-count: 1;
+    }
+}
+</style>
+@endpush
+
 @push('scripts')
 <script>
 document.addEventListener('DOMContentLoaded', function() {
@@ -66,7 +142,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const lightboxClose = document.querySelector('.lightbox-close');
     
     // Get all gallery items
-    const galleryItems = document.querySelectorAll('.justified-item-equal');
+    const galleryItems = document.querySelectorAll('.masonry-item');
     
     // Add click event to each gallery item
     galleryItems.forEach(item => {

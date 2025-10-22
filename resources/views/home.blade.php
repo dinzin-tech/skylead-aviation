@@ -134,12 +134,12 @@
 
     // Add Pins (Direct Redirect on Click)
     const pinnedCountries = [
-      { name: "India", lat: 20.5937, lng: 78.9629, url: "/destination/india" },
-      { name: "USA", lat: 37.0902, lng: -95.7129, url: "/destination/usa" },
-      { name: "Australia", lat: -25.2744, lng: 133.7751, url: "/destination/australia" },
-      { name: "South Africa", lat: -30.5595, lng: 22.9375, url: "/destination/south-africa" },
-      { name: "Canada", lat: 56.1304, lng: -106.3468, url: "/destination/canada" },
-      { name: "New Zealand", lat: -40.9006, lng: 174.886, url: "/destination/new-zealand" }
+      { name: "India", lat: 20.5937, lng: 78.9629, url: "/destinations/india" },
+      { name: "USA", lat: 37.0902, lng: -95.7129, url: "/destinations/usa" },
+      { name: "Australia", lat: -25.2744, lng: 133.7751, url: "/destinations/australia" },
+      { name: "South Africa", lat: -30.5595, lng: 22.9375, url: "/destinations/south-africa" },
+      { name: "Canada", lat: 56.1304, lng: -106.3468, url: "/destinations/canada" },
+      { name: "New Zealand", lat: -40.9006, lng: 174.886, url: "/destinations/new-zealand" }
     ];
 
     pinnedCountries.forEach(country => {

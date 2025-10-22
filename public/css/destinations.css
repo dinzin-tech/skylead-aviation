@@ -271,49 +271,6 @@
     right: 15px;
 }
 
-/* Gallery Styles */
-.gallery-item {
-    margin: -15px;
-}
-
-.single-gallery-image {
-    margin: 15px;
-    border-radius: 10px;
-    overflow: hidden;
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
-    transition: all 0.3s ease;
-}
-
-.single-gallery-image:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
-}
-
-.single-gallery-image img {
-    width: 100%;
-    height: 250px;
-    object-fit: cover;
-    transition: all 0.3s ease;
-}
-
-.single-gallery-image:hover img {
-    transform: scale(1.05);
-}
-
-/* Section Spacing */
-/* .section_gap {
-    padding: 10px 0;
-}
-
-.section_gap_top {
-    padding-top: 100px;
-} */
-
-.sample-text-area {
-    padding: 100px 0;
-}
-
-/* Country Overview Section */
 .country-overview {
     background: #fff;
 }
@@ -1733,3 +1690,316 @@
 body.lightbox-open {
     overflow: hidden;
 }
+
+
+/* courses.css */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.courses-container {
+    max-width: 1200px;
+    width: 90%;
+    overflow: hidden;
+    margin: 40px auto;
+}
+
+.courses-header {
+    color: white;
+    padding: 30px 40px;
+    text-align: center;
+}
+
+.courses-header h1 {
+    font-size: 36px;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+.courses-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+}
+
+.course-card {
+    display: flex;
+    padding: 25px;
+    border-bottom: 1px solid #eaeaea;
+    border-right: 1px solid #eaeaea;
+    transition: all 0.3s ease;
+}
+
+.course-card:nth-child(odd) {
+    border-right: 1px solid #eaeaea;
+}
+
+.course-card:nth-child(even) {
+    border-right: none;
+}
+
+.course-card:nth-child(3), .course-card:nth-child(4) {
+    border-bottom: none;
+}
+
+.course-card:hover {
+    background-color: #f8fafc;
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+}
+
+.course-logo {
+    /* width: 80px;
+    height: 80px; */
+    /* background: #1a3a5f; */
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 25px;
+    flex-shrink: 0;
+}
+
+.course-logo i {
+    font-size: 35px;
+    color: white;
+}
+
+.course-content {
+    flex: 1;
+}
+
+.course-title {
+    font-size: 24px;
+    font-weight: 700;
+    color: #1a3a5f;
+    margin-bottom: 10px;
+}
+
+.course-subtitle {
+    font-size: 18px;
+    font-weight: 600;
+    color: #3498db;
+    margin-bottom: 15px;
+}
+
+.course-description {
+    font-size: 16px;
+    color: #555;
+    line-height: 1.6;
+}
+
+@media (max-width: 768px) {
+    .courses-container {
+        width: 95%;
+        margin: 20px auto;
+    }
+    
+    .courses-header {
+        padding: 25px 30px;
+    }
+    
+    .courses-header h1 {
+        font-size: 28px;
+    }
+    
+    .courses-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .course-card {
+        padding: 30px;
+    }
+    
+    .course-card:nth-child(odd), .course-card:nth-child(even) {
+        border-right: none;
+    }
+    
+    .course-card:nth-child(3) {
+        border-bottom: 1px solid #eaeaea;
+    }
+    
+    .course-logo {
+        width: 70px;
+        height: 70px;
+        margin-right: 20px;
+    }
+    
+    .course-logo i {
+        font-size: 30px;
+    }
+    
+    .course-title {
+        font-size: 20px;
+    }
+    
+    .course-subtitle {
+        font-size: 16px;
+    }
+    
+    .course-description {
+        font-size: 15px;
+    }
+}
+
+
+
+/* Advantages Section */
+.advantages-section {
+    background: var(--white-bg);
+    padding: 100px 0;
+}
+
+.advantages-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-top: 50px;
+}
+
+.advantage-card {
+    background: var(--white-bg);
+    border-radius: 15px;
+    padding: 40px 30px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    border: 1px solid rgba(25, 23, 26, 0.1);
+    transition: all 0.3s ease;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.advantage-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+}
+
+.advantage-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(135deg, var(--primary-color) 0%, #e58e08 100%);
+    transform: scaleX(0);
+    transition: all 0.3s ease;
+}
+
+.advantage-card:hover::before {
+    transform: scaleX(1);
+}
+
+.advantage-icon {
+    width: 70px;
+    height: 70px;
+    margin: 0 auto 20px;
+    background: linear-gradient(135deg, var(--primary-color) 0%, #e58e08 100%);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 8px 20px rgba(252, 158, 14, 0.3);
+    transition: all 0.3s ease;
+}
+
+.advantage-card:hover .advantage-icon {
+    transform: scale(1.1);
+}
+
+.advantage-icon i {
+    color: var(--white-bg);
+    font-size: 28px;
+}
+
+.advantage-content {
+    text-align: center;
+}
+
+.advantage-title {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--secondary-color);
+    margin-bottom: 0;
+    line-height: 1.5;
+}
+
+/* Responsive Design for Advantages */
+@media (max-width: 1200px) {
+    .advantages-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 25px;
+    }
+}
+
+@media (max-width: 991px) {
+    .advantages-section {
+        padding: 80px 0;
+    }
+    
+    .advantage-card {
+        padding: 30px 25px;
+    }
+    
+    .advantage-icon {
+        width: 60px;
+        height: 60px;
+        margin-bottom: 15px;
+    }
+    
+    .advantage-icon i {
+        font-size: 24px;
+    }
+    
+    .advantage-title {
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 768px) {
+    .advantages-section {
+        padding: 60px 0;
+    }
+    
+    .advantages-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+        margin-top: 40px;
+    }
+    
+    .advantage-card {
+        padding: 25px 20px;
+    }
+    
+    .advantage-icon {
+        width: 50px;
+        height: 50px;
+        margin-bottom: 15px;
+    }
+    
+    .advantage-icon i {
+        font-size: 20px;
+    }
+    
+    .advantage-title {
+        font-size: 15px;
+    }
+}
+
+@media (max-width: 576px) {
+    .advantages-section {
+        padding: 50px 0;
+    }
+    
+    .advantages-grid {
+        margin-top: 30px;
+    }
+    
+    .advantage-card {
+        padding: 20px 15px;
+    }
+}
+

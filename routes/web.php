@@ -15,7 +15,7 @@ use App\Http\Controllers\Admin\EventController;
 use App\Http\Controllers\Admin\MaintenanceController;
 
 
-
+use App\Http\Controllers\CourseController;
 use App\Http\Controllers\DestinationController;
 
 Route::get('/destinations/{country?}', [DestinationController::class, 'destinationCountry'])
@@ -28,6 +28,12 @@ Route::get('/flight-training/{type?}', [DestinationController::class, 'flightTyp
 Route::get('/', function () {
     return view('welcome');
 });
+
+// For regular courses
+Route::get('/course/{name}', [CourseController::class, 'show'])->name('course.details');
+
+// Specific route for Air Asia Cadet Program (optional)
+Route::get('/air-asia-cadet-pilot-program', [CourseController::class, 'show'])->name('cadet.airasia');
 
 
 // public routes
