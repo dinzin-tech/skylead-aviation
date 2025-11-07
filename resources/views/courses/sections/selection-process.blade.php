@@ -1,33 +1,27 @@
 <!--================ Start Selection Process Area =================-->
-<section class="section_gap bg-light">
+<section class="selection-process-section section_gap">
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-lg-8 text-center">
-                <h2 class="mb-5">{{ $title }}</h2>
+                <div class="main_title">
+                    <h2>{{ $title }}</h2>
+                </div>
             </div>
         </div>
-        <div class="row">
+        
+        <div class="selection-process-grid">
             @foreach($processes as $process)
-            <div class="col-lg-3 col-md-6 mb-4">
-                <div class="card process-card h-100">
-                    <div class="card-body text-center ">
-                        <div class="icon mb-4">
-                            <i class="{{ $process['icon'] }} display-4 "></i>
-                        </div>
-                        <h5 class="card-title mb-3">{{ $process['title'] }}</h5>
-                        <p class="card-text">{{ $process['description'] }}</p>
-                    </div>
+            <div class="process-card">
+                <div class="process-icon">
+                    <i class="{{ $process['icon'] }}"></i>
+                </div>
+                <div class="process-content">
+                    <h4 class="process-title">{{ $process['title'] }}</h4>
+                    <p class="process-description">{{ $process['description'] }}</p>
                 </div>
             </div>
             @endforeach
         </div>
     </div>
 </section>
-@push('styles')
-    <style>
-    .icon.mb-4{
-        color: var(--primary-color) !important;
-    }
-    </style>
-@endpush
 <!--================ End Selection Process Area =================-->
