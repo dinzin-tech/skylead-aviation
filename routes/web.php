@@ -18,8 +18,12 @@ use App\Http\Controllers\Admin\MaintenanceController;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\DestinationController;
 
-Route::get('/destinations/{country?}', [DestinationController::class, 'destinationCountry'])
-    ->name('destinations.country');
+// Route::get('/destinations/{country?}', [DestinationController::class, 'destinationCountry'])
+//     ->name('destinations.country');
+
+// Public destination route (update existing)
+Route::get('/destination/{slug}', [App\Http\Controllers\DestinationController::class, 'destinationCountry'])
+    ->name('destination.country');
 
 Route::get('/flight-training/{type?}', [DestinationController::class, 'flightType'])
     ->name('flight.type');
@@ -41,13 +45,24 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/about', [HomeController::class, 'about'])->name('about');
 Route::get('/courses', [HomeController::class, 'courses'])->name('courses');
 Route::get('/course-details', [HomeController::class, 'courseDetails'])->name('course.details');
-Route::get('/blog', [HomeController::class, 'blog'])->name('blog');
-Route::get('/blog/show', [HomeController::class, 'blogShow'])->name('blog.show');
+
+// Route::get('/blog', [HomeController::class, 'blogs'])->name('blog');
+// Route::get('/blogs/show', [HomeController::class, 'blogShow'])->name('blog.show');
+
 Route::get('/contact', [HomeController::class, 'contact'])->name('contact');
 Route::get('/elements', [HomeController::class, 'elements'])->name('elements');
 Route::get('/program/{id}', [HomeController::class, 'programDetails'])->name('program.details');
 Route::get('/programs', [HomeController::class, 'programs'])->name('programs');
 
+Route::prefix('blog')->group(function () {
+    Route::get('/', [BlogController::class, 'listBlogs'])->name('blog.index');
+    Route::get('/{slug}', [BlogController::class, 'showBlogDetail'])->name('blog.showBlogDetail');
+});
+
+// Frontend route to display pages
+// Route::get('/{slug}', [App\Http\Controllers\PageController::class, 'show'])
+//     ->where('slug', '[a-z0-9-]+')
+//     ->name('page.show');
 
 
 // Protected routes for authenticated users
@@ -89,6 +104,34 @@ Route::middleware(['auth', 'role:admin'])
         // Donations management
         // Route::get('donations', [DonationController::class, 'adminIndex'])->name('donations.index');
         // Route::get('donations/{id}', [DonationController::class, 'adminShow'])->name('donations.show');
+
+        // Countries resource
+        Route::resource('countries', \App\Http\Controllers\Admin\CountryController::class);
+        Route::resource('aircrafts', \App\Http\Controllers\Admin\AircraftController::class);
+        Route::resource('flying-schools', \App\Http\Controllers\Admin\FlyingSchoolController::class);
+        Route::resource('destinations', \App\Http\Controllers\Admin\DestinationController::class);
+
+        // Page Sections
+        Route::resource('page-builder', \App\Http\Controllers\Admin\PageBuilderController::class);
+        Route::resource('pages', \App\Http\Controllers\Admin\PageController::class);
+        
+        // Section Elements
+        Route::prefix('page-builder/{pageSection}')->group(function () {
+            Route::resource('elements', \App\Http\Controllers\Admin\SectionElementController::class)
+                ->except(['index', 'show'])
+                ->names([
+                    'create' => 'section-elements.create',
+                    'store' => 'section-elements.store',
+                    'edit' => 'section-elements.edit',
+                    'update' => 'section-elements.update',
+                    'destroy' => 'section-elements.destroy'
+                ]);
+                
+            // Reorder elements
+            Route::post('elements/reorder', [\App\Http\Controllers\Admin\SectionElementController::class, 'reorder'])
+                ->name('section-elements.reorder');
+        });
+        
 
         // Maintenance routes
         Route::get('maintenance', [MaintenanceController::class, 'index'])->name('maintenance.index');

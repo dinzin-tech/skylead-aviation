@@ -459,6 +459,14 @@ class HomeController extends Controller
         echo "Displaying blog post with slug: ";
     }
 
+    public function blogs()
+    {
+        // Assuming you have a Blog model to fetch blog details from the database
+        // $blog = \App\Models\Blog::where('slug', $slug)->firstOrFail();
+        // return view('blog.show', compact('blog'));
+        echo "Displaying blogs list";
+    }
+
     public function programs()
     {
         return view('programs');

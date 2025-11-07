@@ -68,48 +68,51 @@
                                 <i class="bi bi-journal-text"></i> Blogs
                             </a>
                         </li>
+
                         <li class="nav-item">
-                            <a class="nav-link {{ request()->routeIs('admin.events.*') ? 'active' : '' }}" 
-                               href="{{ route('admin.events.index') }}">
-                                <i class="bi bi-calendar-event"></i> Events
+                            <a class="nav-link {{ request()->routeIs('admin.countries.*') ? 'active' : '' }}" 
+                            href="{{ route('admin.countries.index') }}">
+                                <i class="bi bi-globe"></i> Countries
                             </a>
                         </li>
+                        
                         <li class="nav-item">
-                            <a class="nav-link {{ request()->routeIs('admin.volunteers.*') ? 'active' : '' }}" 
-                               href="{{ route('admin.volunteers.index') }}">
-                                <i class="bi bi-people"></i> Volunteers
+                            <a class="nav-link {{ request()->routeIs('admin.aircrafts.*') ? 'active' : '' }}" 
+                            href="{{ route('admin.aircrafts.index') }}">
+                                <i class="bi bi-airplane"></i> Fleet Management
                             </a>
                         </li>
-                        {{-- <li class="nav-item">
-                            <a class="nav-link {{ request()->routeIs('admin.causes.*') ? 'active' : '' }}" 
-                               href="#">
-                                <i class="bi bi-heart"></i> Causes
-                            </a>
-                        </li> --}}
+
                         <li class="nav-item">
-                            <a class="nav-link {{ request()->routeIs('admin.galleries.*') ? 'active' : '' }}" 
-                               href="{{ route('admin.galleries.index') }}">
-                                <i class="bi bi-images"></i> Gallery
+                            <a class="nav-link {{ request()->routeIs('admin.flying-schools.*') ? 'active' : '' }}" 
+                            href="{{ route('admin.flying-schools.index') }}">
+                                <i class="bi bi-building"></i> Flying Schools
                             </a>
                         </li>
+
                         <li class="nav-item">
-                            <a class="nav-link {{ request()->routeIs('admin.contacts.*') ? 'active' : '' }}" 
-                               href="{{ route('admin.contacts.index') }}">
-                                <i class="bi bi-envelope"></i> Contact Messages
+                            <a class="nav-link {{ request()->routeIs('admin.destinations.*') ? 'active' : '' }}" 
+                            href="{{ route('admin.destinations.index') }}">
+                                <i class="bi bi-globe-americas"></i> Destinations
                             </a>
                         </li>
+
                         <li class="nav-item">
-                            <a class="nav-link {{ request()->routeIs('admin.donations.*') ? 'active' : '' }}" 
-                               href="{{ route('admin.donations.index') }}">
-                                <i class="bi bi-wallet-fill"></i> Donations
+                            <a class="nav-link {{ request()->routeIs('admin.page-builder.*') ? 'active' : '' }}" 
+                            href="{{ route('admin.page-builder.index') }}">
+                                <i class="bi bi-layers"></i> Page Builder
                             </a>
                         </li>
+
                         <li class="nav-item">
-                            <a class="nav-link {{ request()->routeIs('admin.hero.*') ? 'active' : '' }}" 
-                               href="{{ route('admin.hero.index') }}">
-                                <i class="bi bi-image"></i> Hero Content
+                            <a class="nav-link {{ request()->routeIs('admin.pages.*') ? 'active' : '' }}" 
+                            href="{{ route('admin.pages.index') }}">
+                                <i class="bi bi-file-earmark"></i> Pages
                             </a>
                         </li>
+
+                        {{-- add more nav links --}}
+
                         <li class="nav-item">
                             <a class="nav-link {{ request()->routeIs('admin.maintenance.*') ? 'active' : '' }}" 
                             href="{{ route('admin.maintenance.index') }}">

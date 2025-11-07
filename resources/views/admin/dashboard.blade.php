@@ -127,18 +127,7 @@
                     <a href="{{ route('admin.blogs.create') }}" class="btn btn-outline-primary">
                         <i class="bi bi-plus-circle"></i> Add New Blog
                     </a>
-                    <a href="{{ route('admin.events.create') }}" class="btn btn-outline-success">
-                        <i class="bi bi-plus-circle"></i> Add New Event
-                    </a>
-                    <a href="{{ route('admin.volunteers.create') }}" class="btn btn-outline-info">
-                        <i class="bi bi-plus-circle"></i> Add New Volunteer
-                    </a>
-                    {{-- <a href="{{ route('admin.causes.create') }}" class="btn btn-outline-warning">
-                        <i class="bi bi-plus-circle"></i> Add New Cause
-                    </a> --}}
-                    <a href="{{ route('admin.galleries.create') }}" class="btn btn-outline-secondary">
-                        <i class="bi bi-plus-circle"></i> Upload Images
-                    </a>
+                    {{-- add more shortcut links --}}
                 </div>
             </div>
         </div>

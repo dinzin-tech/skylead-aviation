@@ -23,7 +23,7 @@
             <div class="container">
                 <!-- Brand and toggle get grouped for better mobile display -->
                 <a class="navbar-brand logo_h" href="{{ route('home') }}">
-                    <img src="{{ asset('img/logo.avif') }}" alt="Edustage Logo" width="80" />
+                    <img src="{{ asset('img/logo.png') }}" alt="Edustage Logo" width="80" />
                 </a>
                 <button
                     class="navbar-toggler"
@@ -79,10 +79,10 @@
                             >Blog</a>
                             <ul class="dropdown-menu">
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('blog') }}">Blog</a>
+                                    {{-- <a class="nav-link" href="{{ /*route('blog')*/ }}">Blog</a> --}}
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('blog.show') }}">Blog Details</a>
+                                    {{-- <a class="nav-link" href="{{ /*route('blog.show')*/ }}">Blog Details</a> --}}
                                 </li>
                             </ul>
                         </li>

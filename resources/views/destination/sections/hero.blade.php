@@ -54,14 +54,16 @@
 
     .dh-country-text {
         font-weight: 600;
-        color: #1e293b;
+        /* color: #1e293b; */
+        color: var(--secondary-color);
         font-size: 16px;
     }
 
     .dh-main-title {
         font-size: 3.5rem;
         font-weight: 800;
-        color: #0f172a;
+        /* color: #0f172a; */
+        color: var(--secondary-color);
         line-height: 1.1;
         margin-bottom: 24px;
         background: linear-gradient(135deg, #0f172a 0%, #334155 100%);
