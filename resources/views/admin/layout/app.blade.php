@@ -98,6 +98,13 @@
                         </li>
 
                         <li class="nav-item">
+                            <a class="nav-link {{ request()->routeIs('admin.courses.*') ? 'active' : '' }}" 
+                                href="{{ route('admin.courses.index') }}">
+                                    <i class="bi bi-book"></i> Courses
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
                             <a class="nav-link {{ request()->routeIs('admin.page-builder.*') ? 'active' : '' }}" 
                             href="{{ route('admin.page-builder.index') }}">
                                 <i class="bi bi-layers"></i> Page Builder
