@@ -2,6 +2,10 @@
 
 @section('title', $courseData['title'] ?? 'Course Details')
 
+@push('head')
+    <!-- Additional CSS if needed -->
+    <link rel="stylesheet" href="{{ asset('css/coursedetails.css') }}">
+@endpush
 @section('content')
     <!-- Banner Section -->
    
