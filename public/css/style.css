@@ -346,13 +346,16 @@ button:focus {
 ============================================================================================ */
 .home_banner_area {
   z-index: 1;
-  min-height: 900px;
+  /* min-height: 900px; */
+  min-height: 549px;
   position: relative;
-  background: url(../img/banner/home-banner.jpg) no-repeat center;
-  background-size: cover; }
+  /* background: url(../img/banner/home-banner.jpg) no-repeat center; */
+  background: url(../img/banner/home-banner.avif) no-repeat bottom center;
+  background-size: contain; 
+  }
   .home_banner_area .banner_inner {
     position: absolute;
-    top: 40%;
+    top: 63.6%;
     -webkit-transform: translateY(-50%);
     -moz-transform: translateY(-50%);
     -ms-transform: translateY(-50%);
@@ -362,7 +365,10 @@ button:focus {
     width: 100%; }
     @media (max-width: 991px) {
       .home_banner_area .banner_inner {
-        top: 50%; } }
+        /* top: 50%;  */
+        top: 60%;
+        } 
+      }
     .home_banner_area .banner_inner .banner_content h2 {
       font-size: 48px;
       font-weight: 500; }
@@ -3004,7 +3010,9 @@ h6 {
   /* Home Banner Area css
 	============================================================================================ */
   .home_banner_area .banner_inner {
-    padding: 100px 0px; }
+    padding: 100px 0px; 
+    top: 71.4%;
+    }
 
   /* End Home Banner Area css
 	============================================================================================ */
@@ -3148,6 +3156,10 @@ h6 {
 @media (max-width: 767px) {
   .home_banner_area .banner_inner .banner_content {
     margin-top: 0px; }
+
+  .home_banner_area .banner_inner .banner-image {
+    margin-top: 34px;
+  }
 
   /* Blog Page Area css
 	============================================================================================ */
@@ -3414,4 +3426,16 @@ h6 {
 
 .timeline-item {
     position: relative;
+}
+
+.top-info-ribbon {
+  background: var(--primary-color);
+  color: var(--secondary-color);
+  padding: 2px 2px;
+  height: 25px;
+  font-size: 12px;
+  font-weight: 800;
+}
+.top-info-ribbon a {
+  color: var(--secondary-color);
 }

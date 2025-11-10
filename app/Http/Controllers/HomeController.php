@@ -13,6 +13,19 @@ class HomeController extends Controller
         $hero_text = "“ALL OUR DREAMS CAN COME TRUE,";
         $hero_subtext = "If we have the courage to pursue them.”";
 
+        $contact_info = [
+            'phone' => '+91 98765 43210',
+            'email' => 'info@skyleadaviation.com',
+            'address' => '123 Aviation St, Bangalore, India',
+            'website' => 'www.skyleadaviation.com',
+            'socials' => [
+                'facebook' => 'https://facebook.com/skyleadaviation',
+                'twitter' => 'https://twitter.com/skyleadaviation',
+                'instagram' => 'https://instagram.com/skyleadaviation',
+                'linkedin' => 'https://linkedin.com/company/skyleadaviation'
+            ]
+        ];
+
         $aboutData = [
             'title' => 'Why Skylead Aviation?',
             'description' => 'In an ever-changing market, finding the right trade and a fitting training program might seem like an impossible task. Enter Skylead Aviation Academy, founded by industry professionals.',
@@ -422,8 +435,8 @@ class HomeController extends Controller
                 'link' => route('contact')
             ]
         ];
-        // dd($programsData);
-        return view('home', compact('hero_text', 'hero_subtext', 'aboutData', 'programsData', 'trainingDestinationsData', 'pilotStepsData', 'faqData'));
+
+        return view('home', compact('hero_text', 'hero_subtext', 'aboutData', 'programsData', 'trainingDestinationsData', 'pilotStepsData', 'faqData', 'contact_info'));
     }
 
     /**
