@@ -4,8 +4,56 @@
         <div class="row">
             <div class="col-lg-8 course_details_left">
                 <div class="main_image">
-                    <img class="img-fluid" src="{{ $courseData['image'] ?? 'img/courses/course-details.jpg' }}" alt="{{ $courseData['title'] ?? 'Course Image' }}">
+                    <img class="img-fluid" src="{{ $courseData['hero_image'] ?? 'img/courses/course-details.jpg' }}" alt="{{ $courseData['title'] ?? 'Course Image' }}">
                 </div>
+
+                @if($course->isCadetProgram())
+                    <!-- Cadet Program Hero Description -->
+                    <div class="content_wrapper mt-4">
+                        <h4 class="title">Program Overview</h4>
+                        <div class="content">
+                            {!! $courseData['hero_description_1'] ?? 'No description provided.' !!}
+                            
+                            @if(!empty($courseData['hero_description_2']))
+                                <div class="mt-3" id="heroDescription2" style="display: none;">
+                                    {!! $courseData['hero_description_2'] !!}
+                                </div>
+                                <button class="primary-btn text-uppercase mt-3" onclick="toggleDescription()">
+                                    View Details
+                                </button>
+                            @endif
+                        </div>
+                    </div>
+
+                    <!-- Benefits Section for Cadet Program -->
+                    @if(!empty($courseData['benefits']))
+                    <div class="content_wrapper">
+                        <h4 class="title">Benefits</h4>
+                        <div class="content">
+                            <ul class="course_list">
+                                @foreach($courseData['benefits'] ?? [] as $benefit)
+                                    <li class="justify-content-between d-flex">
+                                        <p>{{ $benefit['title'] ?? 'Benefit Title' }}</p>
+                                        @if(isset($benefit['description']))
+                                            <span class="text-muted">{{ $benefit['description'] }}</span>
+                                        @endif
+                                    </li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    </div>
+                    @endif
+                @else
+                    <!-- Regular Course Hero Description -->
+                    <div class="content_wrapper mt-4">
+                        <h4 class="title">Course Description</h4>
+                        <div class="content">
+                            {!! $courseData['hero_description'] ?? 'No description provided.' !!}
+                        </div>
+                    </div>
+                @endif
+
+                <!-- Common Sections -->
                 <div class="content_wrapper">
                     <h4 class="title">Objectives</h4>
                     <div class="content">
@@ -33,6 +81,46 @@
 
             <div class="col-lg-4 right-contents">
                 <ul>
+                    @if($course->isCadetProgram())
+                        <!-- Cadet Program Specific Sidebar -->
+                        <li>
+                            <a class="justify-content-between d-flex" href="#">
+                                <p>Program Tag</p>
+                                <span class="or">{{ $courseData['program_tag'] ?? 'Not specified' }}</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="justify-content-between d-flex" href="#">
+                                <p>Program Level</p>
+                                <span>{{ $courseData['program_level'] ?? 'Not specified' }}</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="justify-content-between d-flex" href="#">
+                                <p>Duration</p>
+                                <span>{{ $courseData['duration'] ?? 'Not specified' }}</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="justify-content-between d-flex" href="#">
+                                <p>Rating</p>
+                                <span>
+                                    @for($i = 1; $i <= 5; $i++)
+                                        <i class="ti-star {{ $i <= ($courseData['rating'] ?? 0) ? 'checked' : '' }}"></i>
+                                    @endfor
+                                    ({{ $courseData['rating'] ?? 0 }})
+                                </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="justify-content-between d-flex" href="#">
+                                <p>Students Enrolled</p>
+                                <span>{{ $courseData['number_of_students'] ?? 0 }}</span>
+                            </a>
+                        </li>
+                    @endif
+                    
+                    <!-- Common Sidebar Items -->
                     <li>
                         <a class="justify-content-between d-flex" href="#">
                             <p>Trainer's Name</p>
@@ -117,3 +205,20 @@
     </div>
 </section>
 <!--================ End Course Details Area =================-->
+
+@if($course->isCadetProgram())
+<script>
+function toggleDescription() {
+    const description2 = document.getElementById('heroDescription2');
+    const button = event.target;
+    
+    if (description2.style.display === 'none') {
+        description2.style.display = 'block';
+        button.textContent = 'Hide Details';
+    } else {
+        description2.style.display = 'none';
+        button.textContent = 'View Details';
+    }
+}
+</script>
+@endif

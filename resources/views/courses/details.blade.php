@@ -8,10 +8,10 @@
 @endpush
 @section('content')
     <!-- Banner Section -->
-   
 
+   
     <!-- Check if it's Air Asia Cadet Program to show special sections -->
-    @if(($courseData['type'] ?? '') === 'cadet_program')
+    {{--- @if(($courseData['type'] ?? '') === 'cadet_program') ---}}
         <!-- Hero Section for Cadet Program -->
         @include('courses.sections.cadet-hero', [
             'title' => $courseData['title'] ?? 'Air Asia Cadet Pilot Program',
@@ -37,7 +37,7 @@
             'title' => 'Training Stages',
             'stages' => $courseData['training_stages'] ?? []
         ])
-    @endif
+    {{--- @endif ---}}
 
     <!-- Course Details Section (Original Content) -->
     

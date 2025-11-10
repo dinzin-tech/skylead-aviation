@@ -13,7 +13,6 @@ class CourseController extends Controller
         $course = Course::where('slug', $slug)
         // ->where('published', true)
         ->firstOrFail();
-        
         // Prepare the data in the expected format
         $courseData = [
             'title' => $course->title,

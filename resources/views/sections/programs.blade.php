@@ -70,7 +70,7 @@
                                             <span class="d-inline-block ml-2">{{ $program['instructor']['name'] }}</span>
                                         </div> --}}
                                         <div class="mt-lg-0 mt-3">
-                                            <a href="{{ route('program.details', ['id' => $loop->index]) }}" class="primary-btn small-btn">
+                                            <a href="{{ route('course.details', $program['slug']) }}" class="primary-btn small-btn">
                                                 Details
                                             </a>
                                         </div>

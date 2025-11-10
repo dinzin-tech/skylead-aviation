@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Schema;
+use App\Models\Course;
 
 class HomeController extends Controller
 {
@@ -60,97 +61,137 @@ class HomeController extends Controller
             ]
         ];
 
+        // Fetch published courses with regular_course type
+        // $regularCourses = Course::where('type', 'regular_course')
+        $regularCourses = Course::where('published', false)
+            // ->where('published', false)
+            ->latest()
+            ->take(5) // Limit to 5 courses to match your original data
+            ->get(); 
+        // dd($regularCourses);
+        // Map courses to match your exact original structure
+        $programs = $regularCourses->map(function($course, $index) {
+            return [
+                'image' => $course->hero_image ? asset($course->hero_image) : $this->getDefaultImage($index),
+                'price' => $course->fee ? '₹' . number_format($course->fee) : $this->getDefaultPrice($index),
+                'category' => $this->getDefaultCategory($index),
+                'title' => $course->title,
+                'description' => $course->hero_description,
+                'instructor' => $this->getDefaultInstructor($index),
+                'students' => $course->number_of_students ?? $this->getDefaultStudents($index),
+                'rating' => $course->rating ?? $this->getDefaultRating($index),
+                'duration' => $course->duration ?? $this->getDefaultDuration($index),
+                'level' => $course->program_level ?? $this->getDefaultLevel($index),
+                'features' => $this->getDefaultFeatures($index),
+                'slug' => $course->slug
+            ];
+        })->toArray();
+
+        // dd($programs);
+        // If no courses exist, use default data
+        if (empty($programs)) {
+            $programs = $this->getDefaultProgramsData();
+        }
+        // dd($programs);
         $programsData = [
             'title' => 'Our Aviation Programs',
             'description' => 'Professional aviation training programs designed to meet DGCA standards and international requirements',
-            'programs' => [
-                [
-                    // 'image' => 'programs/dgca-cpl-ground.jpg',
-                    'image' => 'https://static.wixstatic.com/media/cf4588_adb298153bb84eb2999b633084ec33d4~mv2.png/v1/crop/x_52,y_0,w_546,h_534/fill/w_440,h_426,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/PngItem_2943178_edited.png',
-                    'price' => '₹89,999',
-                    'category' => 'Ground Training',
-                    'title' => 'DGCA CPL Ground Training',
-                    'description' => 'Complete DGCA CPL theoretical knowledge preparation with expert instructors and comprehensive study materials',
-                    'instructor' => [
-                        'image' => 'instructors/captain-sharma.jpg',
-                        'name' => 'Capt. Raj Sharma'
-                    ],
-                    'students' => 156,
-                    'rating' => 4.8,
-                    'duration' => '6 Months',
-                    'level' => 'Intermediate',
-                    'features' => ['DGCA Syllabus', 'Mock Tests', 'Study Materials', 'Expert Faculty']
-                ],
-                [
-                    // 'image' => 'programs/cpl-flight-training.jpg',
-                    'image' => 'https://static.wixstatic.com/media/cf4588_0c82d83e32f548fcb97ef270f719e659~mv2.jpg/v1/crop/x_0,y_24,w_1082,h_1057/fill/w_440,h_426,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/11.jpg',
-                    'price' => '₹25,00,000',
-                    'category' => 'Flight Training',
-                    'title' => 'CPL Flight Training',
-                    'description' => 'Complete CPL flight training with 200+ flying hours on modern aircraft and simulator training',
-                    'instructor' => [
-                        'image' => 'instructors/captain-verma.jpg',
-                        'name' => 'Capt. Amit Verma'
-                    ],
-                    'students' => 89,
-                    'rating' => 4.9,
-                    'duration' => '12-18 Months',
-                    'level' => 'Advanced',
-                    'features' => ['200+ Flying Hours', 'Simulator Training', 'DGCA Approved', 'Placement Assistance']
-                ],
-                [
-                    // 'image' => 'programs/foreign-cpl-conversion.jpg',
-                    'image' => 'https://static.wixstatic.com/media/11062b_f2eaf67428f84bb8af48bcd9d06c814d~mv2.jpeg/v1/crop/x_1228,y_0,w_5438,h_5265/fill/w_440,h_426,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/Airport%20Counter.jpeg',
-                    'price' => '₹2,49,999',
-                    'category' => 'License Conversion',
-                    'title' => 'Foreign CPL Conversion',
-                    'description' => 'Convert your foreign CPL to DGCA CPL with comprehensive conversion training and documentation support',
-                    'instructor' => [
-                        'image' => 'instructors/captain-kumar.jpg',
-                        'name' => 'Capt. Sanjay Kumar'
-                    ],
-                    'students' => 67,
-                    'rating' => 4.7,
-                    'duration' => '3-4 Months',
-                    'level' => 'Advanced',
-                    'features' => ['Documentation Support', 'Technical Training', 'Medical Assistance', 'Fast-track Process']
-                ],
-                [
-                    // 'image' => 'programs/type-rating.jpg',
-                    'image' => 'https://static.wixstatic.com/media/cf4588_baba802cda29432898e87ab6d814762a~mv2.jpg/v1/crop/x_190,y_0,w_414,h_405/fill/w_440,h_418,al_c,lg_1,q_80,enc_avif,quality_auto/14.jpg',
-                    'price' => '₹18,00,000',
-                    'category' => 'Type Rating',
-                    'title' => 'Type Rating on A320 & B737',
-                    'description' => 'Advanced type rating training on Airbus A320 and Boeing 737 with full flight simulators',
-                    'instructor' => [
-                        'image' => 'instructors/captain-singh.jpg',
-                        'name' => 'Capt. Preet Singh'
-                    ],
-                    'students' => 45,
-                    'rating' => 4.9,
-                    'duration' => '2-3 Months',
-                    'level' => 'Professional',
-                    'features' => ['A320 & B737', 'Full Flight Simulator', 'Line Training', 'Airline Preparation']
-                ],
-                [
-                    // 'image' => 'programs/cadet-pilot.jpg',
-                    'image' => 'https://static.wixstatic.com/media/nsplsh_44695469595178306d6834~mv2_d_4104_3026_s_4_2.jpg/v1/crop/x_504,y_0,w_3096,h_3026/fill/w_440,h_418,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/Image%20by%20Dose%20Media.jpg',
-                    'price' => '₹1,49,999',
-                    'category' => 'Career Preparation',
-                    'title' => 'Cadet Pilot Programme Preparation',
-                    'description' => 'Comprehensive preparation for airline cadet pilot programs including aptitude tests and interviews',
-                    'instructor' => [
-                        'image' => 'instructors/captain-reddy.jpg',
-                        'name' => 'Capt. Arjun Reddy'
-                    ],
-                    'students' => 234,
-                    'rating' => 4.8,
-                    'duration' => '4 Months',
-                    'level' => 'Beginner',
-                    'features' => ['Aptitude Training', 'Interview Prep', 'Psychometric Tests', 'CV Building']
-                ]
-            ]
+            'programs' => $programs
         ];
+
+        // dd($programsData);
+
+        // $programsData = [
+        //     'title' => 'Our Aviation Programs',
+        //     'description' => 'Professional aviation training programs designed to meet DGCA standards and international requirements',
+        //     'programs' => [
+        //         [
+        //             // 'image' => 'programs/dgca-cpl-ground.jpg',
+        //             'image' => 'https://static.wixstatic.com/media/cf4588_adb298153bb84eb2999b633084ec33d4~mv2.png/v1/crop/x_52,y_0,w_546,h_534/fill/w_440,h_426,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/PngItem_2943178_edited.png',
+        //             'price' => '₹89,999',
+        //             'category' => 'Ground Training',
+        //             'title' => 'DGCA CPL Ground Training',
+        //             'description' => 'Complete DGCA CPL theoretical knowledge preparation with expert instructors and comprehensive study materials',
+        //             'instructor' => [
+        //                 'image' => 'instructors/captain-sharma.jpg',
+        //                 'name' => 'Capt. Raj Sharma'
+        //             ],
+        //             'students' => 156,
+        //             'rating' => 4.8,
+        //             'duration' => '6 Months',
+        //             'level' => 'Intermediate',
+        //             'features' => ['DGCA Syllabus', 'Mock Tests', 'Study Materials', 'Expert Faculty']
+        //         ],
+        //         [
+        //             // 'image' => 'programs/cpl-flight-training.jpg',
+        //             'image' => 'https://static.wixstatic.com/media/cf4588_0c82d83e32f548fcb97ef270f719e659~mv2.jpg/v1/crop/x_0,y_24,w_1082,h_1057/fill/w_440,h_426,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/11.jpg',
+        //             'price' => '₹25,00,000',
+        //             'category' => 'Flight Training',
+        //             'title' => 'CPL Flight Training',
+        //             'description' => 'Complete CPL flight training with 200+ flying hours on modern aircraft and simulator training',
+        //             'instructor' => [
+        //                 'image' => 'instructors/captain-verma.jpg',
+        //                 'name' => 'Capt. Amit Verma'
+        //             ],
+        //             'students' => 89,
+        //             'rating' => 4.9,
+        //             'duration' => '12-18 Months',
+        //             'level' => 'Advanced',
+        //             'features' => ['200+ Flying Hours', 'Simulator Training', 'DGCA Approved', 'Placement Assistance']
+        //         ],
+        //         [
+        //             // 'image' => 'programs/foreign-cpl-conversion.jpg',
+        //             'image' => 'https://static.wixstatic.com/media/11062b_f2eaf67428f84bb8af48bcd9d06c814d~mv2.jpeg/v1/crop/x_1228,y_0,w_5438,h_5265/fill/w_440,h_426,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/Airport%20Counter.jpeg',
+        //             'price' => '₹2,49,999',
+        //             'category' => 'License Conversion',
+        //             'title' => 'Foreign CPL Conversion',
+        //             'description' => 'Convert your foreign CPL to DGCA CPL with comprehensive conversion training and documentation support',
+        //             'instructor' => [
+        //                 'image' => 'instructors/captain-kumar.jpg',
+        //                 'name' => 'Capt. Sanjay Kumar'
+        //             ],
+        //             'students' => 67,
+        //             'rating' => 4.7,
+        //             'duration' => '3-4 Months',
+        //             'level' => 'Advanced',
+        //             'features' => ['Documentation Support', 'Technical Training', 'Medical Assistance', 'Fast-track Process']
+        //         ],
+        //         [
+        //             // 'image' => 'programs/type-rating.jpg',
+        //             'image' => 'https://static.wixstatic.com/media/cf4588_baba802cda29432898e87ab6d814762a~mv2.jpg/v1/crop/x_190,y_0,w_414,h_405/fill/w_440,h_418,al_c,lg_1,q_80,enc_avif,quality_auto/14.jpg',
+        //             'price' => '₹18,00,000',
+        //             'category' => 'Type Rating',
+        //             'title' => 'Type Rating on A320 & B737',
+        //             'description' => 'Advanced type rating training on Airbus A320 and Boeing 737 with full flight simulators',
+        //             'instructor' => [
+        //                 'image' => 'instructors/captain-singh.jpg',
+        //                 'name' => 'Capt. Preet Singh'
+        //             ],
+        //             'students' => 45,
+        //             'rating' => 4.9,
+        //             'duration' => '2-3 Months',
+        //             'level' => 'Professional',
+        //             'features' => ['A320 & B737', 'Full Flight Simulator', 'Line Training', 'Airline Preparation']
+        //         ],
+        //         [
+        //             // 'image' => 'programs/cadet-pilot.jpg',
+        //             'image' => 'https://static.wixstatic.com/media/nsplsh_44695469595178306d6834~mv2_d_4104_3026_s_4_2.jpg/v1/crop/x_504,y_0,w_3096,h_3026/fill/w_440,h_418,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/Image%20by%20Dose%20Media.jpg',
+        //             'price' => '₹1,49,999',
+        //             'category' => 'Career Preparation',
+        //             'title' => 'Cadet Pilot Programme Preparation',
+        //             'description' => 'Comprehensive preparation for airline cadet pilot programs including aptitude tests and interviews',
+        //             'instructor' => [
+        //                 'image' => 'instructors/captain-reddy.jpg',
+        //                 'name' => 'Capt. Arjun Reddy'
+        //             ],
+        //             'students' => 234,
+        //             'rating' => 4.8,
+        //             'duration' => '4 Months',
+        //             'level' => 'Beginner',
+        //             'features' => ['Aptitude Training', 'Interview Prep', 'Psychometric Tests', 'CV Building']
+        //         ]
+        //     ]
+        // ];
 
         $trainingDestinationsData = [
             'title' => 'Global Flight Training Destinations',
@@ -381,9 +422,247 @@ class HomeController extends Controller
                 'link' => route('contact')
             ]
         ];
-
+        // dd($programsData);
         return view('home', compact('hero_text', 'hero_subtext', 'aboutData', 'programsData', 'trainingDestinationsData', 'pilotStepsData', 'faqData'));
     }
+
+    /**
+     * Get default image based on index (matching your original images)
+     */
+    private function getDefaultImage($index)
+    {
+        $defaultImages = [
+            'https://static.wixstatic.com/media/cf4588_adb298153bb84eb2999b633084ec33d4~mv2.png/v1/crop/x_52,y_0,w_546,h_534/fill/w_440,h_426,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/PngItem_2943178_edited.png',
+            'https://static.wixstatic.com/media/cf4588_0c82d83e32f548fcb97ef270f719e659~mv2.jpg/v1/crop/x_0,y_24,w_1082,h_1057/fill/w_440,h_426,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/11.jpg',
+            'https://static.wixstatic.com/media/11062b_f2eaf67428f84bb8af48bcd9d06c814d~mv2.jpeg/v1/crop/x_1228,y_0,w_5438,h_5265/fill/w_440,h_426,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/Airport%20Counter.jpeg',
+            'https://static.wixstatic.com/media/cf4588_baba802cda29432898e87ab6d814762a~mv2.jpg/v1/crop/x_190,y_0,w_414,h_405/fill/w_440,h_418,al_c,lg_1,q_80,enc_avif,quality_auto/14.jpg',
+            'https://static.wixstatic.com/media/nsplsh_44695469595178306d6834~mv2_d_4104_3026_s_4_2.jpg/v1/crop/x_504,y_0,w_3096,h_3026/fill/w_440,h_418,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/Image%20by%20Dose%20Media.jpg'
+        ];
+        
+        return $defaultImages[$index] ?? $defaultImages[0];
+    }
+
+    /**
+     * Get default price based on index (matching your original prices)
+     */
+    private function getDefaultPrice($index)
+    {
+        $defaultPrices = [
+            '₹89,999',
+            '₹25,00,000',
+            '₹2,49,999',
+            '₹18,00,000',
+            '₹1,49,999'
+        ];
+        
+        return $defaultPrices[$index] ?? 'Contact for Price';
+    }
+
+    /**
+     * Get default category based on index (matching your original categories)
+     */
+    private function getDefaultCategory($index)
+    {
+        $defaultCategories = [
+            'Ground Training',
+            'Flight Training',
+            'License Conversion',
+            'Type Rating',
+            'Career Preparation'
+        ];
+        
+        return $defaultCategories[$index] ?? 'Aviation Training';
+    }
+
+    /**
+     * Get default instructor based on index (matching your original instructors)
+     */
+    private function getDefaultInstructor($index)
+    {
+        $defaultInstructors = [
+            [
+                'image' => 'instructors/captain-sharma.jpg',
+                'name' => 'Capt. Raj Sharma'
+            ],
+            [
+                'image' => 'instructors/captain-verma.jpg',
+                'name' => 'Capt. Amit Verma'
+            ],
+            [
+                'image' => 'instructors/captain-kumar.jpg',
+                'name' => 'Capt. Sanjay Kumar'
+            ],
+            [
+                'image' => 'instructors/captain-singh.jpg',
+                'name' => 'Capt. Preet Singh'
+            ],
+            [
+                'image' => 'instructors/captain-reddy.jpg',
+                'name' => 'Capt. Arjun Reddy'
+            ]
+        ];
+        
+        return $defaultInstructors[$index] ?? [
+            'image' => 'instructors/default-instructor.jpg',
+            'name' => 'Expert Instructor'
+        ];
+    }
+
+    /**
+     * Get default students count based on index
+     */
+    private function getDefaultStudents($index)
+    {
+        $defaultStudents = [156, 89, 67, 45, 234];
+        return $defaultStudents[$index] ?? 0;
+    }
+
+    /**
+     * Get default rating based on index
+     */
+    private function getDefaultRating($index)
+    {
+        $defaultRatings = [4.8, 4.9, 4.7, 4.9, 4.8];
+        return $defaultRatings[$index] ?? 4.5;
+    }
+
+    /**
+     * Get default duration based on index
+     */
+    private function getDefaultDuration($index)
+    {
+        $defaultDurations = [
+            '6 Months',
+            '12-18 Months',
+            '3-4 Months',
+            '2-3 Months',
+            '4 Months'
+        ];
+        
+        return $defaultDurations[$index] ?? 'Flexible';
+    }
+
+    /**
+     * Get default level based on index
+     */
+    private function getDefaultLevel($index)
+    {
+        $defaultLevels = [
+            'Intermediate',
+            'Advanced',
+            'Advanced',
+            'Professional',
+            'Beginner'
+        ];
+        
+        return $defaultLevels[$index] ?? 'Intermediate';
+    }
+
+    /**
+     * Get default features based on index
+     */
+    private function getDefaultFeatures($index)
+    {
+        $defaultFeatures = [
+            ['DGCA Syllabus', 'Mock Tests', 'Study Materials', 'Expert Faculty'],
+            ['200+ Flying Hours', 'Simulator Training', 'DGCA Approved', 'Placement Assistance'],
+            ['Documentation Support', 'Technical Training', 'Medical Assistance', 'Fast-track Process'],
+            ['A320 & B737', 'Full Flight Simulator', 'Line Training', 'Airline Preparation'],
+            ['Aptitude Training', 'Interview Prep', 'Psychometric Tests', 'CV Building']
+        ];
+        
+        return $defaultFeatures[$index] ?? ['Expert Faculty', 'Quality Training', 'Flexible Schedule'];
+    }
+
+    /**
+     * Default programs data as fallback (your original data)
+     */
+    private function getDefaultProgramsData()
+    {
+        return [
+            [
+                'image' => 'https://static.wixstatic.com/media/cf4588_adb298153bb84eb2999b633084ec33d4~mv2.png/v1/crop/x_52,y_0,w_546,h_534/fill/w_440,h_426,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/PngItem_2943178_edited.png',
+                'price' => '₹89,999',
+                'category' => 'Ground Training',
+                'title' => 'DGCA CPL Ground Training',
+                'description' => 'Complete DGCA CPL theoretical knowledge preparation with expert instructors and comprehensive study materials',
+                'instructor' => [
+                    'image' => 'instructors/captain-sharma.jpg',
+                    'name' => 'Capt. Raj Sharma'
+                ],
+                'students' => 156,
+                'rating' => 4.8,
+                'duration' => '6 Months',
+                'level' => 'Intermediate',
+                'features' => ['DGCA Syllabus', 'Mock Tests', 'Study Materials', 'Expert Faculty']
+            ],
+            [
+                'image' => 'https://static.wixstatic.com/media/cf4588_0c82d83e32f548fcb97ef270f719e659~mv2.jpg/v1/crop/x_0,y_24,w_1082,h_1057/fill/w_440,h_426,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/11.jpg',
+                'price' => '₹25,00,000',
+                'category' => 'Flight Training',
+                'title' => 'CPL Flight Training',
+                'description' => 'Complete CPL flight training with 200+ flying hours on modern aircraft and simulator training',
+                'instructor' => [
+                    'image' => 'instructors/captain-verma.jpg',
+                    'name' => 'Capt. Amit Verma'
+                ],
+                'students' => 89,
+                'rating' => 4.9,
+                'duration' => '12-18 Months',
+                'level' => 'Advanced',
+                'features' => ['200+ Flying Hours', 'Simulator Training', 'DGCA Approved', 'Placement Assistance']
+            ],
+            [
+                'image' => 'https://static.wixstatic.com/media/11062b_f2eaf67428f84bb8af48bcd9d06c814d~mv2.jpeg/v1/crop/x_1228,y_0,w_5438,h_5265/fill/w_440,h_426,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/Airport%20Counter.jpeg',
+                'price' => '₹2,49,999',
+                'category' => 'License Conversion',
+                'title' => 'Foreign CPL Conversion',
+                'description' => 'Convert your foreign CPL to DGCA CPL with comprehensive conversion training and documentation support',
+                'instructor' => [
+                    'image' => 'instructors/captain-kumar.jpg',
+                    'name' => 'Capt. Sanjay Kumar'
+                ],
+                'students' => 67,
+                'rating' => 4.7,
+                'duration' => '3-4 Months',
+                'level' => 'Advanced',
+                'features' => ['Documentation Support', 'Technical Training', 'Medical Assistance', 'Fast-track Process']
+            ],
+            [
+                'image' => 'https://static.wixstatic.com/media/cf4588_baba802cda29432898e87ab6d814762a~mv2.jpg/v1/crop/x_190,y_0,w_414,h_405/fill/w_440,h_418,al_c,lg_1,q_80,enc_avif,quality_auto/14.jpg',
+                'price' => '₹18,00,000',
+                'category' => 'Type Rating',
+                'title' => 'Type Rating on A320 & B737',
+                'description' => 'Advanced type rating training on Airbus A320 and Boeing 737 with full flight simulators',
+                'instructor' => [
+                    'image' => 'instructors/captain-singh.jpg',
+                    'name' => 'Capt. Preet Singh'
+                ],
+                'students' => 45,
+                'rating' => 4.9,
+                'duration' => '2-3 Months',
+                'level' => 'Professional',
+                'features' => ['A320 & B737', 'Full Flight Simulator', 'Line Training', 'Airline Preparation']
+            ],
+            [
+                'image' => 'https://static.wixstatic.com/media/nsplsh_44695469595178306d6834~mv2_d_4104_3026_s_4_2.jpg/v1/crop/x_504,y_0,w_3096,h_3026/fill/w_440,h_418,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/Image%20by%20Dose%20Media.jpg',
+                'price' => '₹1,49,999',
+                'category' => 'Career Preparation',
+                'title' => 'Cadet Pilot Programme Preparation',
+                'description' => 'Comprehensive preparation for airline cadet pilot programs including aptitude tests and interviews',
+                'instructor' => [
+                    'image' => 'instructors/captain-reddy.jpg',
+                    'name' => 'Capt. Arjun Reddy'
+                ],
+                'students' => 234,
+                'rating' => 4.8,
+                'duration' => '4 Months',
+                'level' => 'Beginner',
+                'features' => ['Aptitude Training', 'Interview Prep', 'Psychometric Tests', 'CV Building']
+            ]
+        ];
+    }
+
 
     // public function about()
     // {

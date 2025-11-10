@@ -14,7 +14,18 @@ class Course extends Model
         'title',
         'slug',
         'type',
+        // Regular course fields
         'hero_description',
+        // Cadet program fields
+        'program_tag',
+        'program_level',
+        'hero_description_1',
+        'hero_description_2',
+        'benefits',
+        'duration',
+        'rating',
+        'number_of_students',
+        // Common fields
         'video_url',
         'hero_image',
         'requirements',
@@ -36,7 +47,10 @@ class Course extends Model
         'training_stages' => 'array',
         'outline' => 'array',
         'rating_categories' => 'array',
+        'benefits' => 'array',
         'fee' => 'decimal:2',
+        'rating' => 'decimal:1',
+        'number_of_students' => 'integer',
         'published' => 'boolean'
     ];
 
@@ -74,5 +88,17 @@ class Course extends Model
     public function getRouteKeyName()
     {
         return 'slug';
+    }
+
+    // Helper method to check if it's a cadet program
+    public function isCadetProgram()
+    {
+        return $this->type === 'cadet_program';
+    }
+
+    // Helper method to check if it's a regular course
+    public function isRegularCourse()
+    {
+        return $this->type === 'regular_course';
     }
 }

@@ -6,6 +6,18 @@
 @section('content')
 <div class="card">
     <div class="card-body">
+        
+        @if ($errors->any())
+            <div class="alert alert-danger">
+                <strong>Whoops!</strong> There were some problems with your input.<br><br>
+                <ul class="mb-0">
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
+
         <form action="{{ route('admin.courses.store') }}" method="POST" enctype="multipart/form-data">
             @csrf
             
@@ -30,9 +42,96 @@
                         </select>
                     </div>
 
+                    <!-- Regular Course Fields -->
                     <div class="mb-3">
                         <label for="hero_description" class="form-label">Hero Description *</label>
                         <textarea class="form-control" id="hero_description" name="hero_description" rows="4" required>{{ old('hero_description') }}</textarea>
+                    </div>
+
+                    <!-- Cadet Program Fields - Always Visible -->
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label for="program_tag" class="form-label">Program Tag</label>
+                                <input type="text" class="form-control" id="program_tag" name="program_tag" value="{{ old('program_tag') }}" placeholder="e.g., Air Asia, Singapore Airlines">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label for="program_level" class="form-label">Program Level</label>
+                                <select class="form-control" id="program_level" name="program_level">
+                                    <option value="">Select Level</option>
+                                    <option value="beginner">Beginner</option>
+                                    <option value="intermediate">Intermediate</option>
+                                    <option value="advanced">Advanced</option>
+                                    <option value="professional">Professional</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="hero_description_1" class="form-label">Hero Description 1</label>
+                        <textarea class="form-control" id="hero_description_1" name="hero_description_1" rows="4">{{ old('hero_description_1') }}</textarea>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="hero_description_2" class="form-label">Hero Description 2</label>
+                        <textarea class="form-control" id="hero_description_2" name="hero_description_2" rows="4">{{ old('hero_description_2') }}</textarea>
+                        <small class="text-muted">This will be shown when user clicks "View Details"</small>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="mb-3">
+                                <label for="duration" class="form-label">Duration</label>
+                                <input type="text" class="form-control" id="duration" name="duration" value="{{ old('duration') }}" placeholder="e.g., 6 months, 1 year">
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="mb-3">
+                                <label for="rating" class="form-label">Rating</label>
+                                <input type="number" class="form-control" id="rating" name="rating" value="{{ old('rating') }}" min="0" max="5" step="0.1" placeholder="0.0 - 5.0">
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="mb-3">
+                                <label for="number_of_students" class="form-label">Number of Students</label>
+                                <input type="number" class="form-control" id="number_of_students" name="number_of_students" value="{{ old('number_of_students') }}" min="0">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Benefits Section - Always Visible -->
+                    <div class="card mb-4">
+                        <div class="card-header d-flex justify-content-between align-items-center">
+                            <h6 class="mb-0">Benefits</h6>
+                            <button type="button" class="btn btn-sm btn-primary" onclick="addBenefit()">
+                                <i class="bi bi-plus"></i> Add Benefit
+                            </button>
+                        </div>
+                        <div class="card-body">
+                            <div id="benefits-container">
+                                <!-- Default benefit item -->
+                                <div class="benefit-item mb-3 p-3 border rounded">
+                                    <div class="row">
+                                        <div class="col-md-5">
+                                            <label class="form-label">Title</label>
+                                            <input type="text" class="form-control" name="benefits[0][title]" placeholder="Guaranteed Job Placement">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="form-label">Description</label>
+                                            <input type="text" class="form-control" name="benefits[0][description]" placeholder="Description here">
+                                        </div>
+                                        <div class="col-md-1 d-flex align-items-end">
+                                            <button type="button" class="btn btn-sm btn-danger" onclick="removeBenefit(this)">
+                                                <i class="bi bi-trash"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
                     <div class="mb-3">
@@ -271,6 +370,7 @@
     let processCount = 1;
     let stageCount = 1;
     let outlineCount = 1;
+    let benefitCount = 1;
 
     // Auto-generate slug from title
     document.getElementById('title').addEventListener('input', function() {
@@ -283,6 +383,40 @@
         
         document.getElementById('slug').value = slug;
     });
+
+    // Benefits Functions
+    function addBenefit() {
+        const container = document.getElementById('benefits-container');
+        const newItem = document.createElement('div');
+        newItem.className = 'benefit-item mb-3 p-3 border rounded';
+        newItem.innerHTML = `
+            <div class="row">
+                <div class="col-md-5">
+                    <label class="form-label">Title</label>
+                    <input type="text" class="form-control" name="benefits[${benefitCount}][title]" placeholder="Guaranteed Job Placement">
+                </div>
+                <div class="col-md-6">
+                    <label class="form-label">Description</label>
+                    <input type="text" class="form-control" name="benefits[${benefitCount}][description]" placeholder="Description here">
+                </div>
+                <div class="col-md-1 d-flex align-items-end">
+                    <button type="button" class="btn btn-sm btn-danger" onclick="removeBenefit(this)">
+                        <i class="bi bi-trash"></i>
+                    </button>
+                </div>
+            </div>
+        `;
+        container.appendChild(newItem);
+        benefitCount++;
+    }
+
+    function removeBenefit(button) {
+        if (document.querySelectorAll('.benefit-item').length > 1) {
+            button.closest('.benefit-item').remove();
+        } else {
+            alert('At least one benefit is required.');
+        }
+    }
 
     // Requirements Functions
     function addRequirement() {
@@ -462,12 +596,12 @@
 </script>
 
 <style>
-    .requirement-item, .process-item, .stage-item, .outline-item {
+    .requirement-item, .process-item, .stage-item, .outline-item, .benefit-item {
         background: #f8f9fa;
         transition: all 0.3s ease;
     }
     
-    .requirement-item:hover, .process-item:hover, .stage-item:hover, .outline-item:hover {
+    .requirement-item:hover, .process-item:hover, .stage-item:hover, .outline-item:hover, .benefit-item:hover {
         background: #e9ecef;
     }
     
