@@ -81,7 +81,7 @@
             </table>
         </div>
         <div class="d-flex justify-content-center">
-            {{ $sections->links() }}
+            {{-- {{ $sections->links() }} --}}
         </div>
     </div>
 </div>

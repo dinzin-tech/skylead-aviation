@@ -14,10 +14,19 @@ class PageBuilderController extends Controller
     public function index()
     {
         // $sections = PageSection::with('elements')
-        $sections = PageSection::with(['page', 'elements'])
-            ->ordered()
-            ->paginate(10);
-            
+        // $sections = PageSection::with(['page', 'elements'])
+        // $sections = PageSection::active()
+        //     ->ordered()
+        //     ->paginate(10);
+
+        // $sections = PageSection::paginate(10);
+
+        // dump(PageSection::count());
+        // dump(PageSection::active()->count());
+        // dump(PageSection::paginate(10)->items());
+        
+        $sections = PageSection::orderBy('sort_order')->get();
+
         return view('admin.page-builder.index', compact('sections'));
     }
 
