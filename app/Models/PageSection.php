@@ -64,6 +64,7 @@ use Illuminate\Database\Eloquent\Model;
 class PageSection extends Model
 {
     use HasFactory;
+    // protected $table = 'page_sections';
 
     protected $fillable = [
         'page_name', // This will now store the page slug
@@ -94,19 +95,30 @@ class PageSection extends Model
         return $this->hasMany(SectionElement::class)->orderBy('sort_order');
     }
 
-    public function scopeActive($query)
-    {
-        return $query->where('is_active', true);
-    }
+    // public function scopeActive($query)
+    // {
+    //     return $query->where('is_active', true);
+    // }
 
     public function scopeForPage($query, $pageSlug)
     {
         return $query->where('page_name', $pageSlug);
     }
 
+    // public function scopeOrdered($query)
+    // {
+    //     return $query->orderBy('sort_order')->orderBy('id');
+    // }
+
+    public function scopeActive($query)
+    {
+        return $query->where('is_active', 1);
+    }
+
     public function scopeOrdered($query)
     {
-        return $query->orderBy('sort_order')->orderBy('id');
+        return $query->orderBy('sort_order', 'asc')
+                    ->orderBy('id', 'asc');
     }
 
     // Get active elements only
