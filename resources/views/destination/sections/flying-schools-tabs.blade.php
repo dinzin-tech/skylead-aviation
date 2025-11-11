@@ -1,5 +1,5 @@
 @if(isset($countryData['flying_schools']))
-<section class="simple-schools-section">
+<section class="simple-schools-section" id="flying_schools">
     <div class="ss-container">
         <div class="ss-header">
             <h1 class="ss-main-title">Partner Flying School</h1>

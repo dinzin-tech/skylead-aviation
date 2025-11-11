@@ -6,7 +6,7 @@
 @section('content')
 <div class="card">
     <div class="card-body">
-        <form action="{{ route('admin.destinations.store') }}" method="POST" id="destinationForm">
+        <form action="{{ route('admin.destinations.store') }}" method="POST" id="destinationForm" enctype="multipart/form-data">
             @csrf
             
             <div class="row">
@@ -100,14 +100,15 @@
 
             <!-- Images -->
             <div class="mb-3">
-                <label class="form-label">Images URLs</label>
+                <label class="form-label">Images</label>
                 <div id="images-container">
                     <div class="input-group mb-2">
-                        <input type="url" class="form-control" name="images[]" placeholder="https://example.com/image1.jpg">
+                        <input type="file" class="form-control" name="images[]" accept="image/*">
                         <button type="button" class="btn btn-outline-danger" onclick="removeField(this)">Remove</button>
                     </div>
                 </div>
-                <button type="button" class="btn btn-sm btn-secondary" onclick="addField('images')">Add Image URL</button>
+                <button type="button" class="btn btn-sm btn-secondary" onclick="addField('images')">Add Image</button>
+                <div class="form-text">Upload destination images (JPEG, PNG, JPG, GIF, SVG, max 2MB each)</div>
             </div>
 
             <!-- Guide Section -->
@@ -131,14 +132,15 @@
 
             <!-- Gallery -->
             <div class="mb-3">
-                <label class="form-label">Gallery URLs</label>
+                <label class="form-label">Gallery Images</label>
                 <div id="gallery-container">
                     <div class="input-group mb-2">
-                        <input type="url" class="form-control" name="gallery[]" placeholder="https://example.com/gallery1.jpg">
+                        <input type="file" class="form-control" name="gallery[]" accept="image/*">
                         <button type="button" class="btn btn-outline-danger" onclick="removeField(this)">Remove</button>
                     </div>
                 </div>
-                <button type="button" class="btn btn-sm btn-secondary" onclick="addField('gallery')">Add Gallery URL</button>
+                <button type="button" class="btn btn-sm btn-secondary" onclick="addField('gallery')">Add Gallery Image</button>
+                <div class="form-text">Upload gallery images (JPEG, PNG, JPG, GIF, SVG, max 2MB each)</div>
             </div>
 
             <!-- Advantages -->
@@ -158,6 +160,7 @@
                 <label class="form-label">Courses Offered</label>
                 <div id="courses-container">
                     <div class="border p-3 mb-3">
+                        <input type="hidden" name="course_logo_indexes[]" value="0">
                         <div class="row mb-2">
                             <div class="col-md-4">
                                 <input type="text" class="form-control" name="course_titles[]" placeholder="Course Title" required>
@@ -165,24 +168,25 @@
                             <div class="col-md-3">
                                 <input type="text" class="form-control" name="course_subtitles[]" placeholder="Subtitle">
                             </div>
-                            <div class="col-md-2">
-                                <input type="text" class="form-control" name="course_logos[]" placeholder="Logo URL">
+                            <div class="col-md-3">
+                                <input type="file" class="form-control" name="course_logos[]" accept="image/*">
                             </div>
                             <div class="col-md-2">
-                                <input type="text" class="form-control" name="course_icons[]" placeholder="Icon class">
-                            </div>
-                            <div class="col-md-1">
-                                <button type="button" class="btn btn-outline-danger" onclick="removeField(this)">Remove</button>
+                                <input type="text" class="form-control" name="course_icons[]" placeholder="Icon class" value="fas fa-plane">
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-12">
+                            <div class="col-11">
                                 <textarea class="form-control" name="course_descriptions[]" placeholder="Course description" rows="2" required></textarea>
+                            </div>
+                            <div class="col-1">
+                                <button type="button" class="btn btn-outline-danger h-100" onclick="removeField(this)">Remove</button>
                             </div>
                         </div>
                     </div>
                 </div>
                 <button type="button" class="btn btn-sm btn-secondary" onclick="addCourseField()">Add Course</button>
+                <div class="form-text">Upload course logos (JPEG, PNG, JPG, GIF, SVG, max 1MB each)</div>
             </div>
 
             <div class="row">
@@ -232,14 +236,29 @@
         }
     });
 
+    let courseCounter = 1;
+
     function addField(type) {
         const container = document.getElementById(`${type}-container`);
         const div = document.createElement('div');
         div.className = 'input-group mb-2';
-        div.innerHTML = `
-            <input type="${type === 'advantages' ? 'text' : 'url'}" class="form-control" name="${type}[]" placeholder="${type === 'advantages' ? 'Enter advantage' : 'https://example.com/image.jpg'}">
-            <button type="button" class="btn btn-outline-danger" onclick="removeField(this)">Remove</button>
-        `;
+        // div.innerHTML = `
+        //     <input type="file" class="form-control" name="${type}[]" accept="image/*">
+        //     <button type="button" class="btn btn-outline-danger" onclick="removeField(this)">Remove</button>
+        // `;
+
+        if (type === 'advantages') {
+            div.innerHTML = `
+                <input type="text" class="form-control" name="advantages[]" placeholder="Advantage">
+                <button type="button" class="btn btn-outline-danger" onclick="removeField(this)">Remove</button>
+            `;
+        } else {
+            div.innerHTML = `
+                <input type="file" class="form-control" name="${type}[]" accept="image/*">
+                <button type="button" class="btn btn-outline-danger" onclick="removeField(this)">Remove</button>
+            `;
+        }
+
         container.appendChild(div);
     }
 
@@ -266,6 +285,7 @@
         const div = document.createElement('div');
         div.className = 'border p-3 mb-3';
         div.innerHTML = `
+            <input type="hidden" name="course_logo_indexes[]" value="${courseCounter}">
             <div class="row mb-2">
                 <div class="col-md-4">
                     <input type="text" class="form-control" name="course_titles[]" placeholder="Course Title" required>
@@ -273,28 +293,90 @@
                 <div class="col-md-3">
                     <input type="text" class="form-control" name="course_subtitles[]" placeholder="Subtitle">
                 </div>
-                <div class="col-md-2">
-                    <input type="text" class="form-control" name="course_logos[]" placeholder="Logo URL">
+                <div class="col-md-3">
+                    <input type="file" class="form-control" name="course_logos[]" accept="image/*">
                 </div>
                 <div class="col-md-2">
                     <input type="text" class="form-control" name="course_icons[]" placeholder="Icon class" value="fas fa-plane">
                 </div>
-                <div class="col-md-1">
-                    <button type="button" class="btn btn-outline-danger" onclick="removeField(this)">Remove</button>
-                </div>
             </div>
             <div class="row">
-                <div class="col-12">
+                <div class="col-11">
                     <textarea class="form-control" name="course_descriptions[]" placeholder="Course description" rows="2" required></textarea>
+                </div>
+                <div class="col-1">
+                    <button type="button" class="btn btn-outline-danger h-100" onclick="removeField(this)">Remove</button>
                 </div>
             </div>
         `;
         container.appendChild(div);
+        courseCounter++;
     }
 
     function removeField(button) {
         button.closest('.input-group, .row, .border').remove();
     }
+
+    // Image preview functionality
+    function previewImage(input, previewId) {
+        const preview = document.getElementById(previewId);
+        const file = input.files[0];
+        
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                preview.src = e.target.result;
+                preview.style.display = 'block';
+            }
+            reader.readAsDataURL(file);
+        }
+    }
+
+    // Add preview for all file inputs
+    document.addEventListener('DOMContentLoaded', function() {
+        const fileInputs = document.querySelectorAll('input[type="file"]');
+        fileInputs.forEach(input => {
+            input.addEventListener('change', function() {
+                const container = this.closest('.input-group, .border');
+                if (container) {
+                    // Remove existing preview
+                    const existingPreview = container.querySelector('.image-preview');
+                    if (existingPreview) {
+                        existingPreview.remove();
+                    }
+                    
+                    // Add new preview
+                    if (this.files[0]) {
+                        const preview = document.createElement('img');
+                        preview.className = 'image-preview mt-2';
+                        preview.style.maxWidth = '100px';
+                        preview.style.maxHeight = '100px';
+                        preview.style.objectFit = 'cover';
+                        preview.style.borderRadius = '4px';
+                        preview.style.display = 'block';
+                        
+                        const reader = new FileReader();
+                        reader.onload = function(e) {
+                            preview.src = e.target.result;
+                        }
+                        reader.readAsDataURL(this.files[0]);
+                        
+                        container.appendChild(preview);
+                    }
+                }
+            });
+        });
+    });
 </script>
 @endpush
+
+<style>
+.image-preview {
+    max-width: 100px;
+    max-height: 100px;
+    object-fit: cover;
+    border-radius: 4px;
+    border: 1px solid #dee2e6;
+}
+</style>
 @endsection
