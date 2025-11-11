@@ -1,22 +1,23 @@
 <!--================ Start Requirements Area =================-->
-<section class="section_gap">
+<section class="requirements-section section_gap">
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-lg-8 text-center">
-                <h2 class="mb-5">{{ $title }}</h2>
+                <div class="main_title">
+                    <h2>{{ $title }}</h2>
+                </div>
             </div>
         </div>
-        <div class="row">
+        
+        <div class="requirements-grid">
             @foreach($requirements as $requirement)
-            <div class="col-lg-3 col-md-6 mb-4">
-                <div class="card requirement-card h-100">
-                    <div class="card-body text-center">
-                        <div class="icon mb-4">
-                            <i class="{{ $requirement['icon'] }} display-4 "></i>
-                        </div>
-                        <h5 class="card-title mb-3">{{ $requirement['title'] }}</h5>
-                        <p class="card-text">{{ $requirement['description'] }}</p>
-                    </div>
+            <div class="requirement-card">
+                <div class="requirement-icon">
+                    <i class="{{ $requirement['icon'] }}"></i>
+                </div>
+                <div class="requirement-content">
+                    <h4 class="requirement-title">{{ $requirement['title'] }}</h4>
+                    <p class="requirement-description">{{ $requirement['description'] }}</p>
                 </div>
             </div>
             @endforeach

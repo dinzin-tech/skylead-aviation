@@ -13,6 +13,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Admin\HeroContentController;
 use App\Http\Controllers\Admin\EventController;
 use App\Http\Controllers\Admin\MaintenanceController;
+use App\Http\Controllers\Admin\AdminCourseController;
 
 
 use App\Http\Controllers\CourseController;
@@ -34,10 +35,10 @@ Route::get('/', function () {
 });
 
 // For regular courses
-Route::get('/course/{name}', [CourseController::class, 'show'])->name('course.details');
+Route::get('/course/{slug}', [CourseController::class, 'show'])->name('course.details');
 
 // Specific route for Air Asia Cadet Program (optional)
-Route::get('/air-asia-cadet-pilot-program', [CourseController::class, 'show'])->name('cadet.airasia');
+// Route::get('/air-asia-cadet-pilot-program', [CourseController::class, 'show'])->name('cadet.airasia');
 
 
 // public routes
@@ -81,6 +82,14 @@ Route::middleware(['auth', 'role:admin'])
         
         // Posts resource
         // Route::resource('posts', PostController::class);
+
+        // Course Management Routes
+        Route::get('/courses', [AdminCourseController::class, 'index'])->name('courses.index');
+        Route::get('/courses/create', [AdminCourseController::class, 'create'])->name('courses.create');
+        Route::post('/courses', [AdminCourseController::class, 'store'])->name('courses.store');
+        Route::get('/courses/{course}/edit', [AdminCourseController::class, 'edit'])->name('courses.edit');
+        Route::put('/courses/{course}', [AdminCourseController::class, 'update'])->name('courses.update');
+        Route::delete('/courses/{course}', [AdminCourseController::class, 'destroy'])->name('courses.destroy');
         
         // Blogs resource
         Route::resource('blogs', BlogController::class);
@@ -139,6 +148,10 @@ Route::middleware(['auth', 'role:admin'])
         Route::post('maintenance/fix-symlink', [MaintenanceController::class, 'fixSymlink'])->name('maintenance.fix-symlink');
         Route::get('maintenance/status', [MaintenanceController::class, 'checkStatus'])->name('maintenance.status');
 
+        // Route::resource('courses', AdminCourseController::class);
+
     });
 
 require __DIR__.'/auth.php';
+
+ 
