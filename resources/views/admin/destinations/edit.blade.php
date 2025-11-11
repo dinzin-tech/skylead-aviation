@@ -6,7 +6,7 @@
 @section('content')
 <div class="card">
     <div class="card-body">
-        <form action="{{ route('admin.destinations.update', $destination) }}" method="POST" id="destinationForm">
+        <form action="{{ route('admin.destinations.update', $destination) }}" method="POST" id="destinationForm" enctype="multipart/form-data">
             @csrf
             @method('PUT')
             
@@ -101,23 +101,37 @@
 
             <!-- Images -->
             <div class="mb-3">
-                <label class="form-label">Images URLs</label>
-                <div id="images-container">
-                    @if($destination->images && count($destination->images) > 0)
-                        @foreach($destination->images as $image)
-                        <div class="input-group mb-2">
-                            <input type="url" class="form-control" name="images[]" value="{{ $image }}" placeholder="https://example.com/image1.jpg">
-                            <button type="button" class="btn btn-outline-danger" onclick="removeField(this)">Remove</button>
+                <label class="form-label">Images</label>
+                
+                <!-- Display existing images -->
+                @if($destination->images && count($destination->images) > 0)
+                <div class="mb-3">
+                    <label class="form-label">Current Images:</label>
+                    <div class="row">
+                        @foreach($destination->images as $index => $image)
+                        <div class="col-md-3 mb-2">
+                            <div class="card">
+                                <img src="{{ Storage::url($image) }}" class="card-img-top" alt="Destination Image" style="height: 100px; object-fit: cover;">
+                                <div class="card-body p-2 text-center">
+                                    <button type="button" class="btn btn-sm btn-outline-danger" onclick="removeExistingImage('images', {{ $index }})">
+                                        Remove
+                                    </button>
+                                </div>
+                            </div>
                         </div>
                         @endforeach
-                    @else
-                        <div class="input-group mb-2">
-                            <input type="url" class="form-control" name="images[]" placeholder="https://example.com/image1.jpg">
-                            <button type="button" class="btn btn-outline-danger" onclick="removeField(this)">Remove</button>
-                        </div>
-                    @endif
+                    </div>
                 </div>
-                <button type="button" class="btn btn-sm btn-secondary" onclick="addField('images')">Add Image URL</button>
+                @endif
+                
+                <div id="images-container">
+                    <div class="input-group mb-2">
+                        <input type="file" class="form-control" name="images[]" accept="image/*">
+                        <button type="button" class="btn btn-outline-danger" onclick="removeField(this)">Remove</button>
+                    </div>
+                </div>
+                <button type="button" class="btn btn-sm btn-secondary" onclick="addField('images')">Add Image</button>
+                <div class="form-text">Upload destination images (JPEG, PNG, JPG, GIF, SVG, max 2MB each)</div>
             </div>
 
             <!-- Guide Section -->
@@ -125,7 +139,7 @@
                 <label class="form-label">Guide Items</label>
                 <div id="guide-container">
                     @if($destination->guide && count($destination->guide) > 0)
-                        @foreach($destination->guide as $guideItem)
+                        @foreach($destination->guide as $index => $guideItem)
                         <div class="row mb-2">
                             <div class="col-md-5">
                                 <input type="text" class="form-control" name="guide_titles[]" value="{{ $guideItem['title'] ?? '' }}" placeholder="Title (e.g., Flight Training)">
@@ -157,23 +171,37 @@
 
             <!-- Gallery -->
             <div class="mb-3">
-                <label class="form-label">Gallery URLs</label>
-                <div id="gallery-container">
-                    @if($destination->gallery && count($destination->gallery) > 0)
-                        @foreach($destination->gallery as $galleryItem)
-                        <div class="input-group mb-2">
-                            <input type="url" class="form-control" name="gallery[]" value="{{ $galleryItem }}" placeholder="https://example.com/gallery1.jpg">
-                            <button type="button" class="btn btn-outline-danger" onclick="removeField(this)">Remove</button>
+                <label class="form-label">Gallery Images</label>
+                
+                <!-- Display existing gallery images -->
+                @if($destination->gallery && count($destination->gallery) > 0)
+                <div class="mb-3">
+                    <label class="form-label">Current Gallery Images:</label>
+                    <div class="row">
+                        @foreach($destination->gallery as $index => $galleryImage)
+                        <div class="col-md-3 mb-2">
+                            <div class="card">
+                                <img src="{{ Storage::url($galleryImage) }}" class="card-img-top" alt="Gallery Image" style="height: 100px; object-fit: cover;">
+                                <div class="card-body p-2 text-center">
+                                    <button type="button" class="btn btn-sm btn-outline-danger" onclick="removeExistingImage('gallery', {{ $index }})">
+                                        Remove
+                                    </button>
+                                </div>
+                            </div>
                         </div>
                         @endforeach
-                    @else
-                        <div class="input-group mb-2">
-                            <input type="url" class="form-control" name="gallery[]" placeholder="https://example.com/gallery1.jpg">
-                            <button type="button" class="btn btn-outline-danger" onclick="removeField(this)">Remove</button>
-                        </div>
-                    @endif
+                    </div>
                 </div>
-                <button type="button" class="btn btn-sm btn-secondary" onclick="addField('gallery')">Add Gallery URL</button>
+                @endif
+                
+                <div id="gallery-container">
+                    <div class="input-group mb-2">
+                        <input type="file" class="form-control" name="gallery[]" accept="image/*">
+                        <button type="button" class="btn btn-outline-danger" onclick="removeField(this)">Remove</button>
+                    </div>
+                </div>
+                <button type="button" class="btn btn-sm btn-secondary" onclick="addField('gallery')">Add Gallery Image</button>
+                <div class="form-text">Upload gallery images (JPEG, PNG, JPG, GIF, SVG, max 2MB each)</div>
             </div>
 
             <!-- Advantages -->
@@ -200,10 +228,33 @@
             <!-- Courses Offered -->
             <div class="mb-3">
                 <label class="form-label">Courses Offered</label>
+                
+                <!-- Display existing course logos -->
+                @if($destination->courses_offered && count($destination->courses_offered) > 0)
+                <div class="mb-3">
+                    <label class="form-label">Current Course Logos:</label>
+                    <div class="row">
+                        @foreach($destination->courses_offered as $index => $course)
+                        @if(!empty($course['logo']))
+                        <div class="col-md-3 mb-2">
+                            <div class="card">
+                                <img src="{{ Storage::url($course['logo']) }}" class="card-img-top" alt="Course Logo" style="height: 80px; object-fit: contain;">
+                                <div class="card-body p-2 text-center">
+                                    <small class="text-muted">{{ $course['title'] ?? 'Course Logo' }}</small>
+                                </div>
+                            </div>
+                        </div>
+                        @endif
+                        @endforeach
+                    </div>
+                </div>
+                @endif
+                
                 <div id="courses-container">
                     @if($destination->courses_offered && count($destination->courses_offered) > 0)
-                        @foreach($destination->courses_offered as $course)
+                        @foreach($destination->courses_offered as $index => $course)
                         <div class="border p-3 mb-3">
+                            <input type="hidden" name="course_logo_indexes[]" value="{{ $index }}">
                             <div class="row mb-2">
                                 <div class="col-md-4">
                                     <input type="text" class="form-control" name="course_titles[]" value="{{ $course['title'] ?? '' }}" placeholder="Course Title" required>
@@ -211,25 +262,29 @@
                                 <div class="col-md-3">
                                     <input type="text" class="form-control" name="course_subtitles[]" value="{{ $course['subtitle'] ?? '' }}" placeholder="Subtitle">
                                 </div>
-                                <div class="col-md-2">
-                                    <input type="text" class="form-control" name="course_logos[]" value="{{ $course['logo'] ?? '' }}" placeholder="Logo URL">
+                                <div class="col-md-3">
+                                    <input type="file" class="form-control" name="course_logos[]" accept="image/*">
+                                    @if(!empty($course['logo']))
+                                    <div class="form-text">Current: {{ basename($course['logo']) }}</div>
+                                    @endif
                                 </div>
                                 <div class="col-md-2">
                                     <input type="text" class="form-control" name="course_icons[]" value="{{ $course['icon'] ?? 'fas fa-plane' }}" placeholder="Icon class">
                                 </div>
-                                <div class="col-md-1">
-                                    <button type="button" class="btn btn-outline-danger" onclick="removeField(this)">Remove</button>
-                                </div>
                             </div>
                             <div class="row">
-                                <div class="col-12">
+                                <div class="col-11">
                                     <textarea class="form-control" name="course_descriptions[]" placeholder="Course description" rows="2" required>{{ $course['description'] ?? '' }}</textarea>
+                                </div>
+                                <div class="col-1">
+                                    <button type="button" class="btn btn-outline-danger h-100" onclick="removeField(this)">Remove</button>
                                 </div>
                             </div>
                         </div>
                         @endforeach
                     @else
                         <div class="border p-3 mb-3">
+                            <input type="hidden" name="course_logo_indexes[]" value="0">
                             <div class="row mb-2">
                                 <div class="col-md-4">
                                     <input type="text" class="form-control" name="course_titles[]" placeholder="Course Title" required>
@@ -237,25 +292,26 @@
                                 <div class="col-md-3">
                                     <input type="text" class="form-control" name="course_subtitles[]" placeholder="Subtitle">
                                 </div>
-                                <div class="col-md-2">
-                                    <input type="text" class="form-control" name="course_logos[]" placeholder="Logo URL">
+                                <div class="col-md-3">
+                                    <input type="file" class="form-control" name="course_logos[]" accept="image/*">
                                 </div>
                                 <div class="col-md-2">
                                     <input type="text" class="form-control" name="course_icons[]" placeholder="Icon class" value="fas fa-plane">
                                 </div>
-                                <div class="col-md-1">
-                                    <button type="button" class="btn btn-outline-danger" onclick="removeField(this)">Remove</button>
-                                </div>
                             </div>
                             <div class="row">
-                                <div class="col-12">
+                                <div class="col-11">
                                     <textarea class="form-control" name="course_descriptions[]" placeholder="Course description" rows="2" required></textarea>
+                                </div>
+                                <div class="col-1">
+                                    <button type="button" class="btn btn-outline-danger h-100" onclick="removeField(this)">Remove</button>
                                 </div>
                             </div>
                         </div>
                     @endif
                 </div>
                 <button type="button" class="btn btn-sm btn-secondary" onclick="addCourseField()">Add Course</button>
+                <div class="form-text">Upload course logos (JPEG, PNG, JPG, GIF, SVG, max 1MB each)</div>
             </div>
 
             <div class="row">
@@ -329,6 +385,8 @@
 
 @push('scripts')
 <script>
+    let courseCounter = {{ $destination->courses_offered ? count($destination->courses_offered) : 1 }};
+
     // Auto-generate slug from country name (only if empty)
     document.getElementById('country_name').addEventListener('input', function() {
         const nameInput = this;
@@ -351,10 +409,23 @@
         const container = document.getElementById(`${type}-container`);
         const div = document.createElement('div');
         div.className = 'input-group mb-2';
-        div.innerHTML = `
-            <input type="${type === 'advantages' ? 'text' : 'url'}" class="form-control" name="${type}[]" placeholder="${type === 'advantages' ? 'Enter advantage' : 'https://example.com/image.jpg'}">
-            <button type="button" class="btn btn-outline-danger" onclick="removeField(this)">Remove</button>
-        `;
+        // div.innerHTML = `
+        //     <input type="file" class="form-control" name="${type}[]" accept="image/*">
+        //     <button type="button" class="btn btn-outline-danger" onclick="removeField(this)">Remove</button>
+        // `;
+
+        if (type === 'advantages') {
+            div.innerHTML = `
+                <input type="text" class="form-control" name="advantages[]" placeholder="Globally recognized FAA license">
+                <button type="button" class="btn btn-outline-danger" onclick="removeField(this)">Remove</button>
+            `;
+        } else {
+            div.innerHTML = `
+                <input type="file" class="form-control" name="${type}[]" accept="image/*">
+                <button type="button" class="btn btn-outline-danger" onclick="removeField(this)">Remove</button>
+            `;
+        }
+
         container.appendChild(div);
     }
 
@@ -381,6 +452,7 @@
         const div = document.createElement('div');
         div.className = 'border p-3 mb-3';
         div.innerHTML = `
+            <input type="hidden" name="course_logo_indexes[]" value="${courseCounter}">
             <div class="row mb-2">
                 <div class="col-md-4">
                     <input type="text" class="form-control" name="course_titles[]" placeholder="Course Title" required>
@@ -388,42 +460,93 @@
                 <div class="col-md-3">
                     <input type="text" class="form-control" name="course_subtitles[]" placeholder="Subtitle">
                 </div>
-                <div class="col-md-2">
-                    <input type="text" class="form-control" name="course_logos[]" placeholder="Logo URL">
+                <div class="col-md-3">
+                    <input type="file" class="form-control" name="course_logos[]" accept="image/*">
                 </div>
                 <div class="col-md-2">
                     <input type="text" class="form-control" name="course_icons[]" placeholder="Icon class" value="fas fa-plane">
                 </div>
-                <div class="col-md-1">
-                    <button type="button" class="btn btn-outline-danger" onclick="removeField(this)">Remove</button>
-                </div>
             </div>
             <div class="row">
-                <div class="col-12">
+                <div class="col-11">
                     <textarea class="form-control" name="course_descriptions[]" placeholder="Course description" rows="2" required></textarea>
+                </div>
+                <div class="col-1">
+                    <button type="button" class="btn btn-outline-danger h-100" onclick="removeField(this)">Remove</button>
                 </div>
             </div>
         `;
         container.appendChild(div);
+        courseCounter++;
     }
 
     function removeField(button) {
         button.closest('.input-group, .row, .border').remove();
     }
 
-    // Preview images/gallery URLs
+    function removeExistingImage(type, index) {
+        if (confirm('Are you sure you want to remove this image?')) {
+            // Create hidden input to mark image for removal
+            const container = document.getElementById(`${type}-container`);
+            const hiddenInput = document.createElement('input');
+            hiddenInput.type = 'hidden';
+            hiddenInput.name = `remove_${type}[]`;
+            hiddenInput.value = index;
+            container.appendChild(hiddenInput);
+            
+            // Hide the image card
+            const imageCard = event.target.closest('.col-md-3');
+            if (imageCard) {
+                imageCard.style.display = 'none';
+            }
+        }
+    }
+
+    // Image preview functionality for new uploads
     document.addEventListener('DOMContentLoaded', function() {
-        // Add preview functionality for image URLs
-        const imageInputs = document.querySelectorAll('input[name="images[]"], input[name="gallery[]"]');
-        imageInputs.forEach(input => {
-            input.addEventListener('blur', function() {
-                if (this.value) {
-                    // You can add image preview functionality here if needed
-                    console.log('Image URL entered:', this.value);
+        const fileInputs = document.querySelectorAll('input[type="file"]');
+        fileInputs.forEach(input => {
+            input.addEventListener('change', function() {
+                const container = this.closest('.input-group, .border');
+                if (container) {
+                    // Remove existing preview
+                    const existingPreview = container.querySelector('.image-preview');
+                    if (existingPreview) {
+                        existingPreview.remove();
+                    }
+                    
+                    // Add new preview
+                    if (this.files[0]) {
+                        const preview = document.createElement('img');
+                        preview.className = 'image-preview mt-2';
+                        preview.style.maxWidth = '100px';
+                        preview.style.maxHeight = '100px';
+                        preview.style.objectFit = 'cover';
+                        preview.style.borderRadius = '4px';
+                        preview.style.display = 'block';
+                        
+                        const reader = new FileReader();
+                        reader.onload = function(e) {
+                            preview.src = e.target.result;
+                        }
+                        reader.readAsDataURL(this.files[0]);
+                        
+                        container.appendChild(preview);
+                    }
                 }
             });
         });
     });
 </script>
 @endpush
+
+<style>
+.image-preview {
+    max-width: 100px;
+    max-height: 100px;
+    object-fit: cover;
+    border-radius: 4px;
+    border: 1px solid #dee2e6;
+}
+</style>
 @endsection

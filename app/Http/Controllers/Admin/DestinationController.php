@@ -8,6 +8,7 @@ use App\Models\Destination;
 use App\Models\FlyingSchool;
 use App\Models\Country;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Storage;
 
 class DestinationController extends Controller
 {
@@ -49,15 +50,21 @@ class DestinationController extends Controller
             'flying_schools' => 'nullable|array',
             'flying_schools.*' => 'exists:flying_schools,id',
             'is_active' => 'boolean',
-            'sort_order' => 'nullable|integer'
+            'sort_order' => 'nullable|integer',
+            // File validation
+            'images.*' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'gallery.*' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'course_logos.*' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:1024'
         ]);
 
-        // Handle JSON fields
-        $validated['images'] = $this->processImages($request);
+        // Handle file uploads
+        $validated['images'] = $this->processImageUploads($request, 'images', 'destinations/images');
+        $validated['gallery'] = $this->processImageUploads($request, 'gallery', 'destinations/gallery');
+        $courseLogos = $this->processCourseLogos($request);
+
         $validated['guide'] = $this->processGuide($request);
-        $validated['gallery'] = $this->processGallery($request);
         $validated['advantages'] = $this->processAdvantages($request);
-        $validated['courses_offered'] = $this->processCourses($request);
+        $validated['courses_offered'] = $this->processCourses($request, $courseLogos);
 
         $destination = Destination::create($validated);
 
@@ -68,14 +75,6 @@ class DestinationController extends Controller
 
         return redirect()->route('admin.destinations.index')
             ->with('success', 'Destination created successfully.');
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
     }
 
     /**
@@ -105,15 +104,21 @@ class DestinationController extends Controller
             'flying_schools' => 'nullable|array',
             'flying_schools.*' => 'exists:flying_schools,id',
             'is_active' => 'boolean',
-            'sort_order' => 'nullable|integer'
+            'sort_order' => 'nullable|integer',
+            // File validation
+            'images.*' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'gallery.*' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'course_logos.*' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:1024'
         ]);
 
-        // Handle JSON fields
-        $validated['images'] = $this->processImages($request, $destination->images);
+        // Handle file uploads
+        $validated['images'] = $this->processImageUploads($request, 'images', 'destinations/images', $destination->images);
+        $validated['gallery'] = $this->processImageUploads($request, 'gallery', 'destinations/gallery', $destination->gallery);
+        $courseLogos = $this->processCourseLogos($request, $destination->courses_offered);
+
         $validated['guide'] = $this->processGuide($request, $destination->guide);
-        $validated['gallery'] = $this->processGallery($request, $destination->gallery);
         $validated['advantages'] = $this->processAdvantages($request, $destination->advantages);
-        $validated['courses_offered'] = $this->processCourses($request, $destination->courses_offered);
+        $validated['courses_offered'] = $this->processCourses($request, $courseLogos, $destination->courses_offered);
 
         $destination->update($validated);
 
@@ -129,6 +134,19 @@ class DestinationController extends Controller
      */
     public function destroy(Destination $destination)
     {
+        // Delete uploaded files
+        $this->deleteUploadedFiles($destination->images);
+        $this->deleteUploadedFiles($destination->gallery);
+        
+        // Delete course logos
+        if ($destination->courses_offered) {
+            foreach ($destination->courses_offered as $course) {
+                if (!empty($course['logo']) && Storage::disk('public')->exists($course['logo'])) {
+                    Storage::disk('public')->delete($course['logo']);
+                }
+            }
+        }
+
         $destination->delete();
 
         return redirect()->route('admin.destinations.index')
@@ -136,18 +154,51 @@ class DestinationController extends Controller
     }
 
     /**
-     * Process images array
+     * Process image uploads for images and gallery
      */
-    private function processImages(Request $request, $existing = null)
+    private function processImageUploads(Request $request, $fieldName, $storagePath, $existing = [])
     {
-        $images = $existing ?? [];
-        
-        if ($request->filled('images')) {
-            $newImages = array_filter($request->input('images', []));
-            $images = array_merge($images, $newImages);
+        $filePaths = $existing ?? [];
+
+        if ($request->hasFile($fieldName)) {
+            foreach ($request->file($fieldName) as $file) {
+                if ($file->isValid()) {
+                    $filePaths[] = $file->store($storagePath, 'public');
+                }
+            }
         }
-        
-        return array_values(array_unique($images));
+
+        return $filePaths;
+    }
+
+    /**
+     * Process course logo uploads
+     */
+    private function processCourseLogos(Request $request, $existingCourses = [])
+    {
+        $logos = [];
+
+        if ($request->hasFile('course_logos')) {
+            $logoFiles = $request->file('course_logos');
+            $logoIndexes = $request->input('course_logo_indexes', []);
+
+            foreach ($logoIndexes as $index) {
+                if (isset($logoFiles[$index]) && $logoFiles[$index]->isValid()) {
+                    $logos[$index] = $logoFiles[$index]->store('destinations/course-logos', 'public');
+                }
+            }
+        }
+
+        // Preserve existing logos for courses that don't have new uploads
+        if ($existingCourses) {
+            foreach ($existingCourses as $index => $course) {
+                if (!empty($course['logo']) && !isset($logos[$index])) {
+                    $logos[$index] = $course['logo'];
+                }
+            }
+        }
+
+        return $logos;
     }
 
     /**
@@ -175,21 +226,6 @@ class DestinationController extends Controller
     }
 
     /**
-     * Process gallery array
-     */
-    private function processGallery(Request $request, $existing = null)
-    {
-        $gallery = $existing ?? [];
-        
-        if ($request->filled('gallery')) {
-            $newGallery = array_filter($request->input('gallery', []));
-            $gallery = array_merge($gallery, $newGallery);
-        }
-        
-        return array_values(array_unique($gallery));
-    }
-
-    /**
      * Process advantages array
      */
     private function processAdvantages(Request $request, $existing = null)
@@ -206,7 +242,7 @@ class DestinationController extends Controller
     /**
      * Process courses offered array
      */
-    private function processCourses(Request $request, $existing = null)
+    private function processCourses(Request $request, $courseLogos = [], $existing = null)
     {
         $courses = [];
         
@@ -214,7 +250,6 @@ class DestinationController extends Controller
             $titles = $request->input('course_titles', []);
             $descriptions = $request->input('course_descriptions', []);
             $subtitles = $request->input('course_subtitles', []);
-            $logos = $request->input('course_logos', []);
             $icons = $request->input('course_icons', []);
             
             foreach ($titles as $index => $title) {
@@ -223,7 +258,7 @@ class DestinationController extends Controller
                         'title' => $title,
                         'subtitle' => $subtitles[$index] ?? '',
                         'description' => $descriptions[$index],
-                        'logo' => $logos[$index] ?? '',
+                        'logo' => $courseLogos[$index] ?? '',
                         'icon' => $icons[$index] ?? 'fas fa-plane'
                     ];
                 }
@@ -231,5 +266,19 @@ class DestinationController extends Controller
         }
         
         return !empty($courses) ? $courses : $existing;
+    }
+
+    /**
+     * Delete uploaded files
+     */
+    private function deleteUploadedFiles($filePaths)
+    {
+        if ($filePaths) {
+            foreach ($filePaths as $filePath) {
+                if (Storage::disk('public')->exists($filePath)) {
+                    Storage::disk('public')->delete($filePath);
+                }
+            }
+        }
     }
 }

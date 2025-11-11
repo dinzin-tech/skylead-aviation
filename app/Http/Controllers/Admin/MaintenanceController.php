@@ -25,12 +25,15 @@ class MaintenanceController extends Controller
     public function fixStorage(Request $request)
     {
         $directories = [
-            'app/public/hero',
-            'app/public/hero/videos',
-            'app/public/events',
-            'app/public/galleries',
-            'app/public/volunteers',
-            'app/public/blogs',
+            // 'app/public/hero',
+            // 'app/public/hero/videos',
+            // 'app/public/events',
+            // 'app/public/galleries',
+            // 'app/public/volunteers',
+            // 'app/public/blogs',
+            'app/public/flags',
+            'app/public/aircrafts',
+            'app/public/destinations',
         ];
 
         $results = [];
@@ -57,80 +60,6 @@ class MaintenanceController extends Controller
         return back()->with('success', 'Storage directories fixed successfully!')
                     ->with('results', $results);
     }
-
-    // public function fixSymlink(Request $request)
-    // {
-    //     $publicStoragePath = public_path('storage');
-    //     $appStoragePath = storage_path('app/public');
-        
-    //     $results = [];
-        
-    //     // Remove existing symlink if it exists
-    //     if (File::exists($publicStoragePath) || is_link($publicStoragePath)) {
-    //         if (is_link($publicStoragePath)) {
-    //             if (unlink($publicStoragePath)) {
-    //                 $results[] = "Removed existing symlink";
-    //             } else {
-    //                 $results[] = "Failed to remove existing symlink";
-    //             }
-    //         } else {
-    //             $results[] = "Public storage path exists but is not a symlink";
-    //         }
-    //     }
-        
-    //     // Create new symlink
-    //     if (function_exists('symlink')) {
-    //         if (symlink($appStoragePath, $publicStoragePath)) {
-    //             $results[] = "Symlink created successfully";
-    //         } else {
-    //             $results[] = "Failed to create symlink using PHP symlink() function";
-                
-    //             // Fallback: try to create the directory structure manually
-    //             $this->createFallbackStructure($results);
-    //         }
-    //     } else {
-    //         $results[] = "symlink() function is disabled on this server";
-            
-    //         // Fallback: try to create the directory structure manually
-    //         $this->createFallbackStructure($results);
-    //     }
-        
-    //     return back()->with('success', 'Symlink operation completed!')
-    //                 ->with('results', $results);
-    // }
-    
-    // private function createFallbackStructure(&$results)
-    // {
-    //     $results[] = "Attempting fallback method...";
-        
-    //     // Create the public/storage directory if it doesn't exist
-    //     $publicStoragePath = public_path('storage');
-    //     if (!File::exists($publicStoragePath)) {
-    //         File::makeDirectory($publicStoragePath, 0755, true);
-    //         $results[] = "Created public/storage directory";
-    //     }
-        
-    //     // Copy default images to public storage
-    //     $defaultImages = [
-    //         'default-event.jpg',
-    //         'default-gallery.jpg',
-    //         'default-hero.jpg',
-    //         'default-volunteer.jpg',
-    //         'default-blog.jpg',
-    //     ];
-        
-    //     foreach ($defaultImages as $image) {
-    //         $source = public_path("images/{$image}");
-    //         $destination = public_path("storage/{$image}");
-            
-    //         if (File::exists($source) && !File::exists($destination)) {
-    //             File::copy($source, $destination);
-    //             $results[] = "Copied {$image} to public storage";
-    //         }
-    //     }
-        
-    //     $results[] = "Fallback method completed. Note: Uploaded files will be stored in storage/app/public but may not be accessible through web until symlink is properly configured.";
-    // }
 
     public function fixSymlink(Request $request)
     {
@@ -258,6 +187,7 @@ if (file_exists($filePath) && is_file($filePath)) {
         'webp' => 'image/webp',
         'pdf' => 'application/pdf',
         'txt' => 'text/plain',
+        'avif' => 'image/avif',
     ];
     
     $extension = strtolower(pathinfo($filePath, PATHINFO_EXTENSION));
@@ -283,11 +213,14 @@ PHP;
         
         // Check storage directories
         $directories = [
-            'app/public/hero' => storage_path('app/public/hero'),
-            'app/public/events' => storage_path('app/public/events'),
-            'app/public/galleries' => storage_path('app/public/galleries'),
-            'app/public/volunteers' => storage_path('app/public/volunteers'),
-            'app/public/blogs' => storage_path('app/public/blogs'),
+            // 'app/public/hero' => storage_path('app/public/hero'),
+            // 'app/public/events' => storage_path('app/public/events'),
+            // 'app/public/galleries' => storage_path('app/public/galleries'),
+            // 'app/public/volunteers' => storage_path('app/public/volunteers'),
+            // 'app/public/blogs' => storage_path('app/public/blogs'),
+            'app/public/flags' => storage_path('app/public/flags'),
+            'app/public/aircrafts' => storage_path('app/public/aircrafts'),
+            'app/public/destinations' => storage_path('app/public/destinations'),
         ];
         
         foreach ($directories as $name => $path) {
