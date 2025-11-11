@@ -17,12 +17,11 @@
             @foreach($countryData['courses_offered'] as $course)
             <div class="course-card">
                 <div class="course-logo">
-                    @if(file_exists(Storage::url($course['logo'])))
-                    <img src="{{ Storage::url($course['logo']) }}" alt="{{ $course['title'] }}" class="course-logo-img">
+                    @if(Storage::exists($course['logo']))
+                        <img src="{{ Storage::url($course['logo']) }}" alt="{{ $course['title'] }}" class="course-logo-img">
                     @else
-                    <i class="{{ $course['icon'] }}"></i>
+                        <i class="{{ $course['icon'] }}"></i>
                     @endif
-                    <img src="{{ Storage::url($course['logo']) }}" alt="{{ $course['title'] }}" class="course-logo-img">
                 </div>
                 <div class="course-content">
                     <h3 class="course-title">{{ $course['title'] }}</h3>
