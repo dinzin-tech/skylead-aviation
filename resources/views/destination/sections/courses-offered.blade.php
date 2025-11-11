@@ -17,7 +17,7 @@
             @foreach($countryData['courses_offered'] as $course)
             <div class="course-card">
                 <div class="course-logo">
-                    @if(Storage::exists($course['logo']))
+                    @if(Storage::disk('public')->exists($course['logo']))
                         <img src="{{ Storage::url($course['logo']) }}" alt="{{ $course['title'] }}" class="course-logo-img">
                     @else
                         <i class="{{ $course['icon'] }}"></i>

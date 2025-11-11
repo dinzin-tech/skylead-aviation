@@ -37,13 +37,6 @@ class DestinationController extends Controller
             'flying_schools' => $this->formatFlyingSchools($destination->flyingSchools)
         ];
 
-        // dd($countryData['guide']);
-        // foreach($countryData['guide'] as $i => $guide) {
-        //     // dd($guide['title']);
-        //     print_r('Guide ' . ($guide['value']) . ': ' . $guide['title'] );
-        // }
-        // exit;
-
         return view('destination.index', compact('countryData'));
     }
 
