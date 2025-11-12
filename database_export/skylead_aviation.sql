@@ -214,7 +214,15 @@ CREATE TABLE `courses` (
   `title` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `slug` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `type` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'regular_course',
+  `program_tag` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `program_level` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `hero_description` text COLLATE utf8mb4_unicode_ci,
+  `hero_description_1` text COLLATE utf8mb4_unicode_ci,
+  `hero_description_2` text COLLATE utf8mb4_unicode_ci,
+  `benefits` json DEFAULT NULL,
+  `duration` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `rating` decimal(3,1) NOT NULL DEFAULT '0.0',
+  `number_of_students` int NOT NULL DEFAULT '0',
   `video_url` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `hero_image` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `requirements` json DEFAULT NULL,
@@ -262,7 +270,7 @@ CREATE TABLE `destination_flying_school` (
   KEY `destination_flying_school_flying_school_id_foreign` (`flying_school_id`),
   CONSTRAINT `destination_flying_school_destination_id_foreign` FOREIGN KEY (`destination_id`) REFERENCES `destinations` (`id`) ON DELETE CASCADE,
   CONSTRAINT `destination_flying_school_flying_school_id_foreign` FOREIGN KEY (`flying_school_id`) REFERENCES `flying_schools` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -271,7 +279,7 @@ CREATE TABLE `destination_flying_school` (
 
 LOCK TABLES `destination_flying_school` WRITE;
 /*!40000 ALTER TABLE `destination_flying_school` DISABLE KEYS */;
-INSERT INTO `destination_flying_school` VALUES (1,1,1,NULL,NULL);
+INSERT INTO `destination_flying_school` VALUES (1,1,1,NULL,NULL),(2,2,1,NULL,NULL),(3,3,1,NULL,NULL);
 /*!40000 ALTER TABLE `destination_flying_school` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -304,7 +312,7 @@ CREATE TABLE `destinations` (
   KEY `destinations_slug_index` (`slug`),
   KEY `destinations_is_active_index` (`is_active`),
   KEY `destinations_sort_order_index` (`sort_order`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -313,7 +321,7 @@ CREATE TABLE `destinations` (
 
 LOCK TABLES `destinations` WRITE;
 /*!40000 ALTER TABLE `destinations` DISABLE KEYS */;
-INSERT INTO `destinations` VALUES (1,'united-states-of-america','United States of America','The United States of America','testing',1,'United States of America','[]',NULL,'[]',NULL,'[{\"icon\": \"fas fa-plane\", \"logo\": \"\", \"title\": \"Test\", \"subtitle\": \"testing course\", \"description\": \"test desc\"}, {\"icon\": \"fas fa-plane\", \"logo\": \"\", \"title\": \"Another Course\", \"subtitle\": \"Another course\", \"description\": \"This is a test\"}]',1,0,'2025-10-26 23:19:02','2025-11-09 03:26:23');
+INSERT INTO `destinations` VALUES (1,'united-states-of-america','United States of America','The United States of America','testing',1,'United States of America','[]',NULL,'[]',NULL,'[{\"icon\": \"fas fa-plane\", \"logo\": \"\", \"title\": \"Test\", \"subtitle\": \"testing course\", \"description\": \"test desc\"}, {\"icon\": \"fas fa-plane\", \"logo\": \"\", \"title\": \"Another Course\", \"subtitle\": \"Another course\", \"description\": \"This is a test\"}]',1,0,'2025-10-26 23:19:02','2025-11-09 03:26:23'),(2,'india','India','Commercial Pilot Training in the India','The India is the world\'s leading destination for international students looking to undertake Commercial Pilot Training, with the country continuing to dominate the rankings thanks to its wide choice of exciting study and flight training options.',1,'India','[\"destinations/images/E6DieRBFUHePx6OqXlKtMb9fwXW1lI9hAbLJE0VC.jpg\", \"destinations/images/tfRzsAHQIddD4Esp4v8nBtLNkBV1v39Qt9TO2kTN.jpg\", \"destinations/images/WpmnSXMv9wleM41O7CIO2OCG9PWT8h8ENo8pw7pH.jpg\", \"destinations/images/BaakJqOwKnNIUu6ReFH3sV4LxcMIBMIb08Mnql3Z.jpg\"]','[{\"title\": \"test\", \"value\": \"desc\"}, {\"title\": \"test 2\", \"value\": \"desc\"}, {\"title\": \"test 3\", \"value\": \"desc 3\"}]','[\"destinations/gallery/58lmK5LDgizMwmdUiASix4ltsa31NyMF9Qw9W0ak.jpg\", \"destinations/gallery/NuhnvmdsYRV3UgCpvGSfJfuYNXeTyTLSG6skJyk3.jpg\", \"destinations/gallery/0Xbl90fK5besawgqVg07iqVtJgJ29YUFEPftBPYY.jpg\", \"destinations/gallery/8qzmr2DxRQtVpzU4BYB0ukZjHStEEIz0knNL7U9r.jpg\"]','[\"testing 1\", \"testing 2\", \"testing 3\", \"testing 4\"]','[{\"icon\": \"fas fa-plane\", \"logo\": \"destinations/course-logos/dAuV6fhzcBMiHBkzSiBWrHLgyBr4uw0Op4q9w5n6.png\", \"title\": \"test\", \"subtitle\": \"test sb\", \"description\": \"testing desc\"}]',1,0,'2025-11-11 09:15:58','2025-11-11 09:15:58'),(3,'india-test','India','Commercial Pilot Training in the India','The India is the world\'s leading destination for international students looking to undertake Commercial Pilot Training, with the country continuing to dominate the rankings thanks to its wide choice of exciting study and flight training options.',1,'India','[\"destinations/images/uCgzbqnCmgaVmaneH81apktJBFrjNKbXklnBmUnb.jpg\", \"destinations/images/PwPM8x0iuIH0lQpx5uXgZoUsZFuzUvQd7QtUbKOV.jpg\", \"destinations/images/Yt8037CaUjzvFyuxrZzIpdyYa3hAOyekU25anjj9.jpg\", \"destinations/images/rNynYgOK5gHnCeiHXOrTEA5ZVXh3ioc7RAgUXSz7.jpg\"]','[{\"title\": \"test\", \"value\": \"desd\"}, {\"title\": \"test\", \"value\": \"desc\"}]','[\"destinations/gallery/0ssYUO4KW43D9OeeKdoH6WyOqmJyCxNGp53nw7Nw.jpg\", \"destinations/gallery/tQCe6tqagCqRa3AYc09N3rIl7JHvDTaU5BDLUZWA.jpg\"]','[\"testing 1\", \"testing 2\"]','[{\"icon\": \"fas fa-plane\", \"logo\": \"destinations/course-logos/1hnpjMRSH1t2P1HsKHn01PL2Si29SUs5zPB4e0Mp.png\", \"title\": \"Test title\", \"subtitle\": \"sub test\", \"description\": \"cs desc\"}]',1,0,'2025-11-11 09:17:39','2025-11-11 09:17:39');
 /*!40000 ALTER TABLE `destinations` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -487,7 +495,7 @@ CREATE TABLE `migrations` (
   `migration` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `batch` int NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -496,7 +504,7 @@ CREATE TABLE `migrations` (
 
 LOCK TABLES `migrations` WRITE;
 /*!40000 ALTER TABLE `migrations` DISABLE KEYS */;
-INSERT INTO `migrations` VALUES (1,'0001_01_01_000000_create_users_table',1),(2,'0001_01_01_000001_create_cache_table',1),(3,'0001_01_01_000002_create_jobs_table',1),(4,'2025_09_01_195538_create_permission_tables',1),(5,'2025_09_01_212624_create_posts_table',1),(6,'2025_09_06_183904_create_blogs_table',1),(7,'2025_09_07_074535_create_volunteers_table',1),(8,'2025_09_09_034843_create_contacts_table',1),(9,'2025_09_09_160756_create_donations_table',1),(10,'2025_09_09_192436_create_galleries_table',1),(11,'2025_09_11_201219_create_hero_content_table',1),(12,'2025_09_12_160942_create_events_table',1),(13,'2025_09_13_085014_update_hero_content_video_to_youtube_url',1),(14,'2025_09_27_183008_drop_unwanted_tables',2),(15,'2025_10_26_022716_create_countries_table',3),(17,'2025_10_26_041442_create_aircrafts_table',4),(20,'2025_10_26_044410_create_flying_schools_table',5),(21,'2025_10_26_065550_create_page_sections_table',6),(22,'2025_10_26_065642_create_section_elements_table',6),(23,'2025_10_26_070504_create_pages_table',7),(24,'2025_10_27_043304_create_destinations_table',8),(25,'2025_11_07_102614_create_courses_table',9);
+INSERT INTO `migrations` VALUES (1,'0001_01_01_000000_create_users_table',1),(2,'0001_01_01_000001_create_cache_table',1),(3,'0001_01_01_000002_create_jobs_table',1),(4,'2025_09_01_195538_create_permission_tables',1),(5,'2025_09_01_212624_create_posts_table',1),(6,'2025_09_06_183904_create_blogs_table',1),(7,'2025_09_07_074535_create_volunteers_table',1),(8,'2025_09_09_034843_create_contacts_table',1),(9,'2025_09_09_160756_create_donations_table',1),(10,'2025_09_09_192436_create_galleries_table',1),(11,'2025_09_11_201219_create_hero_content_table',1),(12,'2025_09_12_160942_create_events_table',1),(13,'2025_09_13_085014_update_hero_content_video_to_youtube_url',1),(14,'2025_09_27_183008_drop_unwanted_tables',2),(15,'2025_10_26_022716_create_countries_table',3),(17,'2025_10_26_041442_create_aircrafts_table',4),(20,'2025_10_26_044410_create_flying_schools_table',5),(21,'2025_10_26_065550_create_page_sections_table',6),(22,'2025_10_26_065642_create_section_elements_table',6),(23,'2025_10_26_070504_create_pages_table',7),(24,'2025_10_27_043304_create_destinations_table',8),(25,'2025_11_07_102614_create_courses_table',9),(26,'2025_11_10_150308_add_cadet_program_fields_to_courses_table',10);
 /*!40000 ALTER TABLE `migrations` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -797,7 +805,7 @@ CREATE TABLE `sessions` (
 
 LOCK TABLES `sessions` WRITE;
 /*!40000 ALTER TABLE `sessions` DISABLE KEYS */;
-INSERT INTO `sessions` VALUES ('19iPGLfJRXhvTooVBsrfnG8pQt2H4kqMyzjwthfB',2,'127.0.0.1','Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36','YTozOntzOjY6Il90b2tlbiI7czo0MDoiTmtLblV3YVppdWpHNUlHNzNUOTZTV3JKMnV6RHNyNldJMEQ0N2dHVyI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MjE6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMCI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fX0=',1762748959);
+INSERT INTO `sessions` VALUES ('QaHk46RBZQ8D68mMyPoVyGpCinprCtjKk7giXwBR',2,'127.0.0.1','Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36','YTozOntzOjY6Il90b2tlbiI7czo0MDoiaElWeHUxcld0NGNoc2RmcEdQeXNUSDJuaDZ3cEVOa05kbkJERWlFdyI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NTc6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9jb3Vyc2UvYWlyLWFzaWEtY2FkZXQtcGlsb3QtcHJvZ3JhbSI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fX0=',1762916066);
 /*!40000 ALTER TABLE `sessions` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -841,4 +849,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2025-11-10 10:02:24
+-- Dump completed on 2025-11-12  8:52:09

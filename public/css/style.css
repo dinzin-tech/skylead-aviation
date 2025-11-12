@@ -3439,3 +3439,17 @@ h6 {
 .top-info-ribbon a {
   color: var(--secondary-color);
 }
+.top-info-ribbon .d-flex.align-items-center { 
+  padding: 0px !important;
+  margin-top: -3px !important;
+  border: none !important;
+}
+.top-info-ribbon .d-flex.align-items-center p {
+  padding: 0px !important;
+  margin: 0px !important;
+  font-size: 12px !important;
+}
+.top-info-ribbon .d-flex.align-items-center i {
+  font-size: 12px !important;
+  min-width: 0px !important;
+}
