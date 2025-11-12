@@ -9,8 +9,8 @@
         'countryFlag' => $countryData['flag'] ?? 'img/flags/usa.png',
         'title' => $countryData['country_title'] ?? 'Fly High in the Skies',
         'description' => $countryData['country_description'] ?? 'World-class flight training programs',
-        'ctaText' => 'Start Your Journey',
-        'ctaLink' => '#enroll',
+        'ctaText' => 'Flying Schools',
+        'ctaLink' => '#flying_schools',
         'stats' => [
             [
                 'icon' => 'ti-home', 
@@ -23,16 +23,16 @@
                 'label' => 'Course Location'
             ]
         ],
-        'images' => [
+        'images' => $countryData['images'] ?? [
             'img/elements/a.jpg',
             'img/elements/a2.jpg', 
             'img/elements/d.jpg',
             'img/elements/f1.jpg'
         ]
     ])
-    @include('destination.sections.destination_hero')
-    @include('destination.sections.infostats')
-    @include('destination.sections.country_overview')
+    {{-- @include('destination.sections.destination_hero') --}}
+    @include('destination.sections.infostats', ['guides' => $countryData['guide'] ?? []])
+    {{-- @include('destination.sections.country_overview') --}}
     @include('destination.sections.gallery')
     @include('destination.sections.advantages')
     @include('destination.sections.flying-schools-tabs')

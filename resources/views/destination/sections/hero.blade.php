@@ -450,7 +450,7 @@
                             @foreach($images as $index => $image)
                             <div class="dh-gallery-item {{ $index == 0 ? 'dh-featured-item' : '' }}">
                                 <div class="dh-image-wrapper">
-                                    <img src="{{ asset($image) }}" alt="Training Image {{ $index + 1 }}" class="dh-gallery-img">
+                                    <img src="{{ Storage::url($image) }}" alt="Training Image {{ $index + 1 }}" class="dh-gallery-img">
                                     @if($index == 0)
                                     <div class="dh-image-badge">
                                         <i class="dh-icon-premium"></i>

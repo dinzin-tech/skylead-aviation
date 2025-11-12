@@ -13,9 +13,9 @@
         
         <div class="masonry-gallery">
             @foreach($countryData['gallery'] as $index => $image)
-            <div class="masonry-item" data-image="{{ asset($image) }}" data-index="{{ $index }}">
+            <div class="masonry-item" data-image="{{ Storage::url($image) }}" data-index="{{ $index }}">
                 <div class="masonry-image-wrapper">
-                    <img src="{{ asset($image) }}" alt="Gallery Image {{ $loop->iteration }}" class="img-fluid">
+                    <img src="{{ Storage::url($image) }}" alt="Gallery Image {{ $loop->iteration }}" class="img-fluid">
                     <div class="masonry-overlay">
                         <div class="overlay-content">
                             <i class="ti-zoom-in"></i>

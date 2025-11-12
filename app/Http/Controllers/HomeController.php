@@ -607,7 +607,8 @@ class HomeController extends Controller
                 'rating' => 4.8,
                 'duration' => '6 Months',
                 'level' => 'Intermediate',
-                'features' => ['DGCA Syllabus', 'Mock Tests', 'Study Materials', 'Expert Faculty']
+                'features' => ['DGCA Syllabus', 'Mock Tests', 'Study Materials', 'Expert Faculty'],
+                'slug' => 'dgca-cpl-ground-training'
             ],
             [
                 'image' => 'https://static.wixstatic.com/media/cf4588_0c82d83e32f548fcb97ef270f719e659~mv2.jpg/v1/crop/x_0,y_24,w_1082,h_1057/fill/w_440,h_426,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/11.jpg',
@@ -623,7 +624,8 @@ class HomeController extends Controller
                 'rating' => 4.9,
                 'duration' => '12-18 Months',
                 'level' => 'Advanced',
-                'features' => ['200+ Flying Hours', 'Simulator Training', 'DGCA Approved', 'Placement Assistance']
+                'features' => ['200+ Flying Hours', 'Simulator Training', 'DGCA Approved', 'Placement Assistance'],
+                'slug' => 'cpl-flight-training'
             ],
             [
                 'image' => 'https://static.wixstatic.com/media/11062b_f2eaf67428f84bb8af48bcd9d06c814d~mv2.jpeg/v1/crop/x_1228,y_0,w_5438,h_5265/fill/w_440,h_426,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/Airport%20Counter.jpeg',
@@ -639,7 +641,8 @@ class HomeController extends Controller
                 'rating' => 4.7,
                 'duration' => '3-4 Months',
                 'level' => 'Advanced',
-                'features' => ['Documentation Support', 'Technical Training', 'Medical Assistance', 'Fast-track Process']
+                'features' => ['Documentation Support', 'Technical Training', 'Medical Assistance', 'Fast-track Process'],
+                'slug' => 'foreign-cpl-conversion'
             ],
             [
                 'image' => 'https://static.wixstatic.com/media/cf4588_baba802cda29432898e87ab6d814762a~mv2.jpg/v1/crop/x_190,y_0,w_414,h_405/fill/w_440,h_418,al_c,lg_1,q_80,enc_avif,quality_auto/14.jpg',
@@ -655,7 +658,8 @@ class HomeController extends Controller
                 'rating' => 4.9,
                 'duration' => '2-3 Months',
                 'level' => 'Professional',
-                'features' => ['A320 & B737', 'Full Flight Simulator', 'Line Training', 'Airline Preparation']
+                'features' => ['A320 & B737', 'Full Flight Simulator', 'Line Training', 'Airline Preparation'],
+                'slug' => 'type-rating-on-a320-b737'
             ],
             [
                 'image' => 'https://static.wixstatic.com/media/nsplsh_44695469595178306d6834~mv2_d_4104_3026_s_4_2.jpg/v1/crop/x_504,y_0,w_3096,h_3026/fill/w_440,h_418,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/Image%20by%20Dose%20Media.jpg',
@@ -671,7 +675,8 @@ class HomeController extends Controller
                 'rating' => 4.8,
                 'duration' => '4 Months',
                 'level' => 'Beginner',
-                'features' => ['Aptitude Training', 'Interview Prep', 'Psychometric Tests', 'CV Building']
+                'features' => ['Aptitude Training', 'Interview Prep', 'Psychometric Tests', 'CV Building'],
+                'slug' => 'cadet-pilot-programme-preparation'
             ]
         ];
     }
