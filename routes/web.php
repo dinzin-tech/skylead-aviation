@@ -19,6 +19,13 @@ use App\Http\Controllers\Admin\AdminCourseController;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\DestinationController;
 
+Route::get('/programs', [HomeController::class, 'programs'])->name('programs');
+Route::get('/program/{id}', [HomeController::class, 'programDetails'])->name('program.details');
+// Show all programs/courses
+Route::get('/programs', [ProgramController::class, 'index'])->name('programs');
+// Show individual course details
+Route::get('/courses/{course:slug}', [CourseController::class, 'show'])->name('courses.show');
+
 // Route::get('/destinations/{country?}', [DestinationController::class, 'destinationCountry'])
 //     ->name('destinations.country');
 

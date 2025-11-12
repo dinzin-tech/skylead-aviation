@@ -6,6 +6,7 @@
 @endpush
 
 @section('content')
+    
     <!--================ Start Home Banner Area =================-->
     @include('sections.banner')
     <!--================ End Home Banner Area =================-->
