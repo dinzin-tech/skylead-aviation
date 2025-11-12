@@ -13,8 +13,9 @@ class ProgramController extends Controller
         $courses = Course::where('published', true)
             ->latest()
             ->get();
-
+        
         // Transform the data to match your frontend structure
+        
         $programsData = [
             'title' => 'All Aviation Programs & Courses',
             'description' => 'Explore our complete range of aviation training programs, from beginner courses to advanced cadet programs',
@@ -39,6 +40,7 @@ class ProgramController extends Controller
                 ];
             })->toArray()
         ];
+        
 
         return view('programs.index', compact('programsData'));
     }

@@ -14,12 +14,16 @@ use App\Http\Controllers\Admin\HeroContentController;
 use App\Http\Controllers\Admin\EventController;
 use App\Http\Controllers\Admin\MaintenanceController;
 use App\Http\Controllers\Admin\AdminCourseController;
+use App\Http\Controllers\ProgramController;
 
 
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\DestinationController;
+use App\Http\Controllers\ForeignCplConversionController;
 
-Route::get('/programs', [HomeController::class, 'programs'])->name('programs');
+Route::get('/foreign-cpl-conversion', [App\Http\Controllers\ForeignCplConversionController::class, 'index'])->name('foreign-cpl-conversion');
+
+// Route::get('/programs', [HomeController::class, 'programs'])->name('programs');
 Route::get('/program/{id}', [HomeController::class, 'programDetails'])->name('program.details');
 // Show all programs/courses
 Route::get('/programs', [ProgramController::class, 'index'])->name('programs');
@@ -60,7 +64,7 @@ Route::get('/course-details', [HomeController::class, 'courseDetails'])->name('c
 Route::get('/contact', [HomeController::class, 'contact'])->name('contact');
 Route::get('/elements', [HomeController::class, 'elements'])->name('elements');
 Route::get('/program/{id}', [HomeController::class, 'programDetails'])->name('program.details');
-Route::get('/programs', [HomeController::class, 'programs'])->name('programs');
+// Route::get('/programs', [HomeController::class, 'programs'])->name('programs');
 
 Route::prefix('blog')->group(function () {
     Route::get('/', [BlogController::class, 'listBlogs'])->name('blog.index');

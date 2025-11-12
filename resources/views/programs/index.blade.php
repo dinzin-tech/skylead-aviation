@@ -34,20 +34,20 @@
                 @foreach($programsData['programs'] as $program)
                     <div class="col-lg-4 col-md-6 mb-4 program-item" data-type="{{ $program['type'] }}">
                         <div class="single_course">
-                            <div class="course_head position-relative">
-                                <img class="img-fluid" src="{{ $program['image'] }}" alt="{{ $program['title'] }}" style="height: 250px; object-fit: cover; width: 100%;" />
-                                <div class="program_level {{ strtolower($program['level']) }}-level">
-                                    {{ $program['level'] }}
-                                </div>
-                                <div class="program_type_badge {{ $program['type'] === 'cadet_program' ? 'cadet-badge' : 'regular-badge' }}">
-                                    {{ $program['type'] === 'cadet_program' ? 'Cadet Program' : 'Regular Course' }}
-                                </div>
-                                @if(isset($program['category']))
-                                <div class="program_category">
-                                    {{ $program['category'] }}
-                                </div>
-                                @endif
-                            </div>
+                           <div class="course_head position-relative">
+    <img class="img-fluid" src="{{ $program['image'] }}" alt="{{ $program['title'] }}" style="height: 250px; object-fit: cover; width: 100%;" />
+    <!-- Badges container -->
+    <div class="badges-container">
+        <!-- Program type badge at top left -->
+        <div class="program_type_badge {{ $program['type'] === 'cadet_program' ? 'cadet-badge' : 'regular-badge' }}">
+            {{ $program['type'] === 'cadet_program' ? 'Cadet Program' : 'Regular Course' }}
+        </div>
+        <!-- Level badge at top right -->
+        <div class="program_level {{ strtolower($program['level']) }}-level">
+            {{ $program['level'] }}
+        </div>
+    </div>
+</div>
                             <div class="course_content">
                                 @if(isset($program['price']))
                                 <span class="price">{{ $program['price'] }}</span>
@@ -113,10 +113,99 @@
 
 @push('styles')
 <style>
+/* Badges container for proper positioning */
+.badges-container {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    right: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    z-index: 10;
+}
+
+/* Consistent badge styling - same width and size */
+.program_level,
+.program_type_badge {
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 700;
+    color: white;
+    text-transform: capitalize;
+    line-height: 1;
+    white-space: nowrap;
+    min-width: 120px;
+    text-align: center;
+    letter-spacing: 0.5px;
+}
+
+/* Level badge styles */
+.program_level {
+    background: #4299e1; /* Default blue */
+}
+
+.beginner-level { 
+    background: #4299e1; /* Blue for beginner */
+}
+.intermediate-level { 
+    background: #ed8936; /* Orange for intermediate */
+}
+.advanced-level { 
+    background: #e53e3e; /* Red for advanced */
+}
+.professional-level { 
+    background: #805ad5; /* Purple for professional */
+}
+
+/* Program type badge styles */
+.program_type_badge {
+    background: #38a169; /* Default green */
+}
+
+.cadet-badge {
+    background: #e53e3e; /* Red for cadet programs */
+}
+
+.regular-badge {
+    background: #38a169; /* Green for regular courses */
+}
+.program_category {
+    position: absolute;
+    bottom: 15px;
+    left: 15px;
+    padding: 6px 12px;
+    border-radius: 15px;
+    font-size: 11px;
+    font-weight: 600;
+    background: rgba(0,0,0,0.7);
+    color: white;
+    text-transform: capitalize;
+    line-height: 1;
+}
 .program_filters {
     margin-bottom: 30px;
 }
+.program_type_badge {
+    position: absolute;
+    top: 1px;
+    left: 5px;
+    /* padding: 5px 12px; */
+    border-radius: 15px;
+    font-size: 12px;
+    font-weight: 600;
+    color: white;
+    text-transform: capitalize;
+}
 
+.cadet-badge {
+    background: #e53e3e; /* Red for cadet programs */
+}
+
+.regular-badge {
+    background: #38a169; /* Green for regular courses */
+}
 .filter_btn {
     background: #f8f9fa;
     border: 2px solid #e9ecef;
@@ -134,40 +223,32 @@
     border-color: #5a67d8;
 }
 
-.program_type_badge {
-    position: absolute;
-    top: 15px;
-    right: 15px;
-    padding: 5px 12px;
-    border-radius: 15px;
-    font-size: 12px;
-    font-weight: 600;
-    color: white;
-}
-
-.cadet-badge {
-    background: #e53e3e;
-}
-
-.regular-badge {
-    background: #3182ce;
-}
-
+/* Level badge positioned at top right */
 .program_level {
     position: absolute;
-    top: 15px;
-    left: 15px;
-    padding: 5px 12px;
+    top: 1px;
+    height: 30px;
+    right: -11px;
+    /* padding: 5px 12px; */
     border-radius: 15px;
     font-size: 12px;
     font-weight: 600;
     color: white;
+    text-transform: capitalize;
 }
 
-.beginner-level { background: #38a169; }
-.intermediate-level { background: #d69e2e; }
-.advanced-level { background: #dd6b20; }
-.professional-level { background: #e53e3e; }
+.beginner-level { 
+    background: #4299e1; /* Blue for beginner */
+}
+.intermediate-level { 
+    background: #ed8936; /* Orange for intermediate */
+}
+.advanced-level { 
+    background: #e53e3e; /* Red for advanced */
+}
+.professional-level { 
+    background: #805ad5; /* Purple for professional */
+}
 
 .program_category {
     position: absolute;
@@ -177,8 +258,9 @@
     border-radius: 15px;
     font-size: 12px;
     font-weight: 600;
-    background: rgba(0,0,0,0.7);
+    background: transparent;
     color: white;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.7);
 }
 
 .program-item {
@@ -192,6 +274,71 @@
 .no-programs {
     padding: 60px 20px;
     text-align: center;
+}
+
+/* Course card styling */
+.single_course {
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+    transition: all 0.3s ease;
+    height: 100%;
+}
+
+.single_course:hover {
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+}
+
+.course_content {
+    padding: 20px;
+}
+
+.price {
+    font-size: 18px;
+    font-weight: 700;
+    color: #5a67d8;
+}
+
+.primary-btn {
+    background: #5a67d8;
+    color: white;
+    padding: 8px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    display: inline-block;
+    transition: all 0.3s ease;
+}
+
+.primary-btn:hover {
+    background: #4c51bf;
+    color: white;
+    text-decoration: none;
+}
+
+.program_meta {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.meta_item {
+    display: flex;
+    align-items: center;
+    margin-right: 10px;
+    font-size: 14px;
+    color: #6c757d;
+}
+
+.feature_badge {
+    display: inline-block;
+    background: #e9ecef;
+    padding: 4px 10px;
+    border-radius: 15px;
+    font-size: 12px;
+    margin-right: 5px;
+    margin-bottom: 5px;
+    color: #495057;
 }
 </style>
 @endpush
