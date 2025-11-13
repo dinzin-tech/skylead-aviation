@@ -20,6 +20,9 @@ use App\Http\Controllers\ProgramController;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\DestinationController;
 use App\Http\Controllers\ForeignCplConversionController;
+use App\Http\Controllers\MedicalFitnessController;
+
+Route::get('/medical-fitness-requirements', [App\Http\Controllers\MedicalFitnessController::class, 'index'])->name('medical-fitness');
 
 Route::get('/foreign-cpl-conversion', [App\Http\Controllers\ForeignCplConversionController::class, 'index'])->name('foreign-cpl-conversion');
 
