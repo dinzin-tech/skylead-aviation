@@ -220,7 +220,7 @@
     background: linear-gradient(rgba(26, 43, 109, 0.8), rgba(44, 62, 80, 0.8)), url('/img/medical-bg.jpg') no-repeat center center;
     background-size: cover;
     padding: 120px 0 80px 0;
-    margin-top: 40px;
+   
     position: relative;
 }
 
