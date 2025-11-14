@@ -22,7 +22,12 @@ use App\Http\Controllers\DestinationController;
 use App\Http\Controllers\ForeignCplConversionController;
 use App\Http\Controllers\MedicalFitnessController;
 use App\Http\Controllers\FlightTrainingController;
+use App\Http\Controllers\TypeRatingController;
 
+
+
+Route::get('/a320', [TypeRatingController::class, 'a320TypeRating'])->name('type-rating.a320');
+Route::get('/b737', [TypeRatingController::class, 'b737TypeRating'])->name('type-rating.b737');
 Route::get('/flight-training-cpl', [App\Http\Controllers\FlightTrainingController::class, 'index'])->name('flight-training');
 Route::get('/medical-fitness-requirements', [App\Http\Controllers\MedicalFitnessController::class, 'index'])->name('medical-fitness');
 Route::get('/foreign-cpl-conversion', [App\Http\Controllers\ForeignCplConversionController::class, 'index'])->name('foreign-cpl-conversion');

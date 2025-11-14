@@ -220,7 +220,6 @@
     background: linear-gradient(rgba(26, 43, 109, 0.8), rgba(44, 62, 80, 0.8)), url('/img/medical-bg.jpg') no-repeat center center;
     background-size: cover;
     padding: 120px 0 80px 0;
-   
     position: relative;
 }
 
@@ -250,7 +249,7 @@
 .single_details p.h5 {
     font-size: 18px;
     font-weight: 600;
-    color: #2c3e50;
+    color: var(--secondary-color);
 }
 
 .course_details_inner {
@@ -291,7 +290,7 @@
 }
 
 .table th {
-    background: linear-gradient(135deg, var(--primary-color) 0%, #c0392b 100%);
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
     color: white;
     font-weight: 600;
     border: none;
@@ -305,10 +304,10 @@
 }
 
 .table-hover tbody tr:hover {
-    background-color: rgba(231, 76, 60, 0.1);
+    background-color: rgba(var(--primary-color-rgb), 0.1);
 }
-.text-white
-{
+
+.text-white {
     color: #020202ff !important;
 }
 </style>

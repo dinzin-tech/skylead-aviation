@@ -147,13 +147,12 @@
 <style>
 .text-white
 {
-    color: #020202ff !important;
+    color: #000000ff !important;
 }
 .page-header-section {
     background: linear-gradient(rgba(26, 43, 109, 0.8), rgba(44, 62, 80, 0.8)), url('/img/aviation-bg.jpg') no-repeat center center;
     background-size: cover;
     padding: 120px 0 80px 0;
-    
     position: relative;
 }
 
@@ -183,7 +182,7 @@
 .single_details p.h5 {
     font-size: 18px;
     font-weight: 600;
-    color: #2c3e50;
+    color: var(--secondary-color);
 }
 
 .course_details_inner {
@@ -205,7 +204,7 @@
 }
 
 .quick-facts {
-    background: linear-gradient(135deg, var(--secondary-color) 0%, var(--tertiary-color) 100%);
+    background: linear-gradient(135deg, var(--secondary-color) 0%, var(--primary-color) 100%);
     color: #fff;
     padding: 30px;
     border-radius: 15px;
