@@ -14,10 +14,30 @@ use App\Http\Controllers\Admin\HeroContentController;
 use App\Http\Controllers\Admin\EventController;
 use App\Http\Controllers\Admin\MaintenanceController;
 use App\Http\Controllers\Admin\AdminCourseController;
+use App\Http\Controllers\ProgramController;
 
 
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\DestinationController;
+use App\Http\Controllers\ForeignCplConversionController;
+use App\Http\Controllers\MedicalFitnessController;
+use App\Http\Controllers\FlightTrainingController;
+use App\Http\Controllers\TypeRatingController;
+
+
+
+Route::get('/a320', [TypeRatingController::class, 'a320TypeRating'])->name('type-rating.a320');
+Route::get('/b737', [TypeRatingController::class, 'b737TypeRating'])->name('type-rating.b737');
+Route::get('/flight-training-cpl', [App\Http\Controllers\FlightTrainingController::class, 'index'])->name('flight-training');
+Route::get('/medical-fitness-requirements', [App\Http\Controllers\MedicalFitnessController::class, 'index'])->name('medical-fitness');
+Route::get('/foreign-cpl-conversion', [App\Http\Controllers\ForeignCplConversionController::class, 'index'])->name('foreign-cpl-conversion');
+
+// Route::get('/programs', [HomeController::class, 'programs'])->name('programs');
+Route::get('/program/{id}', [HomeController::class, 'programDetails'])->name('program.details');
+// Show all programs/courses
+Route::get('/programs', [ProgramController::class, 'index'])->name('programs');
+// Show individual course details
+Route::get('/courses/{course:slug}', [CourseController::class, 'show'])->name('courses.show');
 
 // Route::get('/destinations/{country?}', [DestinationController::class, 'destinationCountry'])
 //     ->name('destinations.country');
@@ -62,7 +82,7 @@ Route::get('/course-details', [HomeController::class, 'courseDetails'])->name('c
 Route::get('/contact', [HomeController::class, 'contact'])->name('contact');
 Route::get('/elements', [HomeController::class, 'elements'])->name('elements');
 Route::get('/program/{id}', [HomeController::class, 'programDetails'])->name('program.details');
-Route::get('/programs', [HomeController::class, 'programs'])->name('programs');
+// Route::get('/programs', [HomeController::class, 'programs'])->name('programs');
 
 Route::prefix('blog')->group(function () {
     Route::get('/', [BlogController::class, 'listBlogs'])->name('blog.index');

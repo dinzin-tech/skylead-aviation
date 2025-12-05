@@ -763,14 +763,130 @@ class HomeController extends Controller
         // return view('blog.show', compact('blog'));
         echo "Displaying blogs list";
     }
+//     public function programs()
+// {
+//     $programsData = [
+//         'title' => 'Our Aviation Programs',
+//         'description' => 'Professional aviation training programs designed to meet DGCA standards and international requirements',
+//         'programs' => [
+//             [
+//                 'id' => 1,
+//                 'title' => 'Commercial Pilot License (CPL)',
+//                 'description' => 'Become a commercial airline pilot with comprehensive flight training and theoretical knowledge.',
+//                 'image' => 'img/programs/cpl.jpg',
+//                 'level' => 'Advanced',
+//                 'category' => 'Pilot Training',
+//                 'duration' => '18 Months',
+//                 'rating' => 4.8,
+//                 'students' => 150,
+//                 'features' => ['DGCA Approved', 'Flight Training', 'Simulator Sessions', '200+ Flying Hours'],
+//                 'slug' => 'commercial-pilot-license-cpl'
+//             ],
+//             [
+//                 'id' => 2,
+//                 'title' => 'Private Pilot License (PPL)',
+//                 'description' => 'Start your aviation journey with basic flight training and pilot certification.',
+//                 'image' => 'img/programs/ppl.jpg',
+//                 'level' => 'Beginner',
+//                 'category' => 'Pilot Training',
+//                 'duration' => '6 Months',
+//                 'rating' => 4.6,
+//                 'students' => 89,
+//                 'features' => ['Basic Flight Training', 'Ground School', '40 Flying Hours', 'Medical Certification']
+//             ],
+//             [
+//                 'id' => 3,
+//                 'title' => 'Airline Transport Pilot License (ATPL)',
+//                 'description' => 'Advanced training for aspiring airline captains with multi-engine aircraft experience.',
+//                 'image' => 'img/programs/atpl.jpg',
+//                 'level' => 'Professional',
+//                 'category' => 'Pilot Training',
+//                 'duration' => '24 Months',
+//                 'rating' => 4.9,
+//                 'students' => 75,
+//                 'features' => ['Multi-Engine Training', 'Instrument Rating', 'Type Rating', 'Airline Preparation']
+//             ],
+//             [
+//                 'id' => 4,
+//                 'title' => 'Aircraft Maintenance Engineering',
+//                 'description' => 'Comprehensive training in aircraft maintenance, repair, and safety procedures.',
+//                 'image' => 'img/programs/ame.jpg',
+//                 'level' => 'Advanced',
+//                 'category' => 'Engineering',
+//                 'duration' => '36 Months',
+//                 'rating' => 4.7,
+//                 'students' => 120,
+//                 'features' => ['DGCA Approved', 'Hands-on Training', 'Workshop Sessions', 'Industry Internship']
+//             ],
+//             [
+//                 'id' => 5,
+//                 'title' => 'Air Traffic Control Training',
+//                 'description' => 'Professional training for air traffic controllers with simulation-based learning.',
+//                 'image' => 'img/programs/atc.jpg',
+//                 'level' => 'Professional',
+//                 'category' => 'ATC Training',
+//                 'duration' => '12 Months',
+//                 'rating' => 4.5,
+//                 'students' => 60,
+//                 'features' => ['Radar Training', 'Simulation Exercises', 'Communication Skills', 'Safety Procedures']
+//             ],
+//             [
+//                 'id' => 6,
+//                 'title' => 'Cabin Crew Training',
+//                 'description' => 'Complete training for airline cabin crew with focus on safety and customer service.',
+//                 'image' => 'img/programs/cabin-crew.jpg',
+//                 'level' => 'Intermediate',
+//                 'category' => 'Cabin Crew',
+//                 'duration' => '3 Months',
+//                 'rating' => 4.4,
+//                 'students' => 200,
+//                 'features' => ['Safety Procedures', 'Customer Service', 'Emergency Training', 'Grooming Standards']
+//             ]
+//         ]
+//     ];
 
-    public function programs()
-    {
-        return view('programs');
+//     return view('sections.programs', compact('programsData'));
+// }
+
+public function programDetails($id)
+{
+    // Sample program details data - you can fetch from database instead
+    $programs = [
+        1 => [
+            'id' => 1,
+            'title' => 'Commercial Pilot License (CPL)',
+            'description' => 'Become a commercial airline pilot with comprehensive flight training and theoretical knowledge.',
+            'full_description' => 'Our Commercial Pilot License program provides extensive training to prepare you for a career as a commercial airline pilot. The program includes both theoretical knowledge and practical flight training.',
+            'image' => 'img/programs/cpl.jpg',
+            'level' => 'Advanced',
+            'category' => 'Pilot Training',
+            'duration' => '18 Months',
+            'rating' => 4.8,
+            'students' => 150,
+            'instructor' => [
+                'name' => 'Captain Raj Sharma',
+                'experience' => '15+ years',
+                'image' => 'img/instructors/captain-raj.jpg'
+            ],
+            'features' => ['DGCA Approved', 'Flight Training', 'Simulator Sessions', '200+ Flying Hours', 'Theory Classes', 'Medical Certification'],
+            'curriculum' => [
+                'Phase 1: Ground School',
+                'Phase 2: Basic Flight Training',
+                'Phase 3: Advanced Maneuvers',
+                'Phase 4: Navigation Training',
+                'Phase 5: Instrument Rating',
+                'Phase 6: Commercial Flight Test'
+            ]
+        ],
+        // Add details for other programs...
+    ];
+
+    $program = $programs[$id] ?? null;
+
+    if (!$program) {
+        abort(404, 'Program not found');
     }
 
-    public function programDetails($id)
-    {
-        return view('blog');
-    }
+    return view('sections.program-details', compact('program'));
+}
 }
