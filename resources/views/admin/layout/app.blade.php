@@ -17,6 +17,10 @@
         .sidebar {
             min-height: 100vh;
             background: #343a40;
+            height: 100% !important;
+            overflow-y: auto !important;
+            scrollbar-width: none !important;
+            scrollbar-color: #6c757d #343a40 !important;
         }
         .sidebar .nav-link {
             color: #adb5bd;
@@ -94,6 +98,20 @@
                             <a class="nav-link {{ request()->routeIs('admin.destinations.*') ? 'active' : '' }}" 
                             href="{{ route('admin.destinations.index') }}">
                                 <i class="bi bi-globe-americas"></i> Destinations
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link {{ request()->routeIs('admin.global-destinations.*') ? 'active' : '' }}" 
+                            href="{{ route('admin.global-destinations.index') }}">
+                                <i class="bi bi-globe"></i> Global Destinations
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link {{ request()->routeIs('admin.dgca-syllabus.*') ? 'active' : '' }}" 
+                            href="{{ route('admin.dgca-syllabus.index') }}">
+                                <i class="bi bi-book"></i> DGCA Syllabus
                             </a>
                         </li>
 

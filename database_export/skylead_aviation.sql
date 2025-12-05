@@ -240,7 +240,7 @@ CREATE TABLE `courses` (
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `courses_slug_unique` (`slug`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -249,6 +249,7 @@ CREATE TABLE `courses` (
 
 LOCK TABLES `courses` WRITE;
 /*!40000 ALTER TABLE `courses` DISABLE KEYS */;
+INSERT INTO `courses` VALUES (1,'This is a test Course','this-is-a-test-course','regular_course','Air Asia','intermediate','This is a hero description','Hero Desc 1','Hero Desc 2','[]','4',4.0,34,NULL,NULL,'[{\"icon\": \"ti-user\", \"title\": \"18\", \"description\": \"age\"}]','[{\"icon\": \"ti-file\", \"title\": \"Test\", \"description\": \"test\"}]','[{\"title\": \"test\", \"description\": \"test\", \"stageNumber\": \"1\"}]',NULL,NULL,'[{\"link\": \"#\", \"title\": \"Test intro\"}]',0.00,0,NULL,NULL,1,'2025-11-11 21:57:15','2025-11-11 21:59:27');
 /*!40000 ALTER TABLE `courses` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -424,6 +425,47 @@ INSERT INTO `flying_schools` VALUES (1,'Flying School I','Florida USA',2,'10 to 
 UNLOCK TABLES;
 
 --
+-- Table structure for table `global_destinations`
+--
+
+DROP TABLE IF EXISTS `global_destinations`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `global_destinations` (
+  `id` bigint unsigned NOT NULL AUTO_INCREMENT,
+  `country_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `slug` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `title` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `introduction` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `regulatory_body` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `total_hours_required` int NOT NULL,
+  `training_steps` json NOT NULL,
+  `flying_hours_breakdown` json NOT NULL,
+  `advantages` json NOT NULL,
+  `images` json DEFAULT NULL,
+  `is_active` tinyint(1) NOT NULL DEFAULT '1',
+  `sort_order` int NOT NULL DEFAULT '0',
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `global_destinations_slug_unique` (`slug`),
+  KEY `global_destinations_slug_index` (`slug`),
+  KEY `global_destinations_is_active_index` (`is_active`),
+  KEY `global_destinations_sort_order_index` (`sort_order`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `global_destinations`
+--
+
+LOCK TABLES `global_destinations` WRITE;
+/*!40000 ALTER TABLE `global_destinations` DISABLE KEYS */;
+INSERT INTO `global_destinations` VALUES (1,'India','india','Commercial Pilot Training Pathway in the USA (for Indian Students)','The FAA (Federal Aviation Administration) governs pilot training in the USA. To get an FAA Commercial Pilot Licence (CPL), you need a minimum of 250 flying hours.','Federal Aviation Administration',250,'[{\"hours\": \"10\", \"title\": \"Student Pilot Certificate (FAA SPL)\", \"description\": \"• Issued after FAA medical + TSA approval (for foreign students).\\r\\n• No flying hours yet, but this certificate allows you to start actual flight training.\"}, {\"hours\": \"20\", \"title\": \"Private Pilot Licence (PPL – FAA)\", \"description\": \"•\\tFoundation of flight training – learning to fly small single-engine aircraft.\\r\\n•\\tMinimum 40 hours required by FAA (realistically 55–60 hrs for most students):\\r\\no\\t20 hours Dual Instruction (with instructor)\\r\\no\\t10 hours Solo Flight (independent flying)\\r\\no\\t5 hours Cross-Country Solo (navigating between airports >50 NM)\\r\\no\\t3 hours Night Flying (including 10 take-offs & landings)\\r\\no\\t3 hours Instrument Training (introduction to flying by reference to instruments)\\r\\n\\r\\nBy end of PPL: You can fly as Pilot-in-Command (PIC) of small aircraft, but not for commercial purposes.\"}, {\"hours\": \"40\", \"title\": \"Instrument Rating (IR)\", \"description\": \"•\\tAllows flying in Instrument Meteorological Conditions (IMC), i.e., when visibility is poor and flying is based only on instruments.\\r\\n•\\t40 hours of Instrument Time (on simulator + aircraft)\\r\\no\\tAt least 15 hours with instructor\\r\\no\\tThe rest can be a mix of simulator and actual aircraft flying\\r\\no\\tTraining includes approaches, holding patterns, and IFR cross-country flights\\r\\n✅ Crucial for airline-level flying and international standards.\"}]','[{\"hours\": \"40 hours\", \"notes\": \"Usually ~55–60 hrs in practice\", \"stage\": \"Private Pilot Licence (PPL)\"}, {\"hours\": \"20 hours\", \"notes\": \"Basic maneuvers, take-off/landing\", \"stage\": \"Dual Instruction\"}, {\"hours\": \"10 hours\", \"notes\": \"Independent Flying\", \"stage\": \"Solo\"}]','[\"1.\\tFaster Training: 300+ flying days a year (Florida, Arizona, California), finishing CPL in 12–18 months vs 2–3 years in India.\", \"2.\\tHigher Flying Hours: FAA CPL requires 250 hrs vs 200 hrs in India, giving you extra experience.\", \"Modern Aircraft & Tech: Cessna 172 G1000, Piper, Diamond → glass cockpit experience.\", \"International Exposure: Training in busy US airspaces builds world-class ATC communication skills.\"]','[\"global-destinations/fSqMnJmZRbKAM0PCXbtVMO7IahjreA6ws955UDos.jpg\", \"global-destinations/4yCkjIh5RAPOKStAYWVQpqCO2VJurgXHVzE0RHCk.jpg\", \"global-destinations/ftVRZhEuBNFiT9XxIKf4Ia5MDmu1xYdlZADsphHs.jpg\", \"global-destinations/V3k9Ne7e1DkFD1Ze4JSD0hQJOnLmJRkoWfbjlnuJ.jpg\"]',1,0,'2025-11-12 03:21:13','2025-11-12 03:21:13');
+/*!40000 ALTER TABLE `global_destinations` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `job_batches`
 --
 
@@ -495,7 +537,7 @@ CREATE TABLE `migrations` (
   `migration` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `batch` int NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -504,7 +546,7 @@ CREATE TABLE `migrations` (
 
 LOCK TABLES `migrations` WRITE;
 /*!40000 ALTER TABLE `migrations` DISABLE KEYS */;
-INSERT INTO `migrations` VALUES (1,'0001_01_01_000000_create_users_table',1),(2,'0001_01_01_000001_create_cache_table',1),(3,'0001_01_01_000002_create_jobs_table',1),(4,'2025_09_01_195538_create_permission_tables',1),(5,'2025_09_01_212624_create_posts_table',1),(6,'2025_09_06_183904_create_blogs_table',1),(7,'2025_09_07_074535_create_volunteers_table',1),(8,'2025_09_09_034843_create_contacts_table',1),(9,'2025_09_09_160756_create_donations_table',1),(10,'2025_09_09_192436_create_galleries_table',1),(11,'2025_09_11_201219_create_hero_content_table',1),(12,'2025_09_12_160942_create_events_table',1),(13,'2025_09_13_085014_update_hero_content_video_to_youtube_url',1),(14,'2025_09_27_183008_drop_unwanted_tables',2),(15,'2025_10_26_022716_create_countries_table',3),(17,'2025_10_26_041442_create_aircrafts_table',4),(20,'2025_10_26_044410_create_flying_schools_table',5),(21,'2025_10_26_065550_create_page_sections_table',6),(22,'2025_10_26_065642_create_section_elements_table',6),(23,'2025_10_26_070504_create_pages_table',7),(24,'2025_10_27_043304_create_destinations_table',8),(25,'2025_11_07_102614_create_courses_table',9),(26,'2025_11_10_150308_add_cadet_program_fields_to_courses_table',10);
+INSERT INTO `migrations` VALUES (1,'0001_01_01_000000_create_users_table',1),(2,'0001_01_01_000001_create_cache_table',1),(3,'0001_01_01_000002_create_jobs_table',1),(4,'2025_09_01_195538_create_permission_tables',1),(5,'2025_09_01_212624_create_posts_table',1),(6,'2025_09_06_183904_create_blogs_table',1),(7,'2025_09_07_074535_create_volunteers_table',1),(8,'2025_09_09_034843_create_contacts_table',1),(9,'2025_09_09_160756_create_donations_table',1),(10,'2025_09_09_192436_create_galleries_table',1),(11,'2025_09_11_201219_create_hero_content_table',1),(12,'2025_09_12_160942_create_events_table',1),(13,'2025_09_13_085014_update_hero_content_video_to_youtube_url',1),(14,'2025_09_27_183008_drop_unwanted_tables',2),(15,'2025_10_26_022716_create_countries_table',3),(17,'2025_10_26_041442_create_aircrafts_table',4),(20,'2025_10_26_044410_create_flying_schools_table',5),(21,'2025_10_26_065550_create_page_sections_table',6),(22,'2025_10_26_065642_create_section_elements_table',6),(23,'2025_10_26_070504_create_pages_table',7),(24,'2025_10_27_043304_create_destinations_table',8),(25,'2025_11_07_102614_create_courses_table',9),(26,'2025_11_10_150308_add_cadet_program_fields_to_courses_table',10),(27,'2025_11_12_083032_create_global_destinations_table',11);
 /*!40000 ALTER TABLE `migrations` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -805,7 +847,7 @@ CREATE TABLE `sessions` (
 
 LOCK TABLES `sessions` WRITE;
 /*!40000 ALTER TABLE `sessions` DISABLE KEYS */;
-INSERT INTO `sessions` VALUES ('QaHk46RBZQ8D68mMyPoVyGpCinprCtjKk7giXwBR',2,'127.0.0.1','Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36','YTozOntzOjY6Il90b2tlbiI7czo0MDoiaElWeHUxcld0NGNoc2RmcEdQeXNUSDJuaDZ3cEVOa05kbkJERWlFdyI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NTc6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9jb3Vyc2UvYWlyLWFzaWEtY2FkZXQtcGlsb3QtcHJvZ3JhbSI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fX0=',1762916066);
+INSERT INTO `sessions` VALUES ('8nlZ99vk0gzlXRKf6DEA08lMlb9CM5rULpOsAyyT',2,'127.0.0.1','Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36','YTo0OntzOjY6Il90b2tlbiI7czo0MDoiaElWeHUxcld0NGNoc2RmcEdQeXNUSDJuaDZ3cEVOa05kbkJERWlFdyI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NDc6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9nbG9iYWwtZGVzdGluYXRpb25zL2luZGlhIjt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo1MDoibG9naW5fd2ViXzU5YmEzNmFkZGMyYjJmOTQwMTU4MGYwMTRjN2Y1OGVhNGUzMDk4OWQiO2k6Mjt9',1762952613);
 /*!40000 ALTER TABLE `sessions` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -849,4 +891,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2025-11-12  8:52:09
+-- Dump completed on 2025-11-12 18:37:37

@@ -26,6 +26,15 @@ use App\Http\Controllers\DestinationController;
 Route::get('/destination/{slug}', [App\Http\Controllers\DestinationController::class, 'destinationCountry'])
     ->name('destination.country');
 
+// Public route for global destinations
+Route::get('/global-destinations/{slug}', [App\Http\Controllers\GlobalDestinationController::class, 'show'])
+    ->name('global.destination');
+Route::get('/global-destinations', [App\Http\Controllers\GlobalDestinationController::class, 'index'])
+    ->name('global.destinations');
+
+Route::get('/dgca-ground-classes', [App\Http\Controllers\DgcaGroundClasses::class, 'index'])
+    ->name('dgca.ground.classes');
+
 Route::get('/flight-training/{type?}', [DestinationController::class, 'flightType'])
     ->name('flight.type');
 
@@ -119,6 +128,11 @@ Route::middleware(['auth', 'role:admin'])
         Route::resource('aircrafts', \App\Http\Controllers\Admin\AircraftController::class);
         Route::resource('flying-schools', \App\Http\Controllers\Admin\FlyingSchoolController::class);
         Route::resource('destinations', \App\Http\Controllers\Admin\DestinationController::class);
+        Route::resource('global-destinations', \App\Http\Controllers\Admin\GlobalDestinationController::class);
+
+        Route::resource('dgca-syllabus', \App\Http\Controllers\Admin\DgcaSyllabusController::class);
+        Route::post('dgca-syllabus/{dgcaSyllabus}/update-topic-status', [\App\Http\Controllers\Admin\DgcaSyllabusController::class, 'updateTopicStatus'])
+         ->name('dgca-syllabus.update-topic-status');
 
         // Page Sections
         Route::resource('page-builder', \App\Http\Controllers\Admin\PageBuilderController::class);
