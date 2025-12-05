@@ -10,36 +10,43 @@ use Illuminate\Support\Facades\Storage;
 
 class MaintenanceController extends Controller
 {
-    // public function __construct()
-    // {
-    //     $this->middleware('auth');
-    //     $this->middleware('role:admin');
-    //     $this->middleware('throttle:3,1')->only(['fixStorage', 'fixSymlink']); // Limit to 3 attempts per minute
-    // }
 
     public function index()
     {
-        return view('admin.maintenance.index');
+        // fetch the list of required directories from storage/app/public dynamically by scanning the folder
+        $directories = File::directories(storage_path('app/public'));
+
+        // take only the last part of the path for display
+        $directories = array_map('basename', $directories);
+
+        return view('admin.maintenance.index', compact('directories'));
     }
 
     public function fixStorage(Request $request)
     {
-        $directories = [
-            // 'app/public/hero',
-            // 'app/public/hero/videos',
-            // 'app/public/events',
-            // 'app/public/galleries',
-            // 'app/public/volunteers',
-            // 'app/public/blogs',
-            'app/public/flags',
-            'app/public/aircrafts',
-            'app/public/destinations',
-        ];
+
+        // fetch the list of required directories from storage/app/public dynamically by scanning the folder
+        $directories = File::directories(storage_path('app/public'));
+
+        // take only the last part of the path for display
+        $directories = array_map('app/public/'.'basename', $directories);       
+
+        // $directories = [
+        //     // 'app/public/hero',
+        //     // 'app/public/hero/videos',
+        //     // 'app/public/events',
+        //     // 'app/public/galleries',
+        //     // 'app/public/volunteers',
+        //     // 'app/public/blogs',
+        //     'app/public/flags',
+        //     'app/public/aircrafts',
+        //     'app/public/destinations',
+        // ];
 
         $results = [];
         
         foreach ($directories as $directory) {
-            $path = storage_path($directory);
+            $path = storage_path('app/public/'.$directory);
             
             if (!File::exists($path)) {
                 if (File::makeDirectory($path, 0755, true)) {
@@ -210,25 +217,37 @@ PHP;
     public function checkStatus()
     {
         $status = [];
-        
-        // Check storage directories
-        $directories = [
-            // 'app/public/hero' => storage_path('app/public/hero'),
-            // 'app/public/events' => storage_path('app/public/events'),
-            // 'app/public/galleries' => storage_path('app/public/galleries'),
-            // 'app/public/volunteers' => storage_path('app/public/volunteers'),
-            // 'app/public/blogs' => storage_path('app/public/blogs'),
-            'app/public/flags' => storage_path('app/public/flags'),
-            'app/public/aircrafts' => storage_path('app/public/aircrafts'),
-            'app/public/destinations' => storage_path('app/public/destinations'),
-        ];
-        
-        foreach ($directories as $name => $path) {
-            $status[$name] = [
+
+        // fetch the list of required directories from storage/app/public dynamically by scanning the folder
+        $directoriesData = File::directories(storage_path('app/public'));
+        $directoriesData = array_map('basename', $directoriesData);
+
+        foreach ($directoriesData as $directory) {
+            $path = storage_path('app/public/'.$directory);
+            $status['app/public/'.$directory] = [
                 'exists' => File::exists($path),
                 'writable' => File::exists($path) ? is_writable($path) : false,
             ];
         }
+        
+        // Check storage directories
+        // $directories = [
+        //     // 'app/public/hero' => storage_path('app/public/hero'),
+        //     // 'app/public/events' => storage_path('app/public/events'),
+        //     // 'app/public/galleries' => storage_path('app/public/galleries'),
+        //     // 'app/public/volunteers' => storage_path('app/public/volunteers'),
+        //     // 'app/public/blogs' => storage_path('app/public/blogs'),
+        //     'app/public/flags' => storage_path('app/public/flags'),
+        //     'app/public/aircrafts' => storage_path('app/public/aircrafts'),
+        //     'app/public/destinations' => storage_path('app/public/destinations'),
+        // ];
+        
+        // foreach ($directories as $name => $path) {
+        //     $status[$name] = [
+        //         'exists' => File::exists($path),
+        //         'writable' => File::exists($path) ? is_writable($path) : false,
+        //     ];
+        // }
         
         // Check symlink
         $publicStoragePath = public_path('storage');

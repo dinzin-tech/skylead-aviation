@@ -91,14 +91,13 @@
                 <h6>Manual Solution:</h6>
                 <p>If the buttons above don't work, you can manually create these directories via FTP:</p>
                 <pre class="bg-light p-3">
+@foreach($directories as $directory)
+{{ '/storage/app/public/' . $directory }}
+@endforeach
 {{-- /storage/app/public/hero
 /storage/app/public/events
 /storage/app/public/galleries
 /storage/app/public/volunteers --}}
-{{-- /storage/app/public/blogs --}}
-/storage/app/public/flags
-/storage/app/public/aircrafts
-/storage/app/public/destinations
                 </pre>
                 
                 <p>Set permissions to 755 for these directories.</p>
