@@ -25,7 +25,7 @@
     <!--================ End Popular Courses Area =================-->
 
     <!--================ Start Registration Area =================-->
-    @include('sections.registration')
+    {{-- @include('sections.registration') --}}
     <!--================ End Registration Area =================-->
 
     <!--================ Start Trainers Area =================-->
@@ -135,15 +135,51 @@
           L.geoJson(data, { style: style }).addTo(map);
         });
 
+      // fetch destion data
+      @php
+    
+        $countriesData = App\Models\Country::all()->map(function($country) {
+            return [
+                'name' => $country->name,
+                'lat' => $country->latitude,
+                'lng' => $country->longitude,
+            ];
+        })->toArray();
+
+        $countriesData = collect($countriesData)->keyBy('name')->toArray();
+
+        use App\Models\GlobalDestination;
+        $destinations = GlobalDestination::get()->map(function($destination) use ($countriesData) {
+            return [
+                'name' => $destination->country_name,
+                'slug' => $destination->slug,
+                'lat' => $countriesData[$destination->country_name]['lat'] ?? null,
+                'lng' => $countriesData[$destination->country_name]['lng'] ?? null,
+                'url' => route('global.destination', ['slug' => $destination->slug]),
+            ];
+        })->toArray();
+
+        // set array keys as country names
+        // $destinations = collect($destinations)->keyBy('name')->toArray();
+
+      @endphp
+      const destinations = @json($destinations);
+      const countriesData = @json($countriesData);
+      console.log(countriesData, 'countriesData');
+      console.log(destinations, 'destinations');
+
+      // countries
+      const pinnedCountries = destinations;
+
       // Add Pins (Direct Redirect on Click)
-      const pinnedCountries = [
-        { name: "India", lat: 20.5937, lng: 78.9629, url: "/destinations/india" },
-        { name: "USA", lat: 29.0902, lng: -95.7129, url: "/destinations/usa" },
-        { name: "Australia", lat: -25.2744, lng: 133.7751, url: "/destinations/australia" },
-        { name: "South Africa", lat: -32.5595, lng: 22.9375, url: "/destinations/south-africa" },
-        { name: "Canada", lat: 56.1304, lng: -106.3468, url: "/destinations/canada" },
-        { name: "New Zealand", lat: -40.9006, lng: 174.886, url: "/destinations/new-zealand" }
-      ];
+      // const pinnedCountries = [
+      //   { name: "India", lat: 20.5937, lng: 78.9629, url: "/destinations/india" },
+      //   { name: "USA", lat: 29.0902, lng: -95.7129, url: "/destinations/usa" },
+      //   { name: "Australia", lat: -25.2744, lng: 133.7751, url: "/destinations/australia" },
+      //   { name: "South Africa", lat: -32.5595, lng: 22.9375, url: "/destinations/south-africa" },
+      //   { name: "Canada", lat: 56.1304, lng: -106.3468, url: "/destinations/canada" },
+      //   { name: "New Zealand", lat: -40.9006, lng: 174.886, url: "/destinations/new-zealand" }
+      // ];
 
       pinnedCountries.forEach(country => {
         const marker = L.marker([country.lat, country.lng]).addTo(map);

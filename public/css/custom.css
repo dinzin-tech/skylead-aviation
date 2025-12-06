@@ -1614,4 +1614,100 @@ section {
 }
 
 
+/* ----------------------------------------------
+   PREMIUM ABOUT PAGE UI UPGRADE
+   ---------------------------------------------- */
+
+/* Modern Gradient Banner */
+.banner_area {
+    /* background: linear-gradient(135deg, #0a1a3a 0%, #133b7c 100%); */
+    /* grey gradient as background */
+    background: linear-gradient(135deg, #8e8d8d 0%, #2c2c2c 100%);
+    padding: 120px 0;
+    position: relative;
+}
+
+.banner_content h2 {
+    font-size: 48px;
+    font-weight: 700;
+    color: #fff;
+    letter-spacing: 1px;
+}
+
+/* Section Title */
+.section-title-centered h2 {
+    font-size: 36px;
+    font-weight: 700;
+    /* color: #0a1a3a; */
+    color: #000;
+    margin-bottom: 20px;
+}
+
+/* Subtle Fade Animation */
+.fade-in-up {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 0.7s forwards;
+}
+
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Premium Card Styles */
+.premium-card {
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 35px;
+    box-shadow: 0 12px 35px rgba(0,0,0,0.08);
+    transition: all 0.3s ease-in-out;
+}
+
+.premium-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 45px rgba(0,0,0,0.12);
+}
+
+/* Mission/Vision/Values Icons */
+.premium-card .icon img {
+    width: 50px;
+    margin-bottom: 15px;
+}
+
+/* Unique Points Icons */
+.feature-icon {
+    font-size: 40px;
+    color: var(--primary-color);
+    margin-bottom: 15px;
+}
+
+/* Premium Stats Section */
+.stats-box {
+    background: --tertiary-color;
+    padding: 30px;
+    border-radius: 12px;
+    margin: 10px;
+    backdrop-filter: blur(6px);
+}
+
+.stats-box h2 {
+    font-size: 42px;
+    font-weight: 700;
+    margin-bottom: 5px;
+    color: #fff;
+}
+
+/* History + Who We Are */
+.about-section {
+    padding: 70px 0;
+}
+
+.about-section h4 {
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
 

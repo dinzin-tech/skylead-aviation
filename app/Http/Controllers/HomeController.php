@@ -690,43 +690,80 @@ class HomeController extends Controller
     public function about()
     {
         $aboutData = [
-            'title' => 'About Skylead Aviation',
-            'description' => 'In an ever-changing market, finding the right trade and a fitting training program might seem like an impossible task. Enter Skylead Aviation Academy, which was founded by some of the industry\'s finest professionals. At Skylead Aviation, we\'re committed to providing the highest quality education focused on leadership, innovation and advanced skills.',
-            'full_description' => 'Our program is flexible and our teachers are the best in their field. So if you\'re ready to roll up your sleeves, learn a new trade and make new friends - get in touch today.',
-            'main_points' => [
-                [
-                    'icon' => 'flaticon-pilot',
-                    'title' => 'Expert Certified Instructors',
-                    'description' => 'Learn from industry veterans with decades of flying experience and certified training credentials. Our instructors are committed to your success in aviation.'
-                ],
-                [
-                    'icon' => 'flaticon-airplane',
-                    'title' => 'Modern Fleet & Equipment',
-                    'description' => 'Train with our state-of-the-art aircraft and advanced flight simulators. We maintain our fleet to the highest safety standards for optimal learning.'
-                ],
-                [
-                    'icon' => 'flaticon-graduation-cap',
-                    'title' => 'Global Career Opportunities',
-                    'description' => 'Our certification is recognized worldwide with partnerships with major airlines. 95% of our graduates secure positions within 6 months of completion.'
-                ]
+            'page_title' => 'About Skylead Aviation Academy',
+
+            // Hero Title & Subtitle
+            'title' => 'About Skylead Aviation Academy',
+            'description' => 'India’s fastest-growing aviation and hospitality training institute—delivering DGCA-aligned, career-focused programs since 2019.',
+
+            // History Section
+            'history' => [
+                'title' => 'Our History',
+                'text' => 'Founded in 2019, Skylead Aviation Academy emerged as a private institute dedicated to shaping the future of aviation and hospitality professionals in India. Established by seasoned aviation experts, the academy was built with a vision to deliver job-oriented training, uphold DGCA-aligned standards, and foster an atmosphere where students thrive.'
             ],
+
+            // Who we are
+            'who_we_are' => [
+                'title' => 'Who We Are',
+                'text' => 'Positioned among India’s fastest-growing aviation academies, Skylead stands out for its commitment to leadership, innovation, and advanced skills training. Our flexible programs are driven by highly skilled instructors, ensuring students receive world-class education.'
+            ],
+
+            // Mission Vision Values
             'mission_vision_values' => [
                 'mission' => [
                     'icon' => 'mission.png',
                     'title' => 'MISSION',
-                    'description' => 'To provide the Best quality of aviation training, industrial oriented training and helping students to get placement in aviation industry'
+                    'description' => 'To deliver best-in-class aviation training aligned with industry standards, empowering students with practical skills and placement opportunities.'
                 ],
                 'vision' => [
                     'icon' => 'shared-vision.png',
                     'title' => 'VISION',
-                    'description' => 'Sustained Excellence in Training, Career Orientation and Placement'
+                    'description' => 'To achieve sustained excellence in training, career orientation, and placement services.'
                 ],
                 'values' => [
                     'icon' => 'value.png',
-                    'title' => 'VALUES',
-                    'description' => 'Self-motivation, Innovation, Hands-on, Team-work, Responsive, Passionate.'
+                    'title' => 'CORE VALUES',
+                    'list' => [
+                        'Self-motivation',
+                        'Innovation',
+                        'Hands-on Learning',
+                        'Teamwork',
+                        'Responsiveness',
+                        'Passion'
+                    ]
                 ]
             ],
+
+            // What sets us apart
+            'unique_points' => [
+                [
+                    'icon' => 'flaticon-pilot',
+                    'title' => 'DGCA-Compliant Training',
+                    'description' => 'Comprehensive CPL ground school covering aerodynamics, aviation law, instruments, meteorology & navigation—fully aligned with DGCA standards.'
+                ],
+                [
+                    'icon' => 'flaticon-airplane',
+                    'title' => 'Global Career Pathways',
+                    'description' => 'Along with domestic aviation training, we guide students toward international flying and global career opportunities.'
+                ],
+                [
+                    'icon' => 'flaticon-education',
+                    'title' => 'Industry-Centric Learning',
+                    'description' => 'Career-focused, hands-on courses designed to meet evolving aviation and hospitality industry demands.'
+                ],
+                [
+                    'icon' => 'flaticon-graduation-cap',
+                    'title' => 'Strong Track Record',
+                    'description' => 'Hundreds of students trained, high placement rate, and expansion across multiple locations.'
+                ],
+                [
+                    'icon' => 'flaticon-team',
+                    'title' => 'Welcoming Learning Environment',
+                    'description' => 'Teamwork, creativity, mentorship, and strong professional bonding guided by aviation experts.'
+                ],
+            ],
+
+            // Stats
             'statistics' => [
                 'students_trained' => 1500,
                 'success_rate' => 95,
@@ -848,45 +885,79 @@ class HomeController extends Controller
 //     return view('sections.programs', compact('programsData'));
 // }
 
-public function programDetails($id)
-{
-    // Sample program details data - you can fetch from database instead
-    $programs = [
-        1 => [
-            'id' => 1,
-            'title' => 'Commercial Pilot License (CPL)',
-            'description' => 'Become a commercial airline pilot with comprehensive flight training and theoretical knowledge.',
-            'full_description' => 'Our Commercial Pilot License program provides extensive training to prepare you for a career as a commercial airline pilot. The program includes both theoretical knowledge and practical flight training.',
-            'image' => 'img/programs/cpl.jpg',
-            'level' => 'Advanced',
-            'category' => 'Pilot Training',
-            'duration' => '18 Months',
-            'rating' => 4.8,
-            'students' => 150,
-            'instructor' => [
-                'name' => 'Captain Raj Sharma',
-                'experience' => '15+ years',
-                'image' => 'img/instructors/captain-raj.jpg'
+    public function programDetails($id)
+    {
+        // Sample program details data - you can fetch from database instead
+        $programs = [
+            1 => [
+                'id' => 1,
+                'title' => 'Commercial Pilot License (CPL)',
+                'description' => 'Become a commercial airline pilot with comprehensive flight training and theoretical knowledge.',
+                'full_description' => 'Our Commercial Pilot License program provides extensive training to prepare you for a career as a commercial airline pilot. The program includes both theoretical knowledge and practical flight training.',
+                'image' => 'img/programs/cpl.jpg',
+                'level' => 'Advanced',
+                'category' => 'Pilot Training',
+                'duration' => '18 Months',
+                'rating' => 4.8,
+                'students' => 150,
+                'instructor' => [
+                    'name' => 'Captain Raj Sharma',
+                    'experience' => '15+ years',
+                    'image' => 'img/instructors/captain-raj.jpg'
+                ],
+                'features' => ['DGCA Approved', 'Flight Training', 'Simulator Sessions', '200+ Flying Hours', 'Theory Classes', 'Medical Certification'],
+                'curriculum' => [
+                    'Phase 1: Ground School',
+                    'Phase 2: Basic Flight Training',
+                    'Phase 3: Advanced Maneuvers',
+                    'Phase 4: Navigation Training',
+                    'Phase 5: Instrument Rating',
+                    'Phase 6: Commercial Flight Test'
+                ]
             ],
-            'features' => ['DGCA Approved', 'Flight Training', 'Simulator Sessions', '200+ Flying Hours', 'Theory Classes', 'Medical Certification'],
-            'curriculum' => [
-                'Phase 1: Ground School',
-                'Phase 2: Basic Flight Training',
-                'Phase 3: Advanced Maneuvers',
-                'Phase 4: Navigation Training',
-                'Phase 5: Instrument Rating',
-                'Phase 6: Commercial Flight Test'
-            ]
-        ],
-        // Add details for other programs...
-    ];
+            // Add details for other programs...
+        ];
 
-    $program = $programs[$id] ?? null;
+        $program = $programs[$id] ?? null;
 
-    if (!$program) {
-        abort(404, 'Program not found');
+        if (!$program) {
+            abort(404, 'Program not found');
+        }
+
+        return view('sections.program-details', compact('program'));
     }
 
-    return view('sections.program-details', compact('program'));
-}
+    public function contact()
+    {
+        return view('contact');
+    }
+
+    public function contactSubmit(Request $request)
+    {
+        $request->validate([
+            'name'    => 'required|string|max:255',
+            'email'   => 'required|email',
+            'phone'   => 'required|string|max:20',
+            'message' => 'required|string',
+        ]);
+
+        $to      = "info@skyleadaviation.com";
+        $subject = "New Contact Form Submission";
+
+        $body = "
+            Name: {$request->name}\n
+            Email: {$request->email}\n
+            Phone: {$request->phone}\n
+            Message: {$request->message}\n
+        ";
+
+        $headers = "From: {$request->email}\r\n";
+
+        // Send email using mail()
+        if (mail($to, $subject, $body, $headers)) {
+            return redirect()->back()->with('success', 'Your message has been sent successfully.');
+        } else {
+            return redirect()->back()->with('error', 'There was an error sending your message. Please try again.');
+        }
+    }
 }

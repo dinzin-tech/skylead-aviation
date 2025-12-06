@@ -25,17 +25,19 @@ use App\Http\Controllers\FlightTrainingController;
 use App\Http\Controllers\TypeRatingController;
 
 
-
+// all program related routes
 Route::get('/a320', [TypeRatingController::class, 'a320TypeRating'])->name('type-rating.a320');
 Route::get('/b737', [TypeRatingController::class, 'b737TypeRating'])->name('type-rating.b737');
 Route::get('/flight-training-cpl', [App\Http\Controllers\FlightTrainingController::class, 'index'])->name('flight-training');
 Route::get('/medical-fitness-requirements', [App\Http\Controllers\MedicalFitnessController::class, 'index'])->name('medical-fitness');
 Route::get('/foreign-cpl-conversion', [App\Http\Controllers\ForeignCplConversionController::class, 'index'])->name('foreign-cpl-conversion');
+Route::get('/dgca-ground-classes', [App\Http\Controllers\DgcaGroundClasses::class, 'index'])->name('dgca.ground.classes');
 
 // Route::get('/programs', [HomeController::class, 'programs'])->name('programs');
-Route::get('/program/{id}', [HomeController::class, 'programDetails'])->name('program.details');
+// Route::get('/program/{id}', [HomeController::class, 'programDetails'])->name('program.details');
+
 // Show all programs/courses
-Route::get('/programs', [ProgramController::class, 'index'])->name('programs');
+Route::get('/courses', [ProgramController::class, 'index'])->name('programs');
 // Show individual course details
 Route::get('/courses/{course:slug}', [CourseController::class, 'show'])->name('courses.show');
 
@@ -43,20 +45,13 @@ Route::get('/courses/{course:slug}', [CourseController::class, 'show'])->name('c
 //     ->name('destinations.country');
 
 // Public destination route (update existing)
-Route::get('/destination/{slug}', [App\Http\Controllers\DestinationController::class, 'destinationCountry'])
-    ->name('destination.country');
+Route::get('/destination/{slug}', [App\Http\Controllers\DestinationController::class, 'destinationCountry'])->name('destination.country');
 
 // Public route for global destinations
-Route::get('/global-destinations/{slug}', [App\Http\Controllers\GlobalDestinationController::class, 'show'])
-    ->name('global.destination');
-Route::get('/global-destinations', [App\Http\Controllers\GlobalDestinationController::class, 'index'])
-    ->name('global.destinations');
+Route::get('/global-destinations/{slug}', [App\Http\Controllers\GlobalDestinationController::class, 'show'])->name('global.destination');
+Route::get('/global-destinations', [App\Http\Controllers\GlobalDestinationController::class, 'index'])->name('global.destinations');
 
-Route::get('/dgca-ground-classes', [App\Http\Controllers\DgcaGroundClasses::class, 'index'])
-    ->name('dgca.ground.classes');
-
-Route::get('/flight-training/{type?}', [DestinationController::class, 'flightType'])
-    ->name('flight.type');
+// Route::get('/flight-training/{type?}', [DestinationController::class, 'flightType'])->name('flight.type');
 
 // Optional: Add a default route
 Route::get('/', function () {
@@ -73,13 +68,16 @@ Route::get('/course/{slug}', [CourseController::class, 'show'])->name('course.de
 // public routes
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/about', [HomeController::class, 'about'])->name('about');
-Route::get('/courses', [HomeController::class, 'courses'])->name('courses');
-Route::get('/course-details', [HomeController::class, 'courseDetails'])->name('course.details');
+// Route::get('/courses', [HomeController::class, 'courses'])->name('courses');
+// Route::get('/course-details', [HomeController::class, 'courseDetails'])->name('course.details');
 
 // Route::get('/blog', [HomeController::class, 'blogs'])->name('blog');
 // Route::get('/blogs/show', [HomeController::class, 'blogShow'])->name('blog.show');
 
+// Route::get('/contact', [HomeController::class, 'contact'])->name('contact');
 Route::get('/contact', [HomeController::class, 'contact'])->name('contact');
+Route::post('/contact-submit', [HomeController::class, 'contactSubmit'])->name('contact.submit');
+
 Route::get('/elements', [HomeController::class, 'elements'])->name('elements');
 Route::get('/program/{id}', [HomeController::class, 'programDetails'])->name('program.details');
 // Route::get('/programs', [HomeController::class, 'programs'])->name('programs');

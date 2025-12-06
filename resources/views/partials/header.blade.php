@@ -73,9 +73,14 @@
                         <li class="nav-item {{ request()->routeIs('home') ? 'active' : '' }}">
                             <a class="nav-link" href="{{ route('home') }}">Home</a>
                         </li>
-                        {{-- <li class="nav-item {{ request()->routeIs('about') ? 'active' : '' }}">
+                        <li class="nav-item {{ request()->routeIs('about') ? 'active' : '' }}">
                             <a class="nav-link" href="{{ route('about') }}">About</a>
-                        </li> --}}
+                        </li>
+
+                        @php
+                            use App\Models\GlobalDestination;
+                            $destinations = GlobalDestination::all();
+                        @endphp
 
                         <li class="nav-item submenu dropdown">
                             <a
@@ -87,7 +92,7 @@
                                 aria-expanded="false"
                             >Pilot Training</a>
                             <ul class="dropdown-menu">
-                                <li class="nav-item">
+                                {{-- <li class="nav-item">
                                     <a class="nav-link" href="#">USA</a>
                                 </li>
                                 <li class="nav-item">
@@ -98,11 +103,18 @@
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" href="#">India</a>
-                                </li>
+                                </li> --}}
+                                @foreach($destinations as $destination)
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="{{ route('global.destination', ['slug' => $destination->slug]) }}">
+                                            {{ $destination->country_name }}
+                                        </a>
+                                    </li>
+                                @endforeach
                             </ul>
                         </li>
 
-                        <li class="nav-item submenu dropdown">
+                        {{-- <li class="nav-item submenu dropdown">
                             <a
                                 href="#"
                                 class="nav-link dropdown-toggle"
@@ -119,7 +131,7 @@
                                     <a class="nav-link" href="#">Team</a>
                                 </li>
                             </ul>
-                        </li>
+                        </li> --}}
 
                         {{-- Cadet Pilot Program In India --}}
                         <li class="nav-item submenu dropdown">
@@ -130,16 +142,23 @@
                                 role="button"
                                 aria-haspopup="true"
                                 aria-expanded="false"
-                            >Cadet Pilot Program In India</a>
+                            >Our Aviation Programs</a>
                             <ul class="dropdown-menu" style="width: 280px">
                                 <li class="nav-item">
-                                    <a class="nav-link" href="#">Air Asia Cadet Pilot Program</a>
+                                    <a class="nav-link" href="{{ route('dgca.ground.classes') }}">DGCA CPL Ground Training</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="#">Indigo Cadet Pilot Program</a>
+                                    <a class="nav-link" href="{{ route('flight-training') }}">CPL Flight Training</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="#">Air India Cadet Pilot Program</a>
+                                    <a class="nav-link" href="{{ route('foreign-cpl-conversion') }}">Foreign CPL Conversion</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('type-rating.a320') }}">A320 Type Rating Training</a>
+                                </li>
+                                {{-- B737 Type Rating Training --}}
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('type-rating.b737') }}">B737 Type Rating Training</a>
                                 </li>
                             </ul>
                         </li>
@@ -166,7 +185,7 @@
                             </ul>
                         </li> --}}
 
-                        <li class="nav-item submenu dropdown">
+                        {{-- <li class="nav-item submenu dropdown">
                             <a
                                 href="#"
                                 class="nav-link dropdown-toggle"
@@ -177,18 +196,20 @@
                             >Blog</a>
                             <ul class="dropdown-menu">
                                 <li class="nav-item">
-                                    {{-- <a class="nav-link" href="{{ /*route('blog')*/ }}">Blog</a> --}}
                                     <a class="nav-link" href="#">Blog</a>
                                 </li>
                                 <li class="nav-item">
-                                    {{-- <a class="nav-link" href="{{ /*route('blog.show')*/ }}">Blog Details</a> --}}
                                     <a class="nav-link" href="#">Blog Details</a>
                                 </li>
                             </ul>
-                        </li>
+                        </li> --}}
 
-                        <li class="nav-item ">
+                        {{-- <li class="nav-item ">
                             <a class="nav-link" href="#">DGCA Ground Classes</a>
+                        </li> --}}
+
+                        <li class="nav-item {{ request()->routeIs('blog') ? 'active' : '' }}">
+                            <a class="nav-link" href="{{ url('/blog') }}">Blog</a>
                         </li>
 
                         <li class="nav-item {{ request()->routeIs('contact') ? 'active' : '' }}">
